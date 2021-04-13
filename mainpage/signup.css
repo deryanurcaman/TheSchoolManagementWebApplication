@@ -17,19 +17,19 @@ ul {
 
 #li1 {
     width: 200px;
-    height:8px
+    height:8px;
 }
 
 #li2 {
     width: 700px;
-    height:8px
+    height:8px;
 }
 
 #li3 {
     float: right;
     width: 220px;
-    margin-top: 50px;
-    height:8px
+    padding-top: 2.5em;
+    height:8px;
 }
 
 #hogwartslogo {
