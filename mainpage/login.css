@@ -34,7 +34,7 @@ ul {
 
 body {
     background-image: url(https://cdna.artstation.com/p/assets/images/images/029/126/778/4k/sam-gielen-library-02-0445.jpg?1596541987);
-    background-size: contain;
+    background-size: cover;
     background-attachment: fixed;
     font-family: sans-serif;
 }
@@ -55,7 +55,7 @@ form {
 }
 
 button {
-    background-color: rgb(41, 26, 3);
+    background-color: rgba(41, 26, 3, 0.63);
     width: 100%;
     padding: 14px 40px;
     color: white;
@@ -110,4 +110,5 @@ a {
 .headerbox {
     background-color: rgba(189, 174, 158, 0.781);
     columns: 2;
+    margin-top: 0;
 }
