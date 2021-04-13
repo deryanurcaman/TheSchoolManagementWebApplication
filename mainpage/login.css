@@ -1,13 +1,14 @@
-#logo {
-    width: 50px;
-    height: 50px;
-    padding-top: 2em;
-    padding-bottom: 1em;
+body {
+    background-image: url(https://wallpaperaccess.com/full/541378.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: sans-serif;
 }
 
-#hogwartslogo {
-    width: 200px;
-    height: 200px;
+.headerbox {
+    background-color: rgba(189, 174, 158, 0.781);
+    margin-top: 0;
+    width: 100%;
 }
 
 ul {
@@ -24,19 +25,23 @@ ul {
 
 #li3 {
     float: right;
+    padding-top: 2.5em;
 }
 
-#title {
-    text-align: center;
-    color: white;
-    font-weight: lighter;
+#td2 {
+    margin-left: 120px;
 }
 
-body {
-    background-image: url(https://cdna.artstation.com/p/assets/images/images/029/126/778/4k/sam-gielen-library-02-0445.jpg?1596541987);
-    background-size: cover;
-    background-attachment: fixed;
-    font-family: sans-serif;
+#hogwartslogo {
+    width: 200px;
+    height: 200px;
+}
+
+#socialmedia {
+    width: 50px;
+    height: 50px;
+    padding-top: 2em;
+    padding-bottom: 1em;
 }
 
 form {
@@ -44,8 +49,16 @@ form {
     margin-left: auto;
     margin-right: auto;
     width: 40%;
-    height: 100%;
     border-radius: 4px;
+    background-color: rgba(71, 68, 64, 0.596);
+    padding: 1em 3em;
+    height: 1000px;
+}
+
+#title {
+    text-align: center;
+    color: white;
+    font-weight: lighter;
 }
 
 #text_input {
@@ -56,59 +69,34 @@ form {
 
 button {
     background-color: rgba(41, 26, 3, 0.63);
-    width: 100%;
-    padding: 14px 40px;
+    width: 60%;
+    padding: auto;
+    margin-left: 100px;
     color: white;
     border-radius: 4px;
     font-size: 17px;
-}
-
-form {
-    background-color: rgba(71, 68, 64, 0.596);
-    padding: 1em 3em;
-    height: 1000px;
-}
-
-.select {
-    width: 100%;
-    padding: 10px 10px;
-    border-radius: 4px;
-    font-size: 16px;
 }
 
 button:hover {
     cursor: pointer;
 }
 
-.select2 {
-    width: 104%;
+.select {
+    width: 70%;
     padding: 10px 10px;
     border-radius: 4px;
     font-size: 16px;
+    margin-left: 3em;
 }
 
-#parantez {
-    font-size: 15px;
-    color: white;
-    font-family: sans-serif;
-    font-weight: lighter;
+#radio {
+    margin-left: 3em;
 }
 
-textarea::placeholder {
-    font-family: sans-serif;
-    font-size: 16px;
+label::before {
+    content: url(https://img.icons8.com/color/48/000000/snitch.png);
 }
 
 a {
     cursor: pointer;
-    color: black;
-    font-weight: lighter;
-    font-size: 18px;
-    text-decoration: none;
-}
-
-.headerbox {
-    background-color: rgba(189, 174, 158, 0.781);
-    columns: 2;
-    margin-top: 0;
 }
