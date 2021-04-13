@@ -1,0 +1,113 @@
+#logo {
+    width: 50px;
+    height: 50px;
+    padding-top: 2em;
+    padding-bottom: 1em;
+}
+
+#hogwartslogo {
+    width: 200px;
+    height: 200px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+#li1 {
+    width: 200px;
+}
+
+#li2 {
+    width: 450px;
+}
+
+#li3 {
+    float: right;
+}
+
+#title {
+    text-align: center;
+    color: white;
+    font-weight: lighter;
+}
+
+body {
+    background-image: url(https://cdna.artstation.com/p/assets/images/images/029/126/778/4k/sam-gielen-library-02-0445.jpg?1596541987);
+    background-size: contain;
+    background-attachment: fixed;
+    font-family: sans-serif;
+}
+
+form {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    height: 100%;
+    border-radius: 4px;
+}
+
+#text_input {
+    color: white;
+    font-size: 20px;
+    border-radius: 4px;
+}
+
+button {
+    background-color: rgb(41, 26, 3);
+    width: 100%;
+    padding: 14px 40px;
+    color: white;
+    border-radius: 4px;
+    font-size: 17px;
+}
+
+form {
+    background-color: rgba(71, 68, 64, 0.596);
+    padding: 1em 3em;
+    height: 1000px;
+}
+
+.select {
+    width: 100%;
+    padding: 10px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.select2 {
+    width: 104%;
+    padding: 10px 10px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#parantez {
+    font-size: 15px;
+    color: white;
+    font-family: sans-serif;
+    font-weight: lighter;
+}
+
+textarea::placeholder {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+a {
+    cursor: pointer;
+    color: black;
+    font-weight: lighter;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.headerbox {
+    background-color: rgba(189, 174, 158, 0.781);
+    columns: 2;
+}
