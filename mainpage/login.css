@@ -52,7 +52,7 @@ form {
     border-radius: 4px;
     background-color: rgba(71, 68, 64, 0.596);
     padding: 1em 3em;
-    height: 1000px;
+    height: 850px;
 }
 
 #title {
@@ -68,17 +68,19 @@ form {
 }
 
 button {
-    background-color: rgba(41, 26, 3, 0.63);
-    width: 60%;
-    padding: auto;
-    margin-left: 100px;
-    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(41, 26, 3, 0.849);
+    width: 30%;
     border-radius: 4px;
-    font-size: 17px;
+    transition-property: background-color;
+    transition-duration: 1s;
 }
 
 button:hover {
     cursor: pointer;
+    background-color: rgba(87, 56, 11, 0.63);
 }
 
 .select {
@@ -99,4 +101,10 @@ label::before {
 
 a {
     cursor: pointer;
+}
+
+footer {
+    color: wheat;
+    margin-left: 80%;
+    font-size: 18px;
 }
