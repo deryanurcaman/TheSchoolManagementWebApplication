@@ -1,0 +1,150 @@
+/* The sidebar menu */
+
+.sidenav {
+    height: 100%;
+    /* Full-height: remove this if you want "auto" height */
+    width: 200px;
+    /* Set the width of the sidebar */
+    position: fixed;
+    /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1;
+    /* Stay on top */
+    top: 0;
+    /* Stay at the top */
+    left: 0;
+    background-color: rgba(82, 37, 0, 0.979);
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+
+/* The navigation menu links */
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffea8b;
+    display: block;
+}
+
+
+/* When you mouse over the navigation links, change their color */
+
+.sidenav a:hover {
+    background-color: rgb(66, 24, 0);
+    color: #f1f1f1;
+}
+
+
+/* Style page content */
+
+.main {
+    margin-left: 200px;
+    /* Same as the width of the sidebar */
+    padding: 0px 10px;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.flexit {
+    width: 100%;
+    line-height: 50px;
+    font-weight: lighter;
+    font-size: 20px;
+    text-align: center;
+    list-style-type: none;
+}
+
+.flexCont {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rgba(141, 28, 0, 0.63);
+    margin-left: 200px;
+    height: 50px;
+    width: 100%;
+    margin-top: 0;
+    position: fixed;
+}
+
+.requests {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.507);
+    border-radius: 20px;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+.groupstudents {
+    background-color: rgba(255, 255, 255, 0.507);
+    border-radius: 20px;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+
+body {
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url(https://images-ext-1.discordapp.net/external/tlA9V9MMP7wTFsaFn2OTLeXt8B3aVpzBktedO5yQ-8E/https/live.staticflickr.com/4832/46352225551_7f1d5f75b0_b.jpg);
+}
+
+table {
+    border: black solid 1px;
+    background-color: rgba(255, 235, 205, 0.733);
+}
+
+th,
+td,
+tr {
+    text-align: center;
+    border: black solid 1px;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 1em;
+}
+
+#hashtag {
+    padding: 1em;
+}
+
+li {
+    padding-right: 2em;
+    list-style-type: none;
+}
+
+#research_student {
+    width: 200px;
+}
+
+#research_note {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+button img {
+    height: 30px;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+}
+
+#decision {
+    margin: 10px;
+}

@@ -44,16 +44,33 @@
     background-color: #ffea8b;;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 5px;
-    border: darkred;
-    border-width: 2px;
+    height: 110%;
   }
 
   #upload{
-    float: right;
     height: 50px;
-    padding-top: 20px;
-    padding-right: 20px;
     cursor: pointer;
+  }
+
+  #submit{
+    height: 50px;
+    cursor: pointer;
+  }
+  
+  #download{
+    height: 50px;
+    cursor: pointer;
+  }
+
+  table{
+    margin-top: 20px;
+    margin-right: 20px;
+    float: right;
+  }
+
+  td{
+    text-align: center;
+    padding-right: 2em;
   }
 
   ul{
@@ -85,9 +102,4 @@
     background-attachment: fixed;
   }
 
-  #download{
-    float: right;
-    height: 50px;
-    padding-right: 50px;
-    cursor: pointer;
-  }
+  

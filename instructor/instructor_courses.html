@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,26 +8,39 @@
     <link rel="stylesheet" href="instructor_courses.css">
     <title>Courses</title>
 </head>
+
 <body>
     <!-- Side navigation -->
     <div class="sidenav">
-        <div><img style="margin-left: 50px;" src="https://www.downloadclipart.net/large/hogwarts-logo-png-transparent.png" height="100px"></img></div>
-        
-        <a href="instructor_homepage.html">Severus Snape</a>
+        <div><img style="margin-left: 50px;" src="https://www.downloadclipart.net/large/hogwarts-logo-png-transparent.png" height="100px"></img>
+        </div>
+
+        <a href="instructor_profile.html">Severus Snape</a>
         <a href="#">Courses</a>
-        <a href="#">Research Groups</a>
-        <a href="C:\Users\Zişan\VSCodeRep\WebProgrammingProject\mainpage\login.html">Sign Out</a>
+        <a href="../instructor/instructor_research.html">Research Groups</a>
+        <a href="../mainpage/login.html">Sign Out</a>
     </div>
-    
+
     <!-- Page content -->
     <div class="main">
-        <h1>Courses<img id="download" src="https://image.flaticon.com/icons/png/512/45/45162.png" alt=""></h1>
-            <div class="courselist">
-                <form action="">
-                    <input type="file" id="aa" name="filename" hidden/>
-                    <input type="submit" style="float: right; margin-top: 50px; margin-right: 10px;">
-                    <label for="aa"><img id="upload" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/OOjs_UI_icon_upload.svg/600px-OOjs_UI_icon_upload.svg.png" alt=""></label>
-                </form>
+        <h1>Courses</h1>
+        <div class="courselist">
+            <form action="">
+                <table>
+                    <tr>
+                        <td><img id="download" src="../assets/download.png" alt=""></td>
+                        <td><input type="file" id="up" name="filename" hidden/>
+                            <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
+                            <input type="submit" name="" id="sub" hidden/>
+                            <label for="sub"><img src="../assets/submit.png" alt="" id="submit" title="Submit File"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Download list of students</td>
+                        <td>Upload class material</td>
+                    </tr>
+                </table>
+            </form>
             <ul>
                 <li class="classtype">Mandatory</li>
                 <li class="classcode">POT101</li>
@@ -37,9 +51,20 @@
 
         <div class="courselist">
             <form action="">
-                <input type="file" id="aa" name="filename" hidden/>
-                <input type="submit" style="float: right; margin-top: 50px; margin-right: 10px;">
-                <label for="aa"><img id="upload" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/OOjs_UI_icon_upload.svg/600px-OOjs_UI_icon_upload.svg.png" alt=""></label>
+                <table>
+                    <tr>
+                        <td><img id="download" src="../assets/download.png" alt=""></td>
+                        <td><input type="file" id="up" name="filename" hidden/>
+                            <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
+                            <input type="submit" name="" id="sub" hidden/>
+                            <label for="sub"><img src="../assets/submit.png" alt="" id="submit" title="Submit File"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Download list of students</td>
+                        <td>Upload class material</td>
+                    </tr>
+                </table>
             </form>
             <ul>
                 <li class="classtype">Mandatory</li>
@@ -51,9 +76,20 @@
 
         <div class="courselist">
             <form action="">
-                <input type="file" id="aa" name="filename" hidden/>
-                <input type="submit" style="float: right; margin-top: 50px; margin-right: 10px;">
-                <label for="aa"><img id="upload" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/OOjs_UI_icon_upload.svg/600px-OOjs_UI_icon_upload.svg.png" alt=""></label>
+                <table>
+                    <tr>
+                        <td><img id="download" src="../assets/download.png" alt=""></td>
+                        <td><input type="file" id="up" name="filename" hidden/>
+                            <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
+                            <input type="submit" name="" id="sub" hidden/>
+                            <label for="sub"><img src="../assets/submit.png" alt="" id="submit" title="Submit File"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Download list of students</td>
+                        <td>Upload class material</td>
+                    </tr>
+                </table>
             </form>
             <ul>
                 <li class="classtype">Elective</li>
@@ -64,6 +100,7 @@
         </div>
 
     </div>
-    
+
 </body>
+
 </html>
