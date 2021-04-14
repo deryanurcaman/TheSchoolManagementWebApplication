@@ -1,0 +1,93 @@
+/* The sidebar menu */
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 200px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: rgba(82, 37, 0, 0.979); 
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #ffea8b;
+    display: block;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+      background-color: rgb(66, 24, 0);
+    color: #f1f1f1;
+  }
+  
+  /* Style page content */
+  .main {
+    margin-left: 200px; /* Same as the width of the sidebar */
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.507);
+    border-radius: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .courselist{
+    background-color: #ffea8b;;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 5px;
+    border: darkred;
+    border-width: 2px;
+  }
+
+  #upload{
+    float: right;
+    height: 50px;
+    padding-top: 20px;
+    padding-right: 20px;
+    cursor: pointer;
+  }
+
+  ul{
+    list-style-type: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .classtype{
+    color: rgb(75, 24, 0);
+  }
+
+  .classcode{
+    color: rgb(143, 0, 0);
+  }
+
+  .classname{
+    color: rgb(128, 40, 0);
+    font-weight: bolder;
+  }
+
+  .classsize{
+    color: rgb(90, 62, 50);
+  }
+
+  body{
+    background-image: url(https://cdna.artstation.com/p/assets/images/images/029/126/778/4k/sam-gielen-library-02-0445.jpg?1596541987);
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  #download{
+    float: right;
+    height: 50px;
+    padding-right: 50px;
+    cursor: pointer;
+  }
