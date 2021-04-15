@@ -126,7 +126,7 @@ ul {
 }
 
 body {
-    background-image: url(https://cdna.artstation.com/p/assets/images/images/029/126/778/4k/sam-gielen-library-02-0445.jpg?1596541987);
+    background-image: url(../assets/instructorcourses.jpeg);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -149,4 +149,18 @@ tr {
     border: unset;
     margin: unset;
     padding: unset;
+}
+
+button {
+    color: aliceblue;
+    padding: 0.5em;
+    border: none;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #7e7979, #2d5037);
+    border-radius: 0.5em;
+    border-style: groove;
+    border-color: rgb(93, 82, 82);
+}
+
+h1 {
+    color: rgb(41, 37, 37);
 }

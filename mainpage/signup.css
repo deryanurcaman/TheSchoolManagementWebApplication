@@ -1,5 +1,5 @@
 body {
-    background-image: url(https://wallpaperaccess.com/full/541378.jpg);
+    background-image: url(../assets/loginhogwarts.jpeg);
     background-size: cover;
     background-attachment: fixed;
     font-family: sans-serif;
@@ -100,7 +100,7 @@ button:hover {
 }
 
 label::before {
-    content: url(https://img.icons8.com/color/48/000000/snitch.png);
+    content: url(../assets/snitch.png);
 }
 
 a {
