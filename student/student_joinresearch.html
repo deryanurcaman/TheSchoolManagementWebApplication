@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="student_joinresearch.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <header>
+        <ul class="flexCont">
+            <li class="flexit"><a href="#Instructors">Instructors</a></li>
+            <li class="flexit"><a href="#SendaRequesttoJoinaResearchGroup">Send a Request to Join a Research Group</a></li>
+        </ul>
+    </header>
+
+    <!-- Side navigation -->
+    <div class="sidenav">
+        <div><img style="margin-left: 50px;" src="https://www.downloadclipart.net/large/hogwarts-logo-png-transparent.png" height="100px"></img>
+        </div>
+
+        <a href="student_profile.html">Harry Potter</a>
+        <a href="student_courses.html">Courses</a>
+        <a href="student_joinresearch.html">Join a Research Group</a>
+        <a href="../mainpage/login.html
+        ">Sign Out</a>
+    </div>
+
+
+    <div class="main">
+
+        <div class="groupstudents" id="#Instructors">
+            <h1>Instructors
+            </h1><br>
+            <table>
+                <tr>
+                    <th id="hashtag">#</th>
+                    <th>First Name</th>
+                    <th>Surname</th>
+                    <th>Area</th>
+                </tr>
+                <tr>
+                    <td id="hashtag">1</td>
+                    <td> Severus </td>
+                    <td>Snape</td>
+                    <td>Potions</td>
+                </tr>
+                <tr>
+                    <td id="hashtag">2</td>
+                    <td> Minevra </td>
+                    <td>Mcgonagall</td>
+                    <td>Transfiguration</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+        <div class="requests" id="SendaRequesttoJoinaResearchGroup">
+            <h1>Send a Request to Join a Research Group</h1>
+            <form action="">
+
+                Choose an Instructor
+                <select name="" id="">
+                    <option value="">Severus Snape</option>
+                    <option value="">Minerva Mcgonagall</option>
+                </select>
+                <br><br> Note
+                <textarea name="" id="" cols="30" rows="10" placeholder="Please enter your note"></textarea>
+                <br><br> Attachment
+                <input type="file" id="up" name="filename" hidden/>
+                <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
+                <br><br>
+                <input type="submit">
+
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
