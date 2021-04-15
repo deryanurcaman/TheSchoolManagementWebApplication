@@ -53,6 +53,14 @@ strong {
     padding: 0px 10px;
 }
 
+form {
+    width: 120%;
+    border-radius: 4px;
+    display: block;
+    margin: auto;
+    margin-left: 10em;
+}
+
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 
@@ -93,7 +101,7 @@ strong {
     padding-bottom: 1em;
     padding-right: 1em;
     padding-left: 1em;
-    width: 1000px;
+    width: 700px;
 }
 
 .groupstudents {
@@ -102,7 +110,7 @@ strong {
     padding-bottom: 1em;
     padding-right: 1em;
     padding-left: 1em;
-    width: 1000px;
+    width: 700px;
 }
 
 body {
@@ -151,8 +159,19 @@ button img {
 }
 
 button {
-    background-color: transparent;
-    border: none;
+    margin-right: 5em;
+    background-color: rgba(41, 26, 3, 0.849);
+    width: 10%;
+    height: 30px;
+    color: white;
+    border-radius: 4px;
+    transition-property: background-color;
+    transition-duration: 1s;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: rgba(87, 56, 11, 0.63);
 }
 
 #decision {
@@ -177,4 +196,27 @@ tr {
     border: unset;
     margin: unset;
     padding: unset;
+}
+
+#text_input {
+    width: 20em;
+    font-size: 20px;
+    border-radius: 4px;
+    color: black;
+}
+
+.select {
+    width: 20%;
+    padding: 10px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+textarea::placeholder {
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+#upload {
+    cursor: pointer;
 }

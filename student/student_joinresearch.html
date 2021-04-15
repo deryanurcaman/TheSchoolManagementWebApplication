@@ -85,18 +85,27 @@
         <h1>Send a Request to Join a Research Group</h1>
         <form action="">
 
-            Choose an Instructor
-            <select name="" id="">
-                    <option value="">Severus Snape</option>
-                    <option value="">Minerva Mcgonagall</option>
+            <p><label id="text_input">Course Instructor:</label>
+                <select name="CourseInstructor" class="select" required>
+                    <option selected disabled>Select an Option</option>   
+                    <option >Lucius Malfoy</option>   
+                    <option>Severus Snape</option>   
+                    <option>Minerva McGonagall</option>   
+                    <option>Remus Lupin</option>   
                 </select>
-            <br><br> Note
-            <textarea name="" id="" cols="30" rows="10" placeholder="Please enter your note"></textarea>
-            <br><br> Attachment
-            <input type="file" id="up" name="filename" hidden/>
-            <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
-            <br><br>
-            <input type="submit">
+                <br><br>
+                <p><label id="text_input" for="">Note:</label><br>
+                    <textarea name="" id="textarea" cols="30" rows="10" placeholder="Please enter your note"></textarea>
+                </p>
+
+                <br><br>
+
+                <p><label id="text_input" for="">Attachment</label>
+                    <input type="file" id="up" name="filename" hidden/>
+                    <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
+                </p>
+                <br><br>
+                <button type="submit">Save</button>
 
         </form>
     </div>
