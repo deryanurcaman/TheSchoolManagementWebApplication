@@ -75,16 +75,17 @@ button {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgba(158, 125, 75, 0.849);
+    background-color: rgba(173, 132, 70, 0.925);
     width: 30%;
-    border-radius: 4px;
+    border-radius: 20px;
+    padding-top: 1em;
     transition-property: background-color;
     transition-duration: 1s;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: rgba(241, 217, 180, 0.63);
+    background-color: rgba(241, 217, 180, 0.925);
 }
 
 .select {
