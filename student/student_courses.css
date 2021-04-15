@@ -3,7 +3,7 @@
 .sidenav {
     height: 100%;
     /* Full-height: remove this if you want "auto" height */
-    width: 200px;
+    width: 250px;
     /* Set the width of the sidebar */
     position: fixed;
     /* Fixed Sidebar (stay in place on scroll) */
@@ -12,7 +12,7 @@
     top: 0;
     /* Stay at the top */
     left: 0;
-    background-color: rgba(82, 37, 0, 0.979);
+    background-color: #898590;
     overflow-x: hidden;
     /* Disable horizontal scroll */
     padding-top: 20px;
@@ -25,7 +25,7 @@
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
-    color: #ffea8b;
+    color: rgb(83, 1, 32);
     display: block;
 }
 
@@ -33,19 +33,24 @@
 /* When you mouse over the navigation links, change their color */
 
 .sidenav a:hover {
-    background-color: rgb(66, 24, 0);
-    color: #f1f1f1;
+    background-color: #d0cbd8;
+    color: #2a2a25;
+}
+
+strong {
+    display: block;
+    margin: auto;
+    font-size: 30px;
+    color: #2a2a25;
 }
 
 
 /* Style page content */
 
 .main {
-    margin-left: 200px;
+    margin-left: 250px;
     /* Same as the width of the sidebar */
-    padding: 10px 20px;
-    background-color: rgba(255, 255, 255, 0.507);
-    border-radius: 20px;
+    padding: 0px 10px;
 }
 
 
@@ -121,4 +126,24 @@ body {
     background-image: url(https://cdna.artstation.com/p/assets/images/images/029/126/778/4k/sam-gielen-library-02-0445.jpg?1596541987);
     background-size: cover;
     background-attachment: fixed;
+}
+
+.sidenav img {
+    display: block;
+    margin: auto;
+}
+
+#tablenavbar {
+    background-color: unset;
+    border: unset;
+    margin: unset;
+    padding: unset;
+}
+
+#tablenavbar td,
+tr {
+    background-color: unset;
+    border: unset;
+    margin: unset;
+    padding: unset;
 }
