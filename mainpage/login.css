@@ -75,7 +75,7 @@ button {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    background-color: rgba(41, 26, 3, 0.849);
+    background-color: rgba(158, 125, 75, 0.849);
     width: 30%;
     border-radius: 4px;
     transition-property: background-color;
@@ -84,7 +84,7 @@ button {
 
 button:hover {
     cursor: pointer;
-    background-color: rgba(87, 56, 11, 0.63);
+    background-color: rgba(241, 217, 180, 0.63);
 }
 
 .select {
