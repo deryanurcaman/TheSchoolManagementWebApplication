@@ -6,101 +6,101 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="student_joinresearch.css">
-    <title>Document</title>
+    <title>Student Research Groups</title>
 </head>
 
-<body>
+<!-- <body>
     <ul class="flexCont">
         <li class="flexit"><a href="#Instructors">Instructors</a></li>
         <li class="flexit"><a href="#SendaRequesttoJoinaResearchGroup">Send a Request to Join a Research Group</a></li>
-    </ul>
+    </ul> -->
 
 
-    <!-- Side navigation -->
-    <div class="sidenav">
-        <div><img src="https://www.freepnglogos.com/uploads/hogwarts-logo-png/hogwarts-logo-digital-drawing-20.png:large" height="200px"></img>
-        </div>
+<!-- Side navigation -->
+<div class="sidenav">
+    <div><img src="https://www.freepnglogos.com/uploads/hogwarts-logo-png/hogwarts-logo-digital-drawing-20.png:large" height="200px"></img>
+    </div>
 
-        <strong style="font-size: 30px; text-align:center;">Student <br>Harry Potter </strong>
+    <strong style="font-size: 30px; text-align:center;">Student <br>Harry Potter </strong>
 
 
-        <hr style="border-color: black;">
+    <hr style="border-color: black;">
 
-        <table id="tablenavbar">
+    <table id="tablenavbar">
+        <tr>
+            <td><img src="../assets/profile.png" alt=""></td>
+            <td> <a id="icon1" href="student_profile.html">Profile</a>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="../assets/courses.png" alt=""></td>
+            <td> <a id="icon2" href="student_courses.html">Courses</a>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="../assets/researchgroups.png" alt=""></td>
+            <td> <a id="icon3" href="student_joinresearch.html">Join a Research Group</a>
+            </td>
+        </tr>
+        <tr>
+            <td><img src="../assets/logout.png" alt=""></td>
+            <td><a id="icon4" href="../mainpage/login.html">Log Out</a></td>
+        </tr>
+    </table>
+
+
+</div>
+
+
+<div class="main">
+
+    <div class="groupstudents" id="#Instructors">
+        <h1>Instructors
+        </h1><br>
+        <table>
             <tr>
-                <td><img src="../assets/profile.png" alt=""></td>
-                <td> <a id="icon1" href="student_profile.html">Profile</a>
-                </td>
+                <th id="hashtag">#</th>
+                <th>First Name</th>
+                <th>Surname</th>
+                <th>Area</th>
             </tr>
             <tr>
-                <td><img src="../assets/courses.png" alt=""></td>
-                <td> <a id="icon2" href="student_courses.html">Courses</a>
-                </td>
+                <td id="hashtag">1</td>
+                <td> Severus </td>
+                <td>Snape</td>
+                <td>Potions</td>
             </tr>
             <tr>
-                <td><img src="../assets/researchgroups.png" alt=""></td>
-                <td> <a id="icon3" href="student_joinresearch.html">Join a Research Group</a>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="../assets/logout.png" alt=""></td>
-                <td><a id="icon4" href="../mainpage/login.html">Log Out</a></td>
+                <td id="hashtag">2</td>
+                <td> Minevra </td>
+                <td>Mcgonagall</td>
+                <td>Transfiguration</td>
             </tr>
         </table>
 
-
     </div>
 
 
-    <div class="main">
+    <div class="requests" id="SendaRequesttoJoinaResearchGroup">
+        <h1>Send a Request to Join a Research Group</h1>
+        <form action="">
 
-        <div class="groupstudents" id="#Instructors">
-            <h1>Instructors
-            </h1><br>
-            <table>
-                <tr>
-                    <th id="hashtag">#</th>
-                    <th>First Name</th>
-                    <th>Surname</th>
-                    <th>Area</th>
-                </tr>
-                <tr>
-                    <td id="hashtag">1</td>
-                    <td> Severus </td>
-                    <td>Snape</td>
-                    <td>Potions</td>
-                </tr>
-                <tr>
-                    <td id="hashtag">2</td>
-                    <td> Minevra </td>
-                    <td>Mcgonagall</td>
-                    <td>Transfiguration</td>
-                </tr>
-            </table>
-
-        </div>
-
-
-        <div class="requests" id="SendaRequesttoJoinaResearchGroup">
-            <h1>Send a Request to Join a Research Group</h1>
-            <form action="">
-
-                Choose an Instructor
-                <select name="" id="">
+            Choose an Instructor
+            <select name="" id="">
                     <option value="">Severus Snape</option>
                     <option value="">Minerva Mcgonagall</option>
                 </select>
-                <br><br> Note
-                <textarea name="" id="" cols="30" rows="10" placeholder="Please enter your note"></textarea>
-                <br><br> Attachment
-                <input type="file" id="up" name="filename" hidden/>
-                <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
-                <br><br>
-                <input type="submit">
+            <br><br> Note
+            <textarea name="" id="" cols="30" rows="10" placeholder="Please enter your note"></textarea>
+            <br><br> Attachment
+            <input type="file" id="up" name="filename" hidden/>
+            <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
+            <br><br>
+            <input type="submit">
 
-            </form>
-        </div>
+        </form>
     </div>
+</div>
 </body>
 
 </html>

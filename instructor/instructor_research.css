@@ -3,7 +3,7 @@
 .sidenav {
     height: 100%;
     /* Full-height: remove this if you want "auto" height */
-    width: 200px;
+    width: 250px;
     /* Set the width of the sidebar */
     position: fixed;
     /* Fixed Sidebar (stay in place on scroll) */
@@ -12,7 +12,7 @@
     top: 0;
     /* Stay at the top */
     left: 0;
-    background-color: rgba(82, 37, 0, 0.979);
+    background-color: #898590;
     overflow-x: hidden;
     /* Disable horizontal scroll */
     padding-top: 20px;
@@ -25,7 +25,7 @@
     padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
-    color: #ffea8b;
+    color: rgb(83, 1, 32);
     display: block;
 }
 
@@ -33,15 +33,22 @@
 /* When you mouse over the navigation links, change their color */
 
 .sidenav a:hover {
-    background-color: rgb(66, 24, 0);
-    color: #f1f1f1;
+    background-color: #d0cbd8;
+    color: #2a2a25;
+}
+
+strong {
+    display: block;
+    margin: auto;
+    font-size: 30px;
+    color: #2a2a25;
 }
 
 
 /* Style page content */
 
 .main {
-    margin-left: 200px;
+    margin-left: 250px;
     /* Same as the width of the sidebar */
     padding: 0px 10px;
 }
@@ -80,7 +87,7 @@
 
 .requests {
     margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.507);
+    background-color: rgba(53, 51, 56, 0.507);
     border-radius: 20px;
     padding-bottom: 1em;
     padding-right: 1em;
@@ -88,7 +95,7 @@
 }
 
 .groupstudents {
-    background-color: rgba(255, 255, 255, 0.507);
+    background-color: rgba(53, 51, 56, 0.507);
     border-radius: 20px;
     padding-bottom: 1em;
     padding-right: 1em;
@@ -96,14 +103,13 @@
 }
 
 body {
-    background-size: cover;
+    background-image: url(https://imgix.elitedaily.com/uploads/image/2020/3/22/0dd3c16f-9571-44bb-a74b-1c08356fd1b1-harry-potter-975362_1920.jpg);
     background-attachment: fixed;
-    background-image: url(https://images-ext-1.discordapp.net/external/tlA9V9MMP7wTFsaFn2OTLeXt8B3aVpzBktedO5yQ-8E/https/live.staticflickr.com/4832/46352225551_7f1d5f75b0_b.jpg);
 }
 
 table {
-    border: black solid 1px;
-    background-color: rgba(255, 235, 205, 0.733);
+    border: black solid 3px;
+    background-color: rgba(248, 248, 248, 0.801);
 }
 
 th,
@@ -147,4 +153,24 @@ button {
 
 #decision {
     margin: 10px;
+}
+
+.sidenav img {
+    display: block;
+    margin: auto;
+}
+
+#tablenavbar {
+    background-color: unset;
+    border: unset;
+    margin: unset;
+    padding: unset;
+}
+
+#tablenavbar td,
+tr {
+    background-color: unset;
+    border: unset;
+    margin: unset;
+    padding: unset;
 }
