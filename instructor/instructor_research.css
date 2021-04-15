@@ -87,7 +87,7 @@ strong {
 
 .requests {
     margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.507);
+    background-color: rgba(53, 51, 56, 0.507);
     border-radius: 20px;
     padding-bottom: 1em;
     padding-right: 1em;
@@ -95,7 +95,7 @@ strong {
 }
 
 .groupstudents {
-    background-color: rgba(255, 255, 255, 0.507);
+    background-color: rgba(53, 51, 56, 0.507);
     border-radius: 20px;
     padding-bottom: 1em;
     padding-right: 1em;
@@ -103,14 +103,13 @@ strong {
 }
 
 body {
-    background-size: cover;
+    background-image: url(https://imgix.elitedaily.com/uploads/image/2020/3/22/0dd3c16f-9571-44bb-a74b-1c08356fd1b1-harry-potter-975362_1920.jpg);
     background-attachment: fixed;
-    background-image: url(https://images-ext-1.discordapp.net/external/tlA9V9MMP7wTFsaFn2OTLeXt8B3aVpzBktedO5yQ-8E/https/live.staticflickr.com/4832/46352225551_7f1d5f75b0_b.jpg);
 }
 
 table {
-    border: black solid 1px;
-    background-color: rgba(255, 235, 205, 0.733);
+    border: black solid 3px;
+    background-color: rgba(248, 248, 248, 0.801);
 }
 
 th,
