@@ -33,9 +33,9 @@
         <p id="text_input">
             <label for="">Please choose your account type:</label>
             <br><br>
-            <input id="radio" type="radio" name="age" required> Secretary<br>
-            <input id="radio" type="radio" name="age" required> Instructor<br>
-            <input id="radio" type="radio" name="age" required> Student<br>
+            <input id="radio" type="radio" required name="mything" value="1"> Secretary<br>
+            <input id="radio" type="radio" required name="mything" value="2"> Instructor<br>
+            <input id="radio" type="radio" required name="mything" value="3"> Student<br>
         </p>
         <br>
 
@@ -53,9 +53,14 @@
 
 
         <br>
-        <p id="text_input"><button>
+        <p id="text_input">
+            <button onclick="check(form)" value="Login">
             <img height="30px" id="loginbuttonimage" src="../assets/login.png" alt="">
-            <img height="50px" id="loginbuttonimage2" src="../assets/imglogin.png" alt=""></button></p>
+            <img height="50px" id="loginbuttonimage2" src="../assets/imglogin.png" alt="">
+            </button>
+
+        </p>
+
         <br>
         <p id="check">
             Don't you have an account? <br> Create an account from <a href="signup.html" id="link">here</a>
@@ -69,3 +74,17 @@
 </body>
 
 </html>
+
+
+<script language="javascript">
+    function check(form) {
+
+        if (form.mything.value == "1") {
+            window.open("../secretary/secretary_profile.html")
+        } else if (form.mything.value == "2") {
+            window.open('../instructor/instructor_profile.html')
+        } else if (form.mything.value == "3") {
+            window.open('../student/student_profile.html')
+        }
+    }
+</script>

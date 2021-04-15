@@ -130,6 +130,7 @@ body {
     background-image: url(https://cdna.artstation.com/p/assets/images/images/029/126/778/4k/sam-gielen-library-02-0445.jpg?1596541987);
     background-size: cover;
     background-attachment: fixed;
+    font-family: 'Charmonman', cursive;
 }
 
 .sidenav img {
