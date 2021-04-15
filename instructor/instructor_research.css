@@ -87,19 +87,21 @@ strong {
 
 .requests {
     margin-top: 20px;
-    background-color: rgba(53, 51, 56, 0.507);
     border-radius: 20px;
     padding-bottom: 1em;
     padding-right: 1em;
     padding-left: 1em;
+    background-color: rgba(255, 255, 255, 0.507);
+    width: 1000px;
 }
 
 .groupstudents {
-    background-color: rgba(53, 51, 56, 0.507);
     border-radius: 20px;
     padding-bottom: 1em;
     padding-right: 1em;
     padding-left: 1em;
+    background-color: rgba(255, 255, 255, 0.507);
+    width: 1000px;
 }
 
 body {
