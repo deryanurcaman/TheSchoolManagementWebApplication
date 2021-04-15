@@ -33,22 +33,22 @@
         <p id="text_input">
             <label for="">Please choose your account type:</label>
             <br><br>
-            <input id="radio" type="radio" name="age"> Secretary<br>
-            <input id="radio" type="radio" name="age"> Instructor<br>
-            <input id="radio" type="radio" name="age"> Student<br>
+            <input id="radio" type="radio" name="age" required> Secretary<br>
+            <input id="radio" type="radio" name="age" required> Instructor<br>
+            <input id="radio" type="radio" name="age" required> Student<br>
         </p>
         <br>
 
         <p id="text_input">
             <label for="">Username:</label>
             <br>
-            <input type="text" name="item_name" placeholder="Enter your username" size="80" class="select">
+            <input type="text" name="item_name" placeholder="Enter your username" size="80" class="select" required>
         </p>
         <br><br>
         <p id="text_input">
             <label for="">Password:</label>
             <br>
-            <input type="password" name="item_name" placeholder="Enter your password" size="80" class="select">
+            <input type="password" name="item_name" placeholder="Enter your password" size="80" class="select" required>
         </p>
 
 
@@ -56,9 +56,9 @@
         <p id="text_input"><button>
             <img height="30px" id="loginbuttonimage" src="../assets/login.png" alt="">
             <img height="50px" id="loginbuttonimage2" src="../assets/imglogin.png" alt=""></button></p>
-
-        <p>
-            <a href="signup.html">Create an account</a>
+        <br>
+        <p id="check">
+            Don't you have an account? <br> Create an account from <a href="signup.html" id="link">here</a>
         </p>
     </form>
 

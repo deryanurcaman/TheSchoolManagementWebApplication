@@ -17,19 +17,19 @@ ul {
 
 #li1 {
     width: 200px;
-    height:8px;
+    height: 8px;
 }
 
 #li2 {
     width: 700px;
-    height:8px;
+    height: 8px;
 }
 
 #li3 {
     float: right;
     width: 220px;
     padding-top: 2.5em;
-    height:8px;
+    height: 8px;
 }
 
 #hogwartslogo {
@@ -44,7 +44,7 @@ ul {
     padding-bottom: 1em;
 }
 
-#socialmedia:hover{
+#socialmedia:hover {
     background-color: rgba(0, 0, 0, 0.226);
 }
 
@@ -71,18 +71,19 @@ form {
 }
 
 button {
-    background-color: rgba(41, 26, 3, 0.63);
-    width: 60%;
-    padding: auto;
-    margin-left: 100px;
-    color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(41, 26, 3, 0.849);
+    width: 30%;
     border-radius: 4px;
-    font-size: 17px;
+    transition-property: background-color;
+    transition-duration: 1s;
 }
 
 button:hover {
     cursor: pointer;
-    background-color: rgba(224, 224, 224, 0.226);
+    background-color: rgba(87, 56, 11, 0.63);
 }
 
 .select {
@@ -103,4 +104,20 @@ label::before {
 
 a {
     cursor: pointer;
+}
+
+#check {
+    color: white;
+    text-align: center;
+}
+
+#link {
+    color: white;
+    font-weight: 600;
+}
+
+footer {
+    color: wheat;
+    margin-left: 80%;
+    font-size: 18px;
 }

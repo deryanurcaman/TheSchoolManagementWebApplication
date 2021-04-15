@@ -17,22 +17,20 @@ ul {
 
 #li1 {
     width: 200px;
-    height:8px;
+    height: 8px;
 }
 
 #li2 {
     width: 700px;
-    height:8px;
+    height: 8px;
 }
 
 #li3 {
     float: right;
     width: 220px;
     padding-top: 2.5em;
-    height:8px;
+    height: 8px;
 }
-
-
 
 #hogwartslogo {
     width: 200px;
@@ -46,7 +44,7 @@ ul {
     padding-bottom: 1em;
 }
 
-#socialmedia:hover{
+#socialmedia:hover {
     background-color: rgba(0, 0, 0, 0.226);
 }
 
@@ -113,4 +111,14 @@ footer {
     color: wheat;
     margin-left: 80%;
     font-size: 18px;
+}
+
+#check {
+    color: white;
+    text-align: center;
+}
+
+#link {
+    color: white;
+    font-weight: 600;
 }
