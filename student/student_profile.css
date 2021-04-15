@@ -1,3 +1,9 @@
+body {
+    background-image: url(../assets/studentprofle.png);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
 .sidenav {
     height: 100%;
     /* Full-height: remove this if you want "auto" height */

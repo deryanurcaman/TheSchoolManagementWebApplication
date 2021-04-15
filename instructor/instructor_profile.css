@@ -1,3 +1,10 @@
+body {
+    background-image: url(../assets/instructorprofile.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
 /* The sidebar menu */
 
 .sidenav {
