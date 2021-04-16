@@ -72,14 +72,20 @@ strong {
 /* Dropdown Button */
 
 .dropbtn {
-    background-color: #4CAF50;
-    color: white;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #7e7979, #2d5037);
+    color: aliceblue;
     padding: 16px;
     font-size: 16px;
-    border: none;
+    border-radius: 0.5em;
+    border-style: groove;
+    border-color: rgb(93, 82, 82);
     position: fixed;
     margin-left: 300px;
     margin-top: 5px;
+}
+
+.dropbtn:hover {
+    cursor: pointer;
 }
 
 
@@ -101,8 +107,9 @@ strong {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    margin-top: 48px;
+    margin-top: 52px;
     margin-left: 300px;
+    border-radius: 0.5em;
 }
 
 
@@ -120,6 +127,7 @@ strong {
 
 .dropdown-content a:hover {
     background-color: #ddd;
+    border-radius: 0.5em;
 }
 
 
@@ -133,7 +141,8 @@ strong {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 
 .dropdown:hover .dropbtn {
-    background-color: #3e8e41;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #494646, #1f3826);
+    color: rgb(171, 178, 194);
 }
 
 .groupstudents {
