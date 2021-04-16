@@ -54,10 +54,9 @@
 
 <div class="main">
 
-    <div class="groupstudents" id="#Instructors">
-        <h1>Instructors
-        </h1><br>
-        <table>
+    <div class="Instructors_requests">
+        <h1>Instructors</h1><br>
+        <table id="Instructors">
             <tr>
                 <th id="hashtag">#</th>
                 <th>First Name</th>
@@ -81,8 +80,10 @@
     </div>
 
 
-    <div class="requests" id="SendaRequesttoJoinaResearchGroup">
-        <h1>Send a Request to Join a Research Group</h1>
+    <div class="Instructors_requests">
+        <h1 style="text-align: center;">Join a Research Group</h1>
+        <hr><br>
+
         <form action="">
 
             <p><label id="text_input">Course Instructor:</label>
@@ -94,18 +95,20 @@
                     <option>Remus Lupin</option>   
                 </select>
                 <br><br>
+                <hr><br>
                 <p><label id="text_input" for="">Note:</label><br>
-                    <textarea name="" id="textarea" cols="30" rows="10" placeholder="Please enter your note"></textarea>
+                    <textarea name="" id="textarea" cols="44" rows="10" placeholder="Please enter your note"></textarea>
                 </p>
 
-                <br><br>
+                <br>
+                <hr>
 
-                <p><label id="text_input" for="">Attachment</label>
-                    <input type="file" id="up" name="filename" hidden/>
+                <p><label id="text_input" for="">Attach Your File:</label>
+                    <input type="file" id="up" name="filename" required hidden/>
                     <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
                 </p>
                 <br><br>
-                <button type="submit">Save</button>
+                <button type="submit">Send</button>
 
         </form>
     </div>

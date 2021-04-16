@@ -54,11 +54,11 @@ strong {
 }
 
 form {
-    width: 120%;
+    width: 45%;
     border-radius: 4px;
     display: block;
     margin: auto;
-    margin-left: 10em;
+    margin-left: 8em;
 }
 
 
@@ -94,23 +94,15 @@ form {
     position: fixed;
 }
 
-.requests {
+.Instructors_requests {
     margin-top: 20px;
     background-color: rgba(255, 255, 255, 0.507);
     border-radius: 20px;
     padding-bottom: 1em;
     padding-right: 1em;
     padding-left: 1em;
-    width: 700px;
-}
-
-.groupstudents {
-    background-color: rgba(255, 255, 255, 0.507);
-    border-radius: 20px;
-    padding-bottom: 1em;
-    padding-right: 1em;
-    padding-left: 1em;
-    width: 700px;
+    margin-left: 6.5em;
+    width: 1000px;
 }
 
 body {
@@ -121,7 +113,7 @@ body {
 
 table {
     border: black solid 1px;
-    background-color: rgba(255, 235, 205, 0.733);
+    background-color: rgba(248, 248, 248, 0.897);
 }
 
 th,
@@ -159,14 +151,15 @@ button img {
 }
 
 button {
-    margin-right: 5em;
+    margin-left: 22em;
     background-color: rgba(41, 26, 3, 0.849);
-    width: 10%;
-    height: 30px;
+    width: 20%;
+    height: 40px;
     color: white;
     border-radius: 4px;
     transition-property: background-color;
     transition-duration: 1s;
+    font-size: 15px;
 }
 
 button:hover {
@@ -199,14 +192,14 @@ tr {
 }
 
 #text_input {
-    width: 20em;
     font-size: 20px;
     border-radius: 4px;
-    color: black;
+    color: rgb(29, 26, 26);
+    font-weight: 600;
 }
 
 .select {
-    width: 20%;
+    width: 49%;
     padding: 10px 10px;
     border-radius: 4px;
     font-size: 14px;
@@ -215,8 +208,24 @@ tr {
 textarea::placeholder {
     font-family: sans-serif;
     font-size: 16px;
+    border-width: 1em;
+}
+
+textarea {
+    border-radius: 0.5em;
 }
 
 #upload {
     cursor: pointer;
+    margin-left: 1em;
+    height: 50px;
+}
+
+hr {
+    border-color: black;
+}
+
+#Instructors {
+    width: 900px;
+    margin-left: 3.1em;
 }
