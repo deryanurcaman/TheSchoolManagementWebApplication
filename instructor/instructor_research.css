@@ -136,26 +136,6 @@ strong {
     background-color: #3e8e41;
 }
 
-.flexit {
-    width: 100%;
-    line-height: 50px;
-    font-weight: lighter;
-    font-size: 20px;
-    text-align: center;
-    list-style-type: none;
-}
-
-.flexCont {
-    display: flex;
-    justify-content: flex-end;
-    background-color: rgba(141, 28, 0, 0.63);
-    margin-left: 200px;
-    height: 50px;
-    width: 100%;
-    margin-top: 0;
-    position: fixed;
-}
-
 .groupstudents {
     border-radius: 20px;
     padding-bottom: 1em;
