@@ -87,6 +87,7 @@ strong {
     margin: unset;
     padding: unset;
     border-collapse: collapse;
+    width: 100%;
 }
 
 #tablenavbar td,
@@ -101,4 +102,50 @@ h1 {
     text-align: center;
     padding-top: 1em;
     color: rgb(41, 37, 37);
+}
+
+.div1 {
+    padding-top: 250px;
+    height: 500px;
+    margin-left: 2em;
+    font-family: 'Domine', serif;
+}
+
+.div1 button {
+    background-color: rgba(202, 198, 198, 0.911);
+    color: rgb(36, 35, 35);
+    font-family: 'Domine', serif;
+}
+
+table {
+    padding: 2em;
+    text-align: left;
+    border-radius: 1em;
+    background-color: rgba(82, 110, 110, 0.952);
+    color: beige;
+    margin-left: 750px;
+    height: 300px;
+    width: 25%;
+    margin-bottom: 100px;
+    font-family: 'Domine', serif;
+    border: dashed rgb(88, 19, 19) 0.5em;
+}
+
+button img {
+    height: 40px;
+}
+
+button {
+    background-color: rgb(243, 161, 161);
+    border: none;
+    width: 200px;
+    height: 200px;
+    border-radius: 1em;
+    font-size: 25px;
+    border: solid rgb(92, 62, 47) 0.2em;
+}
+
+button:hover {
+    background-color: rgb(172, 139, 139);
+    cursor: pointer;
 }
