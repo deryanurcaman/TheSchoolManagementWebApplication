@@ -19,7 +19,7 @@ body {
     top: 0;
     /* Stay at the top */
     left: 0;
-    background-color: #898590;
+    background-color: #031a08ef;
     overflow-x: hidden;
     /* Disable horizontal scroll */
     padding-top: 20px;
@@ -31,8 +31,8 @@ body {
 .sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 25px;
-    color: rgb(83, 1, 32);
+    font-size: 20px;
+    color: rgb(212, 212, 212);
     display: block;
 }
 
@@ -40,15 +40,20 @@ body {
 /* When you mouse over the navigation links, change their color */
 
 .sidenav a:hover {
-    background-color: #d0cbd8;
+    background-color: #1c3a23;
+    color: white;
+}
+
+.sidenav #hv:hover {
+    background-color: #1c3a23;
     color: #2a2a25;
 }
 
 strong {
     display: block;
     margin: auto;
-    font-size: 30px;
-    color: #2a2a25;
+    font-size: 50px;
+    color: rgb(141, 167, 154);
 }
 
 
