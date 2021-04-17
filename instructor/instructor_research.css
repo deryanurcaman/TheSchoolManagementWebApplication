@@ -232,6 +232,16 @@ button {
     margin: 10px;
 }
 
+#download:hover {
+    background-color: rgba(0, 0, 0, 0.192);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgba(0, 0, 0, 0.192);
+    cursor: pointer;
+}
+
 .sidenav img {
     display: block;
     margin: auto;
