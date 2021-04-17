@@ -172,6 +172,7 @@ body {
     border: unset;
     margin: unset;
     padding: unset;
+    border-collapse: collapse;
 }
 
 #tablenavbar td,
