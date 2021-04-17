@@ -9,118 +9,119 @@
     <title>Student Join a Research Group</title>
 </head>
 
-<!-- <body>
-    <ul class="flexCont">
-        <li class="flexit"><a href="#Instructors">Instructors</a></li>
-        <li class="flexit"><a href="#SendaRequesttoJoinaResearchGroup">Send a Request to Join a Research Group</a></li>
-    </ul> -->
+<script>
+    function save() {
+        alert("The Request Is Successfully Sent");
+    }
+</script>
 
 
-<!-- Side navigation -->
-<div class="sidenav">
-    <div><img src="../assets/hogwartslogo.jpg" height="200px"></img>
-    </div>
+<body>
+    <!-- Side navigation -->
+    <div class="sidenav">
+        <div><img src="../assets/hogwartslogo.jpg" height="200px"></img>
+        </div>
 
-    <strong style="font-size: 30px; text-align:center;">Student <br>Harry Potter </strong>
-
-
-    <hr style="border-color: black;">
-
-    <table id="tablenavbar">
-        <tr>
-            <td><img src="../assets/profile.png" alt=""></td>
-            <td> <a id="icon1" href="student_profile.html">Profile</a>
-            </td>
-        </tr>
-        <tr>
-            <td><img src="../assets/courses.png" alt=""></td>
-            <td> <a id="icon2" href="student_courses.html">Courses</a>
-            </td>
-        </tr>
-        <tr>
-            <td><img src="../assets/researchgroups.png" alt=""></td>
-            <td> <a id="icon3" href="student_joinresearch.html">Join a Research Group</a>
-            </td>
-        </tr>
-        <tr>
-            <td><img src="../assets/logout.png" alt=""></td>
-            <td><a id="icon4" href="../mainpage/login.html">Log Out</a></td>
-        </tr>
-    </table>
+        <strong style="font-size: 30px; text-align:center;">Student <br>Harry Potter </strong>
 
 
-</div>
+        <hr style="border-color: black;">
 
-<div class="dropdown">
-    <button class="dropbtn">Select</button>
-    <div class="dropdown-content">
-        <a href="#">Instructors</a>
-        <a href="#Join">Join a Research Group</a>
-    </div>
-</div>
-<br>
-
-<div class="main">
-
-    <div class="Instructors_requests">
-        <h1>Instructors</h1><br>
-        <table>
-            <tr id="heads">
-                <th id="hashtag">#</th>
-                <th>First Name</th>
-                <th>Surname</th>
-                <th>Area</th>
+        <table id="tablenavbar">
+            <tr>
+                <td><img src="../assets/profile.png" alt=""></td>
+                <td> <a id="icon1" href="student_profile.html">Profile</a>
+                </td>
             </tr>
             <tr>
-                <td id="hashtag">1</td>
-                <td> Severus </td>
-                <td>Snape</td>
-                <td>Potions</td>
+                <td><img src="../assets/courses.png" alt=""></td>
+                <td> <a id="icon2" href="student_courses.html">Courses</a>
+                </td>
             </tr>
             <tr>
-                <td id="hashtag">2</td>
-                <td> Minevra </td>
-                <td>Mcgonagall</td>
-                <td>Transfiguration</td>
+                <td><img src="../assets/researchgroups.png" alt=""></td>
+                <td> <a id="icon3" href="student_joinresearch.html">Join a Research Group</a>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="../assets/logout.png" alt=""></td>
+                <td><a id="icon4" href="../mainpage/login.html">Log Out</a></td>
             </tr>
         </table>
 
+
     </div>
 
+    <div class="dropdown">
+        <button class="dropbtn">Select</button>
+        <div class="dropdown-content">
+            <a href="#">Instructors</a>
+            <a href="#Join">Join a Research Group</a>
+        </div>
+    </div>
+    <br>
 
-    <div class="Instructors_requests" id="Join">
-        <h1 style="text-align: center;">Join a Research Group</h1>
-        <hr><br>
+    <div class="main">
 
-        <form action="">
+        <div class="Instructors_requests">
+            <h1>Instructors</h1><br>
+            <table>
+                <tr id="heads">
+                    <th id="hashtag">#</th>
+                    <th>First Name</th>
+                    <th>Surname</th>
+                    <th>Area</th>
+                </tr>
+                <tr>
+                    <td id="hashtag">1</td>
+                    <td> Severus </td>
+                    <td>Snape</td>
+                    <td>Potions</td>
+                </tr>
+                <tr>
+                    <td id="hashtag">2</td>
+                    <td> Minevra </td>
+                    <td>Mcgonagall</td>
+                    <td>Transfiguration</td>
+                </tr>
+            </table>
 
-            <p><label id="text_input">Course Instructor:</label>
-                <select name="CourseInstructor" class="select" required>
+        </div>
+
+
+        <div class="Instructors_requests" id="Join">
+            <h1 style="text-align: center;">Join a Research Group</h1>
+            <hr><br>
+
+            <form action="">
+
+                <p><label id="text_input">Course Instructor:</label>
+                    <select name="CourseInstructor" class="select" required>
                     <option selected disabled>Select an Option</option>   
                     <option >Lucius Malfoy</option>   
                     <option>Severus Snape</option>   
                     <option>Minerva McGonagall</option>   
                     <option>Remus Lupin</option>   
                 </select>
-                <br><br>
-                <hr><br>
-                <p><label id="text_input" for="">Note:</label><br>
-                    <textarea name="" id="textarea" cols="44" rows="10" placeholder="Please enter your note"></textarea>
-                </p>
+                    <br><br>
+                    <hr><br>
+                    <p><label id="text_input" for="">Note:</label><br>
+                        <textarea name="" id="textarea" cols="44" rows="10" placeholder="Please enter your note"></textarea>
+                    </p>
 
-                <br>
-                <hr>
+                    <br>
+                    <hr>
 
-                <p><label id="text_input" for="">Attach Your File:</label>
-                    <input type="file" id="up" name="filename" required hidden/>
-                    <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
-                </p>
-                <br><br>
-                <button id="submit" type="submit">Send</button>
+                    <p><label id="text_input" for="">Attach Your File:</label>
+                        <input type="file" id="up" name="filename" required hidden/>
+                        <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
+                    </p>
+                    <br><br>
+                    <button onclick="save()" id="submit" type="submit">Send</button>
 
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 </body>
 
 </html>

@@ -238,6 +238,8 @@ tr {
 }
 
 button {
+    margin-top: 1em;
+    height: 40px;
     color: aliceblue;
     padding: 0.5em;
     border: none;
@@ -249,8 +251,6 @@ button {
 
 button:hover {
     cursor: pointer;
-    background-image: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(101deg, #494646, #1f3826);
-    color: rgb(171, 178, 194);
 }
 
 h1 {

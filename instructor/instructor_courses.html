@@ -11,6 +11,16 @@
     <title>Instructor Courses</title>
 </head>
 
+<script>
+    function download_file() {
+        alert("The File Is Successfully Downloaded");
+    }
+
+    function submit_file() {
+        alert("The File Is Successfully Submitted");
+    }
+</script>
+
 <body>
     <!-- Side navigation -->
     <div class="sidenav">
@@ -53,10 +63,10 @@
                 <form action="">
                     <table>
                         <tr>
-                            <td><img id="download" src="../assets/download.png" alt=""></td>
+                            <td><img id="download" onclick="download_file()" src="../assets/download.png" alt=""></td>
                             <td><input type="file" id="up" name="filename" hidden/>
                                 <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
-                                <input type="submit" name="" id="sub" hidden/>
+                                <input type="submit" onclick="submit_file()" name="" id="sub" hidden/>
                                 <label for="sub"><img src="../assets/submit.png" alt="" id="submit" title="Submit File"></label>
                             </td>
                         </tr>
@@ -78,10 +88,10 @@
                 <form action="">
                     <table>
                         <tr>
-                            <td><img id="download" src="../assets/download.png" alt=""></td>
+                            <td><img id="download" onclick="download_file()" src="../assets/download.png" alt=""></td>
                             <td><input type="file" id="up" name="filename" hidden/>
                                 <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
-                                <input type="submit" name="" id="sub" hidden/>
+                                <input type="submit" onclick="submit_file()" name="" id="sub" hidden/>
                                 <label for="sub"><img src="../assets/submit.png" alt="" id="submit" title="Submit File"></label>
                             </td>
                         </tr>
@@ -103,10 +113,10 @@
                 <form action="">
                     <table>
                         <tr>
-                            <td><img id="download" src="../assets/download.png" alt=""></td>
+                            <td><img id="download" onclick="download_file()" src="../assets/download.png" alt=""></td>
                             <td><input type="file" id="up" name="filename" hidden/>
                                 <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
-                                <input type="submit" name="" id="sub" hidden/>
+                                <input type="submit" onclick="submit_file()" name="" id="sub" hidden/>
                                 <label for="sub"><img src="../assets/submit.png" alt="" id="submit" title="Submit File"></label>
                             </td>
                         </tr>

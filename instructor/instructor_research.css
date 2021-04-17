@@ -3,7 +3,7 @@
 .sidenav {
     height: 100%;
     /* Full-height: remove this if you want "auto" height */
-    width: 250px;
+    width: 200px;
     /* Set the width of the sidebar */
     position: fixed;
     /* Fixed Sidebar (stay in place on scroll) */
@@ -12,7 +12,7 @@
     top: 0;
     /* Stay at the top */
     left: 0;
-    background-color: #898590;
+    background-color: #350404ef;
     overflow-x: hidden;
     /* Disable horizontal scroll */
     padding-top: 20px;
@@ -24,8 +24,8 @@
 .sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
-    font-size: 25px;
-    color: rgb(83, 1, 32);
+    font-size: 20px;
+    color: rgb(212, 212, 212);
     display: block;
 }
 
@@ -33,15 +33,20 @@
 /* When you mouse over the navigation links, change their color */
 
 .sidenav a:hover {
-    background-color: #d0cbd8;
+    background-color: #1c3a23;
+    color: white;
+}
+
+.sidenav #hv:hover {
+    background-color: #1c3a23;
     color: #2a2a25;
 }
 
 strong {
     display: block;
     margin: auto;
-    font-size: 30px;
-    color: #2a2a25;
+    font-size: 50px;
+    color: rgb(141, 167, 154);
 }
 
 
@@ -50,8 +55,8 @@ strong {
 .main {
     margin-top: 50px;
     margin-bottom: 50px;
-    margin-right: 50px;
-    margin-left: 300px;
+    margin-right: 130px;
+    margin-left: 330px;
     /* Same as the width of the sidebar */
     padding: 0px 10px;
 }
@@ -80,8 +85,8 @@ strong {
     border-style: groove;
     border-color: rgb(93, 82, 82);
     position: fixed;
-    margin-left: 300px;
-    margin-top: 5px;
+    margin-left: 225px;
+    margin-top: 0px;
 }
 
 .dropbtn:hover {
@@ -108,7 +113,7 @@ strong {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
     margin-top: 52px;
-    margin-left: 300px;
+    margin-left: 225px;
     border-radius: 0.5em;
 }
 
@@ -153,7 +158,7 @@ strong {
 }
 
 .requests {
-    margin-top: 20px;
+    margin-top: 100px;
     border-radius: 20px;
     padding-bottom: 1em;
     padding-right: 20px;
@@ -162,6 +167,7 @@ strong {
 
 body {
     background-image: url(../assets/instructorresearch.jpeg);
+    background-size: cover;
     background-attachment: fixed;
 }
 
@@ -220,7 +226,7 @@ li {
 }
 
 button img {
-    height: 30px;
+    height: 40px;
 }
 
 button {
@@ -228,17 +234,22 @@ button {
     border: none;
 }
 
-#decision {
-    margin: 10px;
+button #decision {
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
 }
 
 #download:hover {
     background-color: rgba(0, 0, 0, 0.192);
     cursor: pointer;
+    border-radius: 1em;
+    padding: 2px;
 }
 
 button:hover {
     background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 5em;
     cursor: pointer;
 }
 
@@ -260,4 +271,9 @@ tr {
     border: unset;
     margin: unset;
     padding: unset;
+}
+
+#courses {
+    column-count: 2;
+    column-gap: 0px;
 }

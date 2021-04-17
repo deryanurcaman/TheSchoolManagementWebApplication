@@ -6,38 +6,83 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../instructor/instructor_research.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Stalemate&display=swap" rel="stylesheet">
     <title> Instructor Research Groups </title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
+        body {
+            font-family: 'Domine', serif;
+        }
+        
+        strong {
+            font-family: 'Domine', serif;
+            font-size: 25px;
+        }
+        
+        body b {
+            font-family: 'Stalemate', cursive;
+            font-size: 50px;
+        }
+    </style>
+
+
 </head>
+
+<script>
+    function approve() {
+        alert("The Request Is Accepted");
+    }
+
+    function reject() {
+        alert("The Request Is Declined");
+    }
+
+    function download_file() {
+        alert("The File Is Successfully Downloaded");
+    }
+</script>
 
 <body>
     <!-- Side navigation -->
     <div class="sidenav">
-        <div><img src="../assets/hogwartslogo.jpg" height="200px"></img>
+        <div><img src="../assets/hogwarts_logo.png" height="180px" style="opacity: 0.8;"></img>
         </div>
+        <br>
 
-        <strong style="font-size: 30px; text-align:center;">Instructor<br>Severus Snape</strong>
+        <strong style="text-align:center;">Instructor <br><b>Severus Snape</b></strong>
 
 
-        <hr style="border-color: black;">
+        <hr style="border-color: white;">
 
         <table id="tablenavbar">
-            <tr>
-                <td><img src="../assets/profile.png" alt=""></td>
+            <tr id="hv">
+                <td>
+                    <a href="instructor_profile.html"><img height="50px" src="../assets/profile.png" alt=""></a>
+                </td>
                 <td> <a id="icon1" href="instructor_profile.html">Profile</a>
                 </td>
             </tr>
-            <tr>
-                <td><img src="../assets/courses.png" alt=""></td>
+            <tr id="hv">
+                <td>
+                    <a href="instructor_courses.html"><img height="50px" src="../assets/courses.png" alt=""></a>
+                </td>
                 <td> <a id="icon2" href="instructor_courses.html">Courses</a>
                 </td>
             </tr>
-            <tr>
-                <td><img src="../assets/researchgroups.png" alt=""></td>
+            <tr id="hv">
+                <td>
+                    <a href="instructor_research.html"><img height="45px" src="../assets/researchgroups.png" alt=""></a>
+                </td>
                 <td> <a id="icon3" href="instructor_research.html">Research Group</a>
                 </td>
             </tr>
-            <tr>
-                <td><img src="../assets/logout.png" alt=""></td>
+            <tr id="hv">
+                <td>
+                    <a href="../mainpage/login.html"><img height="50px" src="../assets/logout.png" alt=""></a>
+                </td>
                 <td><a id="icon4" href="../mainpage/login.html">Log Out</a></td>
             </tr>
         </table>
@@ -70,7 +115,15 @@
                     <td>Harry Potter</td>
                     <td>3.05</td>
                     <td>4th year</td>
-                    <td>Lorem ipsum dolor
+                    <td id="fixed">
+                        <ul id="courses">
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                        </ul>
                     </td>
                 </tr>
                 <tr>
@@ -79,7 +132,15 @@
                     <td>Hermione Granger</td>
                     <td>4.00</td>
                     <td>4th year</td>
-                    <td>Lorem ipsum dolor
+                    <td id="fixed">
+                        <ul id="courses">
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                        </ul>
                     </td>
                 </tr>
                 <tr>
@@ -88,7 +149,15 @@
                     <td>Ron Weasley</td>
                     <td>1.99</td>
                     <td>4th year</td>
-                    <td>Lorem ipsum dolor
+                    <td id="fixed">
+                        <ul id="courses">
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                        </ul>
                     </td>
                 </tr>
                 <tr>
@@ -97,7 +166,15 @@
                     <td>Ron Weasley</td>
                     <td>1.99</td>
                     <td>4th year</td>
-                    <td>Lorem ipsum dolor
+                    <td id="fixed">
+                        <ul id="courses">
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                        </ul>
                     </td>
                 </tr>
                 <tr>
@@ -106,7 +183,15 @@
                     <td>Ron Weasley</td>
                     <td>1.99</td>
                     <td>4th year</td>
-                    <td>Lorem ipsum dolor
+                    <td id="fixed">
+                        <ul id="courses">
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                        </ul>
                     </td>
                 </tr>
                 <tr>
@@ -115,7 +200,15 @@
                     <td>Ron Weasley</td>
                     <td>1.99</td>
                     <td>4th year</td>
-                    <td>Lorem ipsum dolor
+                    <td id="fixed">
+                        <ul id="courses">
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                            <li>Lorem ipsum dolor</li>
+                        </ul>
                     </td>
                 </tr>
 
@@ -136,8 +229,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <button id="decision"><img src="../assets/approved.png" alt=""></button>
-                        <button id="decision"><img src="../assets/reject.png" alt=""></button>
+                        <button onclick="approve()" id="decision"><img src="../assets/approved.png" alt=""></button>
+                        <button onclick="reject()" id="decision"><img src="../assets/reject.png" alt=""></button>
                     </td>
                     <td>1</td>
                     <td id="research_student">
@@ -148,12 +241,12 @@
                         </ul>
                     </td>
                     <td id="research_note">Lorem ipsum dolor </td>
-                    <td><img id="download" src="../assets/download.png" height="50px" alt=""></td>
+                    <td><img onclick="download_file()" id="download" src="../assets/download.png" height="50px" alt=""></td>
                 </tr>
                 <tr>
                     <td>
-                        <button id="decision"><img src="../assets/approved.png" alt=""></button>
-                        <button id="decision"><img src="../assets/reject.png" alt=""></button>
+                        <button onclick="approve()" id="decision"><img src="../assets/approved.png" alt=""></button>
+                        <button onclick="reject()" id="decision"><img src="../assets/reject.png" alt=""></button>
                     </td>
                     <td>2</td>
                     <td id="research_student">
@@ -164,12 +257,12 @@
                         </ul>
                     </td>
                     <td id="research_note">Lorem ipsum dolor</td>
-                    <td><img id="download" src="../assets/download.png" height="50px" alt=""></td>
+                    <td><img onclick="download_file()" id="download" src="../assets/download.png" height="50px" alt=""></td>
                 </tr>
                 <tr>
                     <td>
-                        <button id="decision"><img src="../assets/approved.png" alt=""></button>
-                        <button id="decision"><img src="../assets/reject.png" alt=""></button>
+                        <button onclick="approve()" id="decision"><img src="../assets/approved.png" alt=""></button>
+                        <button onclick="reject()" id="decision"><img src="../assets/reject.png" alt=""></button>
                     </td>
                     <td>3</td>
                     <td id="research_student">
@@ -180,7 +273,7 @@
                         </ul>
                     </td>
                     <td id="research_note">Lorem ipsum dolor</td>
-                    <td><img id="download" src="../assets/download.png" height="50px" alt=""></td>
+                    <td><img onclick="download_file()" id="download" src="../assets/download.png" height="50px" alt=""></td>
                 </tr>
             </table>
         </div>
