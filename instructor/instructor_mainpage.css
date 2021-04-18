@@ -1,12 +1,8 @@
 body {
-    background-image: url(../assets/secretaryprofile.jpg);
+    background-image: url(../assets/instructorprofile.jpg);
     background-attachment: fixed;
     background-size: cover;
-    font-family: 'Charmonman', cursive;
 }
-
-
-/* The sidebar menu */
 
 .sidenav {
     height: 100%;
@@ -20,7 +16,7 @@ body {
     top: 0;
     /* Stay at the top */
     left: 0;
-    background-color: #1b0833f8;
+    background-color: #031a08ef;
     overflow-x: hidden;
     /* Disable horizontal scroll */
     padding-top: 20px;
@@ -42,32 +38,29 @@ body {
 
 .sidenav a:hover {
     color: white;
+    background-color: #1c3a23;
 }
 
 .sidenav #hv:hover {
-    background-color: #897f95f8;
+    background-color: #1c3a23;
     color: #2a2a25;
 }
 
 strong {
     display: block;
     margin: auto;
-    font-size: 50px;
-    color: #c5bad1f8;
+    font-size: 30px;
+    color: rgb(141, 167, 154);
 }
 
 
 /* Style page content */
 
 .main {
-    margin-top: 50px;
-    margin-left: 300px;
-    margin-right: 50px;
+    margin-top: 250px;
+    margin-left: 250px;
     /* Same as the width of the sidebar */
-    margin-bottom: 50px;
-    padding: 10px 20px;
-    background-color: rgba(255, 255, 255, 0.507);
-    border-radius: 20px;
+    padding: 0px 10px;
 }
 
 
@@ -88,6 +81,10 @@ strong {
 }
 
 #tablenavbar {
+    background-color: unset;
+    border: unset;
+    margin: unset;
+    padding: unset;
     border-collapse: collapse;
     width: 100%;
 }
@@ -98,16 +95,62 @@ tr {
     border: unset;
     margin: unset;
     padding: unset;
-    text-align: left;
-}
-
-#tablenavbar img {
-    padding: unset;
-    margin: unset;
 }
 
 h1 {
     text-align: center;
     padding-top: 1em;
     color: rgb(41, 37, 37);
+}
+
+.div1 {
+    float: left;
+    padding-top: 50px;
+    height: 500px;
+    margin-left: 2em;
+    font-family: 'Domine', serif;
+}
+
+.div1 button {
+    background-color: rgba(236, 235, 235, 0.89);
+    color: rgb(36, 35, 35);
+    font-family: 'Domine', serif;
+}
+
+.main table {
+    padding: 2em;
+    text-align: left;
+    border-radius: 1em;
+    background-color: rgba(92, 105, 83, 0.952);
+    color: beige;
+    margin-left: 750px;
+    height: 300px;
+    width: 25%;
+    font-family: 'Domine', serif;
+    border: dashed rgb(112, 33, 9) 0.5em;
+}
+
+button img {
+    height: 40px;
+}
+
+button {
+    border: none;
+    width: 200px;
+    height: 200px;
+    border-radius: 1em;
+    font-size: 25px;
+    border: solid rgb(117, 90, 0) 0.2em;
+}
+
+button:hover {
+    background-color: rgb(162, 177, 166);
+    cursor: pointer;
+}
+
+.main th {
+    padding-bottom: 15px;
+    border-bottom-style: solid;
+    border-bottom-width: 3.1px;
+    width: fit-content;
 }

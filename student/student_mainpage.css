@@ -118,7 +118,7 @@ h1 {
     font-family: 'Domine', serif;
 }
 
-table {
+.main table {
     padding: 2em;
     text-align: left;
     border-radius: 1em;
@@ -150,7 +150,7 @@ button:hover {
     cursor: pointer;
 }
 
-th {
+.main th {
     padding-bottom: 15px;
     border-bottom-style: solid;
     border-bottom-width: 3.1px;
