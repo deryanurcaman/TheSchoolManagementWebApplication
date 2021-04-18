@@ -58,6 +58,7 @@ strong {
 /* Style page content */
 
 .main {
+    margin-top: 250px;
     margin-left: 250px;
     /* Same as the width of the sidebar */
     padding: 0px 10px;
@@ -104,7 +105,8 @@ h1 {
 }
 
 .div1 {
-    padding-top: 250px;
+    float: left;
+    padding-top: 50px;
     height: 500px;
     margin-left: 2em;
     font-family: 'Domine', serif;
@@ -125,7 +127,6 @@ table {
     margin-left: 750px;
     height: 300px;
     width: 25%;
-    margin-bottom: 100px;
     font-family: 'Domine', serif;
     border: dashed rgb(88, 19, 19) 0.5em;
 }
@@ -147,4 +148,11 @@ button {
 button:hover {
     background-color: rgb(172, 139, 139);
     cursor: pointer;
+}
+
+th {
+    padding-bottom: 15px;
+    border-bottom-style: solid;
+    border-bottom-width: 3.1px;
+    width: fit-content;
 }
