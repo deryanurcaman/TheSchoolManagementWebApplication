@@ -307,3 +307,8 @@ textarea {
 hr {
     border-color: black;
 }
+
+textarea,
+input {
+    font-family: 'Domine', serif;
+}
