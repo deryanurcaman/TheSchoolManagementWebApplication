@@ -57,7 +57,7 @@ form {
     border-radius: 10px;
     background-color: rgba(82, 80, 80, 0.65);
     padding: 1em 3em;
-    height: 1070px;
+    height: 850px;
 }
 
 #title {
@@ -77,7 +77,7 @@ button {
     margin-left: auto;
     margin-right: auto;
     background-color: rgba(82, 41, 31, 0.925);
-    width: 35%;
+    width: 38%;
     border-radius: 20px;
     padding-top: 1em;
     transition-property: background-color;
