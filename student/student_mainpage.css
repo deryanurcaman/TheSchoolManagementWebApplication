@@ -39,7 +39,6 @@ body {
 /* When you mouse over the navigation links, change their color */
 
 .sidenav a:hover {
-    background-color: #8a6c6cef;
     color: white;
 }
 

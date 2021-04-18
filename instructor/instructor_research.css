@@ -240,17 +240,17 @@ button #decision {
     margin-left: 10px;
 }
 
+#decision:hover {
+    background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 5em;
+    cursor: pointer;
+}
+
 #download:hover {
     background-color: rgba(0, 0, 0, 0.192);
     cursor: pointer;
     border-radius: 1em;
     padding: 2px;
-}
-
-button:hover {
-    background-color: rgba(0, 0, 0, 0.192);
-    border-radius: 5em;
-    cursor: pointer;
 }
 
 .sidenav img {
@@ -272,6 +272,7 @@ tr {
     border: unset;
     margin: unset;
     padding: unset;
+    text-align: left;
 }
 
 #courses {
