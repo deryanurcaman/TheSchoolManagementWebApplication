@@ -275,7 +275,12 @@ tr {
     text-align: left;
 }
 
+#courses li {
+    list-style-type: decimal;
+}
+
 #courses {
+    text-align: left;
     column-count: 2;
     column-gap: 0px;
 }
