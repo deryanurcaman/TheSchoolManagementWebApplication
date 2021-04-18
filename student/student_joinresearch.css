@@ -160,7 +160,7 @@ form {
 
 .Instructors_requests {
     border-radius: 20px;
-    padding-bottom: 1em;
+    padding-bottom: 2em;
     padding-right: 20px;
     background-color: rgba(255, 255, 255, 0.507);
 }
@@ -232,7 +232,7 @@ button img {
 
 #submit {
     margin-left: 26em;
-    background-color: rgba(41, 26, 3, 0.849);
+    background-color: rgba(41, 26, 3, 0.945);
     width: 20%;
     height: 40px;
     color: white;
@@ -240,11 +240,12 @@ button img {
     transition-property: background-color;
     transition-duration: 1s;
     font-size: 15px;
+    height: 50px;
 }
 
 #submit:hover {
     cursor: pointer;
-    background-color: rgba(87, 56, 11, 0.63);
+    background-color: rgba(87, 57, 11, 0.877);
 }
 
 #decision {

@@ -132,3 +132,7 @@ footer {
     color: rgb(207, 207, 207);
     font-family: 'Domine', serif;
 }
+
+input {
+    color: rgb(224, 224, 224);
+}
