@@ -154,3 +154,8 @@ button:hover {
     border-bottom-width: 3.1px;
     width: fit-content;
 }
+
+.main img {
+    height: 100px;
+    width: 100px;
+}
