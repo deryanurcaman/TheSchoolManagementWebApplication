@@ -263,3 +263,12 @@ button:hover {
 h1 {
     color: rgb(41, 37, 37);
 }
+
+#outer {
+    width: 100%;
+    margin-left: 924px;
+}
+
+.inner {
+    display: inline-block;
+}
