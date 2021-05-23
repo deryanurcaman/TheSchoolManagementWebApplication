@@ -24,7 +24,7 @@ $conn = mysqli_connect('localhost','webuser','123456','webprogrammingproject2021
 if(!$conn){
     die ("Fail". mysqli_connect_error());
 }
-$sqlString = "SELECT * FROM courses;";
+$sqlString = "SELECT * FROM courses INNER JOIN instructors ON courses.instructor_id=instructors.id;";
 $query = mysqli_query($conn, $sqlString);
 $rows = array();
 while($result = mysqli_fetch_array($query))
@@ -121,7 +121,7 @@ while($result = mysqli_fetch_array($query))
                             <li class="classtype">'.$row['type'].'</li>
                             <li class="classcode">'.$row['code'].'</li>
                             <li class="classname">'.$row['name'].'</li>
-                            <li span style="font-weight:bolder;">Instructor: '.$row['instructor_name'].' '. $row['instructor_surname'].'</li>
+                            <li span style="font-weight:bolder;">Instructor: '.$row['first_name'].' '. $row['last_name'].'</li>
                             <li span style="color:rgb(61, 0, 0);">Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
                         </ul>
                         </div>';
