@@ -14,6 +14,21 @@
         alert("The Request Is Successfully Sent");
     }
 </script>
+
+<?php 
+$conn = mysqli_connect('localhost','webuser','123456','webprogrammingproject2021');
+if(!$conn){
+    die ("Fail". mysqli_connect_error());
+}
+$sqlString = "SELECT * FROM instructors;";
+$query = mysqli_query($conn, $sqlString);
+$rows = array();
+while($result = mysqli_fetch_array($query))
+{
+    $rows[] = $result;
+}
+?>
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
@@ -101,54 +116,17 @@
                     <th>Surname</th>
                     <th>Area</th>
                 </tr>
-                <tr>
-                    <td id="hashtag">1</td>
-                    <td> Minerva </td>
-                    <td>McGonagall</td>
-                    <td>Transfiguration </td>
-                </tr>
-                <tr>
-                    <td id="hashtag">2</td>
-                    <td> Filius </td>
-                    <td>Flitwick</td>
-                    <td>Xylomancy</td>
-                </tr>
-                <tr>
-                    <td id="hashtag">3</td>
-                    <td> Severus </td>
-                    <td>Snape</td>
-                    <td>Potions </td>
-                </tr>
-                <tr>
-                    <td id="hashtag">4</td>
-                    <td> Pomona </td>
-                    <td>Sprout</td>
-                    <td>Herbology </td>
-                </tr>
-                <tr>
-                    <td id="hashtag">5</td>
-                    <td> Madame </td>
-                    <td>Hooch</td>
-                    <td>Charms </td>
-                </tr>
-                <tr>
-                    <td id="hashtag">6</td>
-                    <td> Horace </td>
-                    <td>Slughorn</td>
-                    <td>Astronomy </td>
-                </tr>
-                <tr>
-                    <td id="hashtag">7</td>
-                    <td> Sybill </td>
-                    <td>Trelawney</td>
-                    <td>Divination </td>
-                </tr>
-                <tr>
-                    <td id="hashtag">8</td>
-                    <td> Remus </td>
-                    <td>Lupin</td>
-                    <td>Defence Against the Dark Arts </td>
-                </tr>
+                <?php
+                    foreach($rows as $row){
+                        echo
+                            '<tr>
+                                <td> '.$row['id'].'</td>
+                                <td> '.$row['first_name'].'</td>
+                                <td> '.$row['last_name'].'</td>
+                                <td> '.$row['area'].' </td>
+                            </tr>';
+                    }
+                ?>  
             </table>
 
         </div>
