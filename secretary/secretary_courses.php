@@ -54,24 +54,24 @@
         <table id="tablenavbar">
             <tr id="hv">
                 <td>
-                    <a href="secretary_mainpage.html"> <img src="../assets/home.png" height="50px" alt="">
+                    <a href="http://localhost/WebProgrammingProject/secretary/secretary_mainpage.php"> <img src="../assets/home.png" height="50px" alt="">
                     </a>
                 </td>
-                <td> <a id="icon1" href="secretary_mainpage.html">Main Page</a></td>
+                <td> <a id="icon1" href="http://localhost/WebProgrammingProject/secretary/secretary_mainpage.php">Main Page</a></td>
             </tr>
             <tr id="hv">
                 <td>
-                    <a href="secretary_courses.html"><img src="../assets/courses.png" height="50px" alt="">
+                    <a href="http://localhost/WebProgrammingProject/secretary/secretary_courses.php"><img src="../assets/courses.png" height="50px" alt="">
                     </a>
                 </td>
-                <td> <a id="icon2" href="secretary_courses.html">Courses</a></td>
+                <td> <a id="icon2" href="http://localhost/WebProgrammingProject/secretary/secretary_courses.php">Courses</a></td>
             </tr>
             <tr id="hv">
                 <td>
-                    <a href="../mainpage/login.html"><img src="../assets/logout.png" height="50px" alt="">
+                    <a href="http://localhost/WebProgrammingProject/mainpage/login.php"><img src="../assets/logout.png" height="50px" alt="">
                     </a>
                 </td>
-                <td><a id="icon4" href="../mainpage/login.html">Log Out</a></td>
+                <td><a id="icon4" href="http://localhost/WebProgrammingProject/mainpage/login.php">Log Out</a></td>
             </tr>
         </table>
     </div>
@@ -82,7 +82,7 @@
         <br>
         <div id="outer">
             <div class="inner">
-                <a href="./secretary_createCourse.html" id="create_link"><button  style="color: white;" id="new_course">Create a New Course</button></a>
+                <a href="http://localhost/WebProgrammingProject/secretary/secretary_createCourse.php" id="create_link"><button  style="color: white;" id="new_course">Create a New Course</button></a>
             </div>
             <div class="inner"><button onclick="download_file()" id="new_course" style="color: white; float: unset;">Download The List of Courses <img src="" alt=""></button></div>
         </div>

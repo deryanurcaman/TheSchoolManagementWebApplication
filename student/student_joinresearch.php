@@ -47,34 +47,34 @@
         <table id="tablenavbar">
             <tr id="hv">
                 <td>
-                    <a href="student_mainpage.html"><img src="../assets/home.png" height="50px" alt=""></a>
+                    <a href="http://localhost/WebProgrammingProject/student/student_mainpage.php"><img src="../assets/home.png" height="50px" alt=""></a>
                 </td>
 
-                <td> <a id="icon1" href="student_mainpage.html">Main Page</a>
+                <td> <a id="icon1" href="http://localhost/WebProgrammingProject/student/student_mainpage.php">Main Page</a>
                 </td>
             </tr>
             <tr id="hv">
                 <td>
-                    <a href="student_courses.html"><img src="../assets/courses.png" height="50px" alt=""></a>
+                    <a href="http://localhost/WebProgrammingProject/student/student_courses.php"><img src="../assets/courses.png" height="50px" alt=""></a>
                 </td>
 
-                <td> <a id="icon2" href="student_courses.html">Courses</a>
+                <td> <a id="icon2" href="http://localhost/WebProgrammingProject/student/student_courses.php">Courses</a>
                 </td>
             </tr>
             <tr id="hv">
                 <td>
-                    <a href="student_joinresearch.html"><img src="../assets/researchgroups.png" height="50px" alt=""></a>
+                    <a href="http://localhost/WebProgrammingProject/student/student_joinresearch.php"><img src="../assets/researchgroups.png" height="50px" alt=""></a>
                 </td>
 
-                <td> <a id="icon3" href="student_joinresearch.html">Join a Research Group</a>
+                <td> <a id="icon3" href="http://localhost/WebProgrammingProject/student/student_joinresearch.php">Join a Research Group</a>
                 </td>
             </tr>
             <tr id="hv">
                 <td>
-                    <a href="../mainpage/login.html"><img src="../assets/logout.png" height="50px" alt=""></a>
+                    <a href="http://localhost/WebProgrammingProject/mainpage/login.php"><img src="../assets/logout.png" height="50px" alt=""></a>
                 </td>
 
-                <td><a id="icon4" href="../mainpage/login.html">Log Out</a></td>
+                <td><a id="icon4" href="http://localhost/WebProgrammingProject/mainpage/login.php">Log Out</a></td>
             </tr>
         </table>
 

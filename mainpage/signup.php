@@ -82,7 +82,7 @@
             <img height="50px" id="loginbuttonimage2" src="../assets/imglogin.png" alt=""></button></p>
 
         <p id="check">
-            Already have an account? Then login <a href="login.html" id="link">here</a>
+            Already have an account? Then login <a href="login.php" id="link">here</a>
         </p>
     </form>
 

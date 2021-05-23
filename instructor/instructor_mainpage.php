@@ -40,30 +40,30 @@
         <table id="tablenavbar">
             <tr id="hv">
                 <td>
-                    <a href="instructor_mainpage.html"><img height="50px" src="../assets/home.png" alt=""></a>
+                    <a href="http://localhost/WebProgrammingProject/instructor/instructor_mainpage.php"><img height="50px" src="../assets/home.png" alt=""></a>
                 </td>
-                <td> <a id="icon1" href="instructor_mainpage.html">Main Page</a>
-                </td>
-            </tr>
-            <tr id="hv">
-                <td>
-                    <a href="instructor_courses.html"><img height="50px" src="../assets/courses.png" alt=""></a>
-                </td>
-                <td> <a id="icon2" href="instructor_courses.html">Courses</a>
+                <td> <a id="icon1" href="http://localhost/WebProgrammingProject/instructor/instructor_mainpage.php">Main Page</a>
                 </td>
             </tr>
             <tr id="hv">
                 <td>
-                    <a href="instructor_research.html"><img height="50px" src="../assets/researchgroups.png" alt=""></a>
+                    <a href="http://localhost/WebProgrammingProject/instructor/instructor_courses.php"><img height="50px" src="../assets/courses.png" alt=""></a>
                 </td>
-                <td> <a id="icon3" href="instructor_research.html">Research Group</a>
+                <td> <a id="icon2" href="http://localhost/WebProgrammingProject/instructor/instructor_courses.php">Courses</a>
                 </td>
             </tr>
             <tr id="hv">
                 <td>
-                    <a href="../mainpage/login.html"><img height="50px" src="../assets/logout.png" alt=""></a>
+                    <a href="http://localhost/WebProgrammingProject/instructor/instructor_research.php"><img height="50px" src="../assets/researchgroups.png" alt=""></a>
                 </td>
-                <td><a id="icon4" href="../mainpage/login.html">Log Out</a></td>
+                <td> <a id="icon3" href="http://localhost/WebProgrammingProject/instructor/instructor_research.php">Research Group</a>
+                </td>
+            </tr>
+            <tr id="hv">
+                <td>
+                    <a href="http://localhost/WebProgrammingProject/mainpage/login.php"><img height="50px" src="../assets/logout.png" alt=""></a>
+                </td>
+                <td><a id="icon4" href="http://localhost/WebProgrammingProject/mainpage/login.php">Log Out</a></td>
             </tr>
         </table>
     </div>
@@ -72,8 +72,8 @@
     <div class="main">
         <div class="div1">
 
-            <a href="./instructor_courses.html"><button style="float: left;font-size: 18px;"><img src="../assets/course_siyah.png" alt=""> <br>Courses</button></a>
-            <a href="./instructor_research.html"><button style=" float: left; margin-left: 2em; font-size: 18px;"><img id="siyah_tüp" src="../assets/test_tube_siyah.png" alt=""> <br>Research Group</button></a>
+            <a href="./instructor_courses.php"><button style="float: left;font-size: 18px;"><img src="../assets/course_siyah.png" alt=""> <br>Courses</button></a>
+            <a href="./instructor_research.php"><button style=" float: left; margin-left: 2em; font-size: 18px;"><img id="siyah_tüp" src="../assets/test_tube_siyah.png" alt=""> <br>Research Group</button></a>
 
 
         </div>

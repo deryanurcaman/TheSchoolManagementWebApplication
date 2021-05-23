@@ -70,7 +70,7 @@
 
 
         <p id="check">
-            Don't you have an account? <br> Create an account from <a href="signup.html" id="link">here</a>
+            Don't you have an account? <br> Create an account from <a href="signup.php" id="link">here</a>
         </p>
     </form>
 
@@ -87,11 +87,11 @@
     function check(form) {
 
         if (form.mything.value == "1") {
-            window.open("../secretary/secretary_mainpage.html")
+            window.open("http://localhost/WebProgrammingProject/secretary/secretary_mainpage.php")
         } else if (form.mything.value == "2") {
-            window.open('../instructor/instructor_mainpage.html')
+            window.open('http://localhost/WebProgrammingProject/instructor/instructor_mainpage.php')
         } else if (form.mything.value == "3") {
-            window.open('../student/student_mainpage.html')
+            window.open('http://localhost/WebProgrammingProject/student/student_mainpage.php')
         }
     }
 </script>
