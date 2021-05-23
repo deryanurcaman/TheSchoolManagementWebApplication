@@ -101,7 +101,7 @@
                 <td>6th Grade</td>
             </tr>
             <tr>
-                <td>ID:</td>
+                <td>Student ID:</td>
                 <td>3499871</td>
             </tr>
             <tr>
@@ -111,10 +111,6 @@
             <tr>
                 <td>GPA:</td>
                 <td>3.04</td>
-            </tr>
-            <tr>
-                <td>Mail:</td>
-                <td>lunalovegood@hogwarts.edu.en</td>
             </tr>
         </table>
     </div>

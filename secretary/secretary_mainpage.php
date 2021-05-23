@@ -88,10 +88,6 @@
                 <td>Username:</td>
                 <td>@rogerturpin</td>
             </tr>
-            <tr>
-                <td>Mail:</td>
-                <td>rogerturpin@hogwarts.edu.en</td>
-            </tr>
         </table>
     </div>
 

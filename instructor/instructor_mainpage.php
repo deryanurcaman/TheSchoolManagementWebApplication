@@ -94,10 +94,6 @@
                 <td>Major:</td>
                 <td>Defence Against the Dark Arts</td>
             </tr>
-            <tr>
-                <td>Mail:</td>
-                <td>remuslupin@hogwarts.edu.en</td>
-            </tr>
         </table>
     </div>
 

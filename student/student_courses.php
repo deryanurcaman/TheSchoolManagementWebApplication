@@ -26,6 +26,31 @@
         alert("The List Of All Courses Is Successfully Downloaded");
     }
 </script>
+
+<?php 
+$conn = mysqli_connect('localhost','webuser','123456','webprogrammingproject2021');
+if(!$conn){
+    die ("Fail". mysqli_connect_error());
+}
+$sqlString = "SELECT * FROM courses INNER JOIN instructors ON courses.instructor_id=instructors.id;";
+$query = mysqli_query($conn, $sqlString);
+$rows = array();
+while($result = mysqli_fetch_array($query))
+{
+    $rows[] = $result;
+}
+
+$sqlString2 = "SELECT * FROM students, courses, instructors WHERE courses.instructor_id=instructors.id AND students.course_id=courses.id;";
+$query2 = mysqli_query($conn, $sqlString2);
+$rows2 = array();
+while($result2 = mysqli_fetch_array($query2))
+{
+    $rows2[] = $result2;
+}
+
+
+?>
+
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
@@ -102,10 +127,14 @@
     </div>
     <br>
 
+    
     <!-- Page content -->
     <div class="main">
         <h1>All Available Courses</h1>
 
+    <?php 
+    foreach($rows as $row){
+    echo'
         <div class="courselist">
             <form action="">
                 <table>
@@ -119,97 +148,15 @@
                 </table>
             </form>
             <ul>
-                <li class="classtype">Mandatory</li>
-                <li class="classcode">POT78055</li>
-                <li class="classname">Potions</li>
-                <li class="classsize">Instructor: Severus Snape</li>
+                            <li class="classtype">'.$row['type'].'</li>
+                            <li class="classcode">'.$row['code'].'</li>
+                            <li class="classname">'.$row['name'].'</li>
+                            <li span style="font-weight:bolder;">Instructor: '.$row['first_name'].' '. $row['last_name'].'</li>
+                            <li span style="color:rgb(61, 0, 0);">Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
             </ul>
-        </div>
-
-
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td>
-                            <button onclick="add_course()">Add</button>
-
-
-                            <button onclick="download_file()">Download Class Materials <img src="" alt=""></button> </td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Elective</li>
-                <li class="classcode">SAR46609</li>
-                <li class="classname">Study of Ancient Runes </li>
-                <li class="classsize">Instructor: Sybill Trelawney</li>
-            </ul>
-        </div>
-
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td>
-                            <button onclick="add_course()">Add</button>
-
-
-                            <button onclick="download_file()">Download Class Materials <img src="" alt=""></button> </td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Elective</li>
-                <li class="classcode">HIS89407</li>
-                <li class="classname">History of Magic</li>
-                <li class="classsize">Instructor: Remus Lupin</li>
-            </ul>
-        </div>
-
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td>
-                            <button onclick="add_course()">Add</button>
-
-
-                            <button onclick="download_file()">Download Class Materials <img src="" alt=""></button> </td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Mandatory</li>
-                <li class="classcode">DDA95832</li>
-                <li class="classname">Defence Against the Dark Arts</li>
-                <li class="classsize">Instructor: Remus Lupin</li>
-            </ul>
-        </div>
-
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td>
-                            <button onclick="add_course()">Add</button>
-
-
-                            <button onclick="download_file()">Download Class Materials <img src="" alt=""></button> </td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Mandatory</li>
-                <li class="classcode">FLY66582</li>
-                <li class="classname">Flying</li>
-                <li class="classsize">Instructor: Madame Hooch</li>
-            </ul>
-        </div>
+        </div>';
+    }
+    ?>
 
 
     </div>
@@ -221,6 +168,7 @@
                 <button style="margin-top: unset;;" onclick="download_courses()">Download The List of Courses</button>
             </div>
         </div>
+        <?php foreach($rows2 as $row){ echo'
         <div class="courselist">
             <form action="">
                 <table>
@@ -233,56 +181,15 @@
                 </table>
             </form>
             <ul>
-                <li class="classtype">Mandatory</li>
-                <li class="classcode">HRB61429</li>
-                <li class="classname">Herbology </li>
-                <li class="classsize">Instructor: Severus Snape</li>
+                            <li class="classtype">'.$row['type'].'</li>
+                            <li class="classcode">'.$row['code'].'</li>
+                            <li class="classname">'.$row['name'].'</li>
+                            <li span style="font-weight:bolder;">Instructor: '.$row['first_name'].' '. $row['last_name'].'</li>
+                            <li span style="color:rgb(61, 0, 0);">Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
             </ul>
-        </div>
-
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td>
-                            <button onclick="drop_course()">Drop</button>
-                            <button onclick="download_file()">Download Class Materials<img src="" alt=""></button>
-
-                        </td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Elective</li>
-                <li class="classcode">MGT13472</li>
-                <li class="classname">Magical Theory </li>
-                <li class="classsize">Instructor: Filius Flitwick</li>
-            </ul>
-        </div>
-
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td>
-                            <button onclick="drop_course()">Drop</button>
-
-                            <button onclick="download_file()">Download Class Materials<img src="" alt=""></button> </td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Elective</li>
-                <li class="classcode">CMC46702</li>
-                <li class="classname">Care of Magical Creatures</li>
-                <li class="classsize">Instructor: Horace Slughorn</li>
-            </ul>
-        </div>
-
-
-
+        </div>';
+        }
+        ?>
     </div>
 
 
