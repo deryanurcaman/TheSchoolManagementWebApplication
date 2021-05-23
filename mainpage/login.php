@@ -1,3 +1,40 @@
+<?php
+    $username = $password = $mything = '';        // initialize with empty string
+    $errors = array('username'=>'', 'password'=>'', 'mything'=>''); // keys and their ampty values
+    if (isset($_POST['submit'])) {
+        if(empty($_POST['username'])) { // check if email is empty
+            $errors['username'] = 'An username is required';
+        } else {
+            $username = $_POST['username'];  // $email is now the input of the $_POST['email']
+            }
+
+        echo "<br>";
+
+        if(empty($_POST['password'])) {
+            $errors['password'] = 'A password is required';
+        } else {
+            $password = $_POST['password'];
+        }
+
+        if(empty($_POST['mything'])) {
+            $errors['mything'] = 'Account type is required';
+        }else{
+            $password = $_POST['mything'];
+        }
+    
+
+        if(array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
+            // echo 'errors in the form';
+        } else {
+            // echo 'no errors in the form';
+            header('Location: http://localhost/WebProgrammingProject/secretary/secretary_mainpage.php');
+            exit;
+        }
+
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,32 +73,46 @@
     <br><br><br>
 
 
-    <form action="">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <h1 id="title">User Login</h1>
         <p id="text_input">
             <label for="">Please choose your account type:</label>
             <br><br>
-            <input id="radio" type="radio" required name="mything" value="1"> Secretary<br>
-            <input id="radio" type="radio" required name="mything" value="2"> Instructor<br>
-            <input id="radio" type="radio" required name="mything" value="3"> Student<br>
+            <input id="radio" type="radio" name="mything" <?php if (isset($exampleRadios) && $exampleRadios=="1") echo "checked";?> value="1"> Secretary<br>
+            <input id="radio" type="radio" name="mything" <?php if (isset($exampleRadios) && $exampleRadios=="2") echo "checked";?> value="2"> Instructor<br>
+            <input id="radio" type="radio" name="mything" <?php if (isset($exampleRadios) && $exampleRadios=="3") echo "checked";?> value="3"> Student<br>
+       
         </p>
+        <div style="color: red;">
+        <span class="error"> <?php echo $errors['mything']; ?> </span>
+        </div>
 
         <p id="text_input">
             <label for="">Username:</label>
             <br>
-            <input type="text" name="item_name" placeholder="Enter your username" size="80" class="select" required>
+            <input type="text" name="username" placeholder="Enter your username" size="80" class="select" value="<?php echo htmlspecialchars($username); ?>">
+
+            <div style="color: red;">
+                <?php echo $errors['username']; ?>      <!-- display error message here !-->
+            </div>
+
         </p>
 
         <p id="text_input">
             <label for="">Password:</label>
             <br>
-            <input type="password" name="item_name" placeholder="Enter your password" size="80" class="select" required>
+            <input type="password" name="password" placeholder="Enter your password" size="80" class="select" >
+
+            <div style="color: red;">
+                <?php echo $errors['password']; ?>      <!-- display error message here !-->
+            </div>
+
         </p>
 
         <br>
 
         <p id="text_input">
-            <button onclick="check(form)" value="Login">
+            <button onclick="check(form)" value="Login" name="submit">
             <img height="30px" id="loginbuttonimage" src="../assets/login.png" alt="">
             <img height="50px" id="loginbuttonimage2" src="../assets/imglogin.png" alt="">
             </button>
@@ -81,17 +132,3 @@
 </body>
 
 </html>
-
-
-<script language="javascript">
-    function check(form) {
-
-        if (form.mything.value == "1") {
-            window.open("http://localhost/WebProgrammingProject/secretary/secretary_mainpage.php")
-        } else if (form.mything.value == "2") {
-            window.open('http://localhost/WebProgrammingProject/instructor/instructor_mainpage.php')
-        } else if (form.mything.value == "3") {
-            window.open('http://localhost/WebProgrammingProject/student/student_mainpage.php')
-        }
-    }
-</script>

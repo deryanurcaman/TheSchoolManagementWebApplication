@@ -1,3 +1,52 @@
+<?php
+    $username = $password = $type = $first_name = $last_name = '';        // initialize with empty string
+    $errors = array('username'=>'', 'password'=>'', 'type'=>'', 'first_name'=>'', 'last_name'=>''); // keys and their ampty values
+    if (isset($_POST['submit'])) {
+        if(empty($_POST['username'])) { // check if email is empty
+            $errors['username'] = 'An username is required';
+        } else {
+            $username = $_POST['username'];  // $email is now the input of the $_POST['email']
+            }
+
+        echo "<br>";
+
+        if(empty($_POST['password'])) {
+            $errors['password'] = 'A password is required';
+        } else {
+            $password = $_POST['password'];
+        }
+
+        if(empty($_POST['type'])) {
+            $errors['type'] = 'Account type is required';
+        }else{
+            $type = $_POST['type'];
+        }
+
+        if(empty($_POST['first_name'])) {
+            $errors['first_name'] = 'First name is required';
+        }else{
+            $first_name = $_POST['first_name'];
+        }
+
+        if(empty($_POST['last_name'])) {
+            $errors['last_name'] = 'Last name is required';
+        }else{
+            $last_name = $_POST['last_name'];
+        }
+    
+
+        if(array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
+            // echo 'errors in the form';
+        } else {
+            // echo 'no errors in the form';
+            header('Location: http://localhost/WebProgrammingProject/mainpage/login.php');
+            exit;
+        }
+
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,12 +57,6 @@
     <title>Welcome to Hogwarts School of Witchcraft and Wizardry</title>
     <link rel="stylesheet" href="./signup.css">
 </head>
-
-<script>
-    function signup() {
-        alert("Your account has been succesfully created.");
-    }
-</script>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
@@ -43,41 +86,67 @@
     <br><br><br>
 
 
-    <form action="">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <h1 id="title">Create an Account</h1>
         <p id="text_input">
             <label for="">Please choose your account type:</label>
             <br><br>
-            <input id="radio" type="radio" name="age" required> Secretary<br>
-            <input id="radio" type="radio" name="age" required> Instructor<br>
-            <input id="radio" type="radio" name="age" required> Student<br>
+            <input id="radio" type="radio" name="type" <?php if (isset($type) && $type=="option1") echo "checked";?> value="option1"> Secretary<br>
+            <input id="radio" type="radio" name="type" <?php if (isset($type) && $type=="option2") echo "checked";?> value="option2"> Instructor<br>
+            <input id="radio" type="radio" name="type" <?php if (isset($type) && $type=="option3") echo "checked";?> value="option3"> Student<br>
         </p>
+
+        <div style="color: red;">
+        <span class="error"> <?php echo $errors['type']; ?> </span>
+        </div>
+
+
         <p id="text_input">
             <label for="">First Name:</label>
             <br>
-            <input type="text" name="item_name" placeholder="Enter your first name" size="80" class="select" required>
+            <input type="text" name="first_name" placeholder="Enter your first name" size="80" class="select" value="<?php echo htmlspecialchars($first_name); ?>">
+        
+            <div style="color: red;">
+                <?php echo $errors['first_name']; ?>      <!-- display error message here !-->
+            </div>
+        
         </p>
 
         <p id="text_input">
             <label for="">Last Name:</label>
             <br>
-            <input type="text" name="item_name" placeholder="Enter your last name" size="80" class="select" required>
+            <input type="text" name="last_name" placeholder="Enter your last name" size="80" class="select" value="<?php echo htmlspecialchars($last_name); ?>">
+       
+            <div style="color: red;">
+                <?php echo $errors['last_name']; ?>      <!-- display error message here !-->
+            </div>
+       
         </p>
 
         <p id="text_input">
             <label for="">Username:</label>
             <br>
-            <input type="text" name="item_name" placeholder="Enter your username" size="80" class="select" required>
+            <input type="text" name="username" placeholder="Enter your username" size="80" class="select" value="<?php echo htmlspecialchars($username); ?>">
+        
+            <div style="color: red;">
+                <?php echo $errors['username']; ?>      <!-- display error message here !-->
+            </div>
+        
         </p>
 
         <p id="text_input">
             <label for="">Password:</label>
             <br>
-            <input type="password" name="item_name" placeholder="Enter your password" size="80" class="select" required>
+            <input type="password" name="password" placeholder="Enter your password" size="80" class="select" value="<?php echo htmlspecialchars($password); ?>">
+        
+            <div style="color: red;">
+                <?php echo $errors['password']; ?>      <!-- display error message here !-->
+            </div>
+        
         </p>
         <br>
 
-        <p id="text_input"><button onclick="signup()">
+        <p id="text_input"><button onclick="signup()" name="submit">
             <img height="30px" id="loginbuttonimage" src="../assets/signup.png" alt="">
             <img height="50px" id="loginbuttonimage2" src="../assets/imglogin.png" alt=""></button></p>
 
