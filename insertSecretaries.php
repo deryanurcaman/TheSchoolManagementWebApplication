@@ -7,11 +7,11 @@ if(!$conn){
 
 
 
-$sql = "INSERT INTO secretaries () 
-VALUES ('340001', 'Minerva', 'McGonagall', 'Transfiguration', 'catwoman', 'minerva123'),
-('340002', 'Filius', 'Flitwick', 'Xylomancy', 'minimum', 'filius123'),
-('340003', 'Severus', 'Snape', 'Potions', 'oilhead', 'severus123'),
-('340004', 'Pomona', 'Sprout', 'Herbology', 'lettuce', 'pomona123');";
+$sql = "INSERT INTO secretaries (first_name, last_name, username, password) 
+VALUES ('Argus', 'Filch', 'mrsnorris', 'argus123'),
+('Poppy', 'Pomfrey', 'pompom', 'poppy123'),
+('Remy', 'Portchester',  'remyport', 'remy123'),
+('Gladys', 'Jones',  'gjones', 'gladys123');";
 
 
 if (mysqli_query($conn, $sql)) {
