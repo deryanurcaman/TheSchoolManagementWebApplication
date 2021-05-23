@@ -12,10 +12,18 @@ if(!$conn){
 
 
 $sql = "INSERT INTO instructors (instructor_code, first_name, last_name, area, username, password) 
-VALUES ('340001', 'Minerva', 'McGonagall', 'Transfiguration', 'catwoman', 'minerva123'),
-('340002', 'Filius', 'Flitwick', 'Xylomancy', 'minimum', 'filius123'),
-('340003', 'Severus', 'Snape', 'Potions', 'oilhead', 'severus123'),
-('340004', 'Pomona', 'Sprout', 'Herbology', 'lettuce', 'pomona123');";
+VALUES ('340001', 'Minerva', 'McGonagall', 'Transfiguration', 'catwoman', '12345'),
+('340002', 'Filius', 'Flitwick', 'Xylomancy', 'minimum', '12345'),
+('340003', 'Severus', 'Snape', 'Potions', 'oilhead', '12345'),
+('340004', 'Pomona', 'Sprout', 'Herbology', 'lettuce', '12345'),
+('340005', 'Madame', 'Hooch', 'Charms', 'cactus', '12345'),
+('340006', 'Horace', 'Slughorn', 'Astronomy', 'smiley', '12345'),
+('340007', 'Sybill', 'Trelawney', 'Divination', 'iseefuture', '12345'),
+('340008', 'Remus', 'Lupin', 'Defence Against the Dark Arts', 'moony', '12345'),
+('340009', 'Aurora', 'Sinistra', 'Muggle Studies', NULL, NULL),
+('340010', 'Wilhelmina', 'Plank', 'Care of Magical Creatures', NULL, NULL),
+('340011', 'Dolores', 'Umbridge', 'Ghoul Studies', NULL, NULL),
+('340012', 'Gilderoy', 'Lockhart', 'Muggle Music', NULL, NULL);";
 
 
 if (mysqli_query($conn, $sql)) {
