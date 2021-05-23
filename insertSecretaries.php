@@ -8,10 +8,14 @@ if(!$conn){
 
 
 $sql = "INSERT INTO secretaries (first_name, last_name, username, password) 
-VALUES ('Argus', 'Filch', 'mrsnorris', 'argus123'),
-('Poppy', 'Pomfrey', 'pompom', 'poppy123'),
-('Remy', 'Portchester',  'remyport', 'remy123'),
-('Gladys', 'Jones',  'gjones', 'gladys123');";
+VALUES ('Argus', 'Filch', 'mrsnorris', '12345'),
+('Poppy', 'Pomfrey', 'pompom', '12345'),
+('Remy', 'Portchester',  'remyport', '12345'),
+('Gladys', 'Jones',  'gjones', '12345'),
+('Duncan', 'Flockton',  NULL, NULL),
+('Avery', 'Burke',  NULL, NULL),
+('Angelica', 'Karume',  NULL, NULL),
+('Fiona', 'James',  NULL, NULL);";
 
 
 if (mysqli_query($conn, $sql)) {
