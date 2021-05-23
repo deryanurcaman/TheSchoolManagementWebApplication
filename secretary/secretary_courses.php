@@ -19,6 +19,20 @@
     }
 </script>
 
+<?php 
+$conn = mysqli_connect('localhost','webuser','123456','webprogrammingproject2021');
+if(!$conn){
+    die ("Fail". mysqli_connect_error());
+}
+$sqlString = "SELECT * FROM courses;";
+$query = mysqli_query($conn, $sqlString);
+$rows = array();
+while($result = mysqli_fetch_array($query))
+{
+    $rows[] = $result;
+}
+?>
+
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
@@ -86,161 +100,32 @@
             </div>
             <div class="inner"><button onclick="download_file()" id="new_course" style="color: white; float: unset;">Download The List of Courses <img src="" alt=""></button></div>
         </div>
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td><button id="delete_button" onclick="delete_course()"><img src="../assets/reject.png" alt=""></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Delete The Course</td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Mandatory</li>
-                <li class="classcode">POT78055</li>
-                <li class="classname">Potions</li>
-                <li class="classsize">Instructor: Severus Snape</li>
-            </ul>
-        </div>
 
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td><button id="delete_button" onclick="delete_course()"><img src="../assets/reject.png" alt=""></button>
-                    </tr>
-                    <tr>
-                        <td>Delete The Course</td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Mandatory</li>
-                <li class="classcode">HIS89407</li>
-                <li class="classname">History of Magic</li>
-                <li class="classsize">Instructor: Remus Lupin</li>
-            </ul>
-        </div>
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td><button id="delete_button" onclick="delete_course()"><img src="../assets/reject.png" alt=""></button>
-                    </tr>
-                    <tr>
-                        <td>Delete The Course</td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Elective</li>
-                <li class="classcode">CMC46702</li>
-                <li class="classname">Care of Magical Creatures</li>
-                <li class="classsize">Instructor: Horace Slughorn</li>
-            </ul>
-        </div>
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td><button id="delete_button" onclick="delete_course()"><img src="../assets/reject.png" alt=""></button>
-                    </tr>
-                    <tr>
-                        <td>Delete The Course</td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Mandatory</li>
-                <li class="classcode">DDA95832</li>
-                <li class="classname">Defence Against the Dark Arts</li>
-                <li class="classsize">Instructor: Remus Lupin</li>
-            </ul>
-        </div>
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td><button id="delete_button" onclick="delete_course()"><img src="../assets/reject.png" alt=""></button>
-                    </tr>
-                    <tr>
-                        <td>Delete The Course</td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Mandatory</li>
-                <li class="classcode">FLY66582</li>
-                <li class="classname">Flying</li>
-                <li class="classsize">Instructor: Madame Hooch</li>
-            </ul>
-        </div>
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td><button id="delete_button" onclick="delete_course()"><img src="../assets/reject.png" alt=""></button>
-                    </tr>
-                    <tr>
-                        <td>Delete The Course</td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Mandatory</li>
-                <li class="classcode">HRB61429</li>
-                <li class="classname">Herbology </li>
-                <li class="classsize">Instructor: Severus Snape</li>
-            </ul>
-        </div>
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td><button id="delete_button" onclick="delete_course()"><img src="../assets/reject.png" alt=""></button>
-                    </tr>
-                    <tr>
-                        <td>Delete The Course</td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Elective</li>
-                <li class="classcode">SAR46609</li>
-                <li class="classname">Study of Ancient Runes </li>
-                <li class="classsize">Instructor: Sybill Trelawney</li>
-            </ul>
-        </div>
-
-        <div class="courselist">
-            <form action="">
-                <table>
-                    <tr>
-                        <td><button id="delete_button" onclick="delete_course()"><img src="../assets/reject.png" alt=""></button>
-                    </tr>
-                    <tr>
-                        <td>Delete The Course</td>
-                    </tr>
-                </table>
-            </form>
-            <ul>
-                <li class="classtype">Elective</li>
-                <li class="classcode">MGT13472</li>
-                <li class="classname">Magical Theory </li>
-                <li class="classsize">Instructor: Filius Flitwick</li>
-            </ul>
-        </div>
-
-    </div>
-
+        <?php
+                    foreach($rows as $row){
+                        echo
+                            '
+                            <div class="courselist">
+                            <form action="">
+                            <table>
+                                <tr>
+                                    <td><button id="delete_button" onclick="delete_course()"><img src="../assets/reject.png" alt=""></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Delete The Course</td>
+                                </tr>
+                            </table>
+                        </form>
+                        <ul>
+                            <li class="classsize">'.$row['id'].'</li>
+                            <li class="classtype">'.$row['type'].'</li>
+                            <li class="classcode">'.$row['code'].'</li>
+                            <li class="classname">'.$row['name'].'</li>
+                        </ul>
+                        </div>';
+                    }
+                ?>         
 </body>
 
 </html>
