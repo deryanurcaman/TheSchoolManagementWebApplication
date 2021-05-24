@@ -5,8 +5,8 @@
 include '../config.php';
 $conn = OpenCon();
 
-$username = $password = $mything = '';        // initialize with empty string
-$errors = array('username' => '', 'password' => '', 'mything' => ''); // keys and their ampty values
+$username = $password = $mything = $check = '';        // initialize with empty string
+$errors = array('username' => '', 'password' => '', 'mything' => '', 'check' => ''); // keys and their ampty values
 
 
 session_start();
@@ -24,19 +24,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $password = mysqli_real_escape_string($conn, $_POST['password']);
     }
-    $mything = $_POST['mything'];
-
-    if ($mything == "1") {
-        $table_name = "secretaries";
-        $page_uri = "WebProgrammingProject/secretary/secretary_mainpage.php";
-    } else if ($mything == "2") {
-        $table_name = "instructors";
-        $page_uri = "WebProgrammingProject/instructor/instructor_mainpage.php";
-    } else if ($mything == "3") {
-        $table_name = "students";
-        $page_uri = "WebProgrammingProject/student/student_mainpage.php";
+    if (empty($_POST['mything'])) { // check if email is empty
+        $errors['mything'] = 'An account type is required';
+    } else {
+        $mything = $_POST['mything'];
+        if ($mything == "1") {
+            $table_name = "secretaries";
+            $page_uri = "WebProgrammingProject/secretary/secretary_mainpage.php";
+        } else if ($mything == "2") {
+            $table_name = "instructors";
+            $page_uri = "WebProgrammingProject/instructor/instructor_mainpage.php";
+        } else if ($mything == "3") {
+            $table_name = "students";
+            $page_uri = "WebProgrammingProject/student/student_mainpage.php";
+        }
     }
-    if (!empty($_POST['password']) || !empty($_POST['username'])) {
+
+
+    if (!empty($_POST['password']) && !empty($_POST['username']) && !empty($_POST['mything']) ) {
         $sql = 'SELECT id FROM '.$table_name.' WHERE username = "'.$username.'" and password = "'.$password.'"';
 
         $result = mysqli_query($conn, $sql);
@@ -44,37 +49,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-        $active = $row['active'];
         $count = mysqli_num_rows($result);
+
+        if ($count == 1) {
+            $_SESSION['username'] = $username;
+            header("location: http://localhost/" . $page_uri);
+        } else {
+            $errors['check'] = "Your Login Name or Password is invalid";
+        }
     }
     // If result matched $myusername and $mypassword, table row must be 1 row
 
-    if ($count == 1) {
-        $_SESSION['username'] = $username;
-        header("location: http://localhost/" . $page_uri);
-    } else {
-        $error = "Your Login Name or Password is invalid";
-    }
+    
 }
-
-// if (isset($_POST['submit'])) {
-
-//     echo "<br>";
-//     if(empty($_POST['mything'])) {
-//         $errors['mything'] = 'Account type is required';
-//     }else{
-//         $password = $_POST['mything'];
-//     }
-
-//     if(array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
-//         // echo 'errors in the form';
-//     } else {
-//         // echo 'no errors in the form';
-//         header('Location: http://localhost/WebProgrammingProject/secretary/secretary_mainpage.php');
-//         exit;
-//     }
-
-// }
 ?>
 
 
@@ -128,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         </p>
         <div style="color: red;">
-            <span class="error"> <?php //echo $errors['mything']; 
+            <span class="error"> <?php echo $errors['mything']; 
                                     ?> </span>
         </div>
 
@@ -150,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <input type="password" name="password" placeholder="Enter your password" size="80" class="select">
 
         <div style="color: red;">
-            <?php echo $errors['password']; ?>
+            <?php echo $errors['password']; echo $errors['check']; ?>
             <!-- display error message here !-->
         </div>
 
