@@ -1,37 +1,71 @@
 <?php
-    $username = $password = $mything = '';        // initialize with empty string
-    $errors = array('username'=>'', 'password'=>'', 'mything'=>''); // keys and their ampty values
-    if (isset($_POST['submit'])) {
-        if(empty($_POST['username'])) { // check if email is empty
-            $errors['username'] = 'An username is required';
-        } else {
-            $username = $_POST['username'];  // $email is now the input of the $_POST['email']
-            }
 
-        echo "<br>";
+$conn = mysqli_connect('localhost','webuser','123456','webprogrammingproject2021');
+if(!$conn){
+    die ("Fail connection". mysqli_connect_error());
+}
 
-        if(empty($_POST['password'])) {
-            $errors['password'] = 'A password is required';
-        } else {
-            $password = $_POST['password'];
-        }
+session_start();
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      // username and password sent from form 
+      
+      $username = mysqli_real_escape_string($conn,$_POST['username']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']); 
+      
+      $sql = "SELECT id FROM instructors WHERE username = '$username' and password = '$password'";
+      $result = mysqli_query($conn,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['active'];
+      
+      $count = mysqli_num_rows($result);
+      
+      // If result matched $myusername and $mypassword, table row must be 1 row
+		
+      if($count == 1) {
+        $_SESSION['username']="username";
+         
+         header("location: http://localhost/WebProgrammingProject/instructor/instructor_mainpage.php");
+      }else {
+         $error = "Your Login Name or Password is invalid";
+      }
+   }
 
-        if(empty($_POST['mything'])) {
-            $errors['mything'] = 'Account type is required';
-        }else{
-            $password = $_POST['mything'];
-        }
+
+
+    // $username = $password = $mything = '';        // initialize with empty string
+    // $errors = array('username'=>'', 'password'=>'', 'mything'=>''); // keys and their ampty values
+    // if (isset($_POST['submit'])) {
+    //     if(empty($_POST['username'])) { // check if email is empty
+    //         $errors['username'] = 'An username is required';
+    //     } else {
+    //         $username = $_POST['username'];  // $email is now the input of the $_POST['email']
+    //         }
+
+    //     echo "<br>";
+
+    //     if(empty($_POST['password'])) {
+    //         $errors['password'] = 'A password is required';
+    //     } else {
+    //         $password = $_POST['password'];
+    //     }
+
+    //     if(empty($_POST['mything'])) {
+    //         $errors['mything'] = 'Account type is required';
+    //     }else{
+    //         $password = $_POST['mything'];
+    //     }
     
 
-        if(array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
-            // echo 'errors in the form';
-        } else {
-            // echo 'no errors in the form';
-            header('Location: http://localhost/WebProgrammingProject/secretary/secretary_mainpage.php');
-            exit;
-        }
+    //     if(array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
+    //         // echo 'errors in the form';
+    //     } else {
+    //         // echo 'no errors in the form';
+    //         header('Location: http://localhost/WebProgrammingProject/secretary/secretary_mainpage.php');
+    //         exit;
+    //     }
 
-    }
+    // }
 ?>
 
 
