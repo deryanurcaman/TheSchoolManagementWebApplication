@@ -51,6 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $count = mysqli_num_rows($result);
 
+        // If result matched $myusername and $mypassword, table row must be 1 row
         if ($count == 1) {
             $_SESSION['username'] = $username;
             header("location: http://localhost/" . $page_uri);
@@ -58,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors['check'] = "Your Login Name or Password is invalid";
         }
     }
-    // If result matched $myusername and $mypassword, table row must be 1 row
+    
 
     
 }
@@ -134,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p id="text_input">
             <label for="">Password:</label>
             <br>
-            <input type="password" name="password" placeholder="Enter your password" size="80" class="select">
+            <input type="password" name="password" placeholder="Enter your password" size="80" class="select"  value="<?php echo htmlspecialchars($password); ?>">
 
         <div style="color: red;">
             <?php echo $errors['password']; echo $errors['check']; ?>
