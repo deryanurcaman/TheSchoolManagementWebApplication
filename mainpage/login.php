@@ -1,9 +1,9 @@
 <?php
 
-$conn = mysqli_connect('localhost', 'webuser', '123456', 'webprogrammingproject2021');
-if (!$conn) {
-    die("Fail connection" . mysqli_connect_error());
-}
+
+
+include '../config.php';
+$conn = OpenCon();
 
 $username = $password = $mything = '';        // initialize with empty string
 $errors = array('username' => '', 'password' => '', 'mything' => ''); // keys and their ampty values

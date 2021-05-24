@@ -1,6 +1,18 @@
 <?php
-   $conn = mysqli_connect('localhost', 'webuser', '123456', 'webprogrammingproject2021');
-   if (!$conn) {
-       die("Fail connection" . mysqli_connect_error());
-   }
+function OpenCon()
+ {
+ $dbhost = "localhost";
+ $dbuser = "webuser";
+ $dbpass = "123456";
+ $db = "webprogrammingproject2021";
+ $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
+ 
+ return $conn;
+ }
+ 
+function CloseCon($conn)
+ {
+ $conn -> close();
+ }
+   
 ?>
