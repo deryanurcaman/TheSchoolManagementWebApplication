@@ -5,50 +5,100 @@ if(!$conn){
     die ("Fail connection". mysqli_connect_error());
 }
 
+$username = $password = $mything = '';        // initialize with empty string
+$errors = array('username'=>'', 'password'=>'', 'mything'=>''); // keys and their ampty values
+
+
 session_start();
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
+
+      if(empty($_POST['username'])) { // check if email is empty
+        $errors['username'] = 'An username is required';
+    } else {
+        $username = mysqli_real_escape_string($conn,$_POST['username']);
+        }
+
+        if(empty($_POST['password'])) {
+            $errors['password'] = 'A password is required';
+        } else {
+            $password = mysqli_real_escape_string($conn, $_POST['password']); 
+        }
+
+        if (mything.value == "1") {
+            $sql = "SELECT id FROM secretary WHERE username = '$username' and password = '$password'";
+              $result = mysqli_query($conn,$sql);
+              $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+              $active = $row['active'];
+              
+              $count = mysqli_num_rows($result);
+              
+              // If result matched $myusername and $mypassword, table row must be 1 row
+                
+              if($mything=="1") {
+                $_SESSION['username']="username";
+                header("location: http://localhost/WebProgrammingProject/secretary/secretary_mainpage.php");
+                 
+              }else {
+                $error = "Your Login Name or Password is invalid";
+            }
+                 
+            
+        } else if ($mything=="2") {
+            $sql = "SELECT id FROM instructors WHERE username = '$username' and password = '$password'";
+              $result = mysqli_query($conn,$sql);
+              $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+              $active = $row['active'];
+              
+              $count = mysqli_num_rows($result);
+              
+              // If result matched $myusername and $mypassword, table row must be 1 row
+                
+              if($count == 1) {
+                $_SESSION['username']="username";
+                header("location: http://localhost/WebProgrammingProject/instructor/instructor_mainpage.php");
+                 
+              }else {
+                 $error = "Your Login Name or Password is invalid";
+              }
+        } else if ($mything=="3") {
+            $sql = "SELECT id FROM students WHERE username = '$username' and password = '$password'";
+              $result = mysqli_query($conn,$sql);
+              $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+              $active = $row['active'];
+              
+              $count = mysqli_num_rows($result);
+              
+              // If result matched $myusername and $mypassword, table row must be 1 row
+                
+              if($count == 1) {
+                $_SESSION['username']="username";
+                header("location: http://localhost/WebProgrammingProject/student/student_mainpage.php");
+                 
+              }else {
+                 $error = "Your Login Name or Password is invalid";
+              }
+            
+        }
       
-      $username = mysqli_real_escape_string($conn,$_POST['username']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']); 
       
-      $sql = "SELECT id FROM instructors WHERE username = '$username' and password = '$password'";
-      $result = mysqli_query($conn,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-      
-      $count = mysqli_num_rows($result);
-      
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      if($count == 1) {
-        $_SESSION['username']="username";
-         
-         header("location: http://localhost/WebProgrammingProject/instructor/instructor_mainpage.php");
-      }else {
-         $error = "Your Login Name or Password is invalid";
-      }
    }
 
 
 
-    // $username = $password = $mything = '';        // initialize with empty string
-    // $errors = array('username'=>'', 'password'=>'', 'mything'=>''); // keys and their ampty values
+
+
+
+
+
+    
     // if (isset($_POST['submit'])) {
-    //     if(empty($_POST['username'])) { // check if email is empty
-    //         $errors['username'] = 'An username is required';
-    //     } else {
-    //         $username = $_POST['username'];  // $email is now the input of the $_POST['email']
-    //         }
+        
 
     //     echo "<br>";
 
-    //     if(empty($_POST['password'])) {
-    //         $errors['password'] = 'A password is required';
-    //     } else {
-    //         $password = $_POST['password'];
-    //     }
+        
 
     //     if(empty($_POST['mything'])) {
     //         $errors['mything'] = 'Account type is required';
@@ -112,13 +162,13 @@ session_start();
         <p id="text_input">
             <label for="">Please choose your account type:</label>
             <br><br>
-            <input id="radio" type="radio" name="mything" <?php if (isset($exampleRadios) && $exampleRadios=="1") echo "checked";?> value="1"> Secretary<br>
-            <input id="radio" type="radio" name="mything" <?php if (isset($exampleRadios) && $exampleRadios=="2") echo "checked";?> value="2"> Instructor<br>
-            <input id="radio" type="radio" name="mything" <?php if (isset($exampleRadios) && $exampleRadios=="3") echo "checked";?> value="3"> Student<br>
+            <input id="radio" type="radio" name="mything" <?php if (isset($mything) && $mything=="1") echo "checked";?> value="1"> Secretary<br>
+            <input id="radio" type="radio" name="mything" <?php if (isset($mything) && $mything=="2") echo "checked";?> value="2"> Instructor<br>
+            <input id="radio" type="radio" name="mything" <?php if (isset($mything) && $mything=="3") echo "checked";?> value="3"> Student<br>
        
         </p>
         <div style="color: red;">
-        <span class="error"> <?php echo $errors['mything']; ?> </span>
+        <span class="error"> <?php //echo $errors['mything']; ?> </span>
         </div>
 
         <p id="text_input">
