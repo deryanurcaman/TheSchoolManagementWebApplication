@@ -122,7 +122,7 @@ while($result = mysqli_fetch_array($query))
                             <li class="classcode">'.$row['code'].'</li>
                             <li class="classname">'.$row['name'].'</li>
                             <li span style="font-weight:bolder;">Instructor: '.$row['first_name'].' '. $row['last_name'].'</li>
-                            <li span style="color:rgb(61, 0, 0);">Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
+                            <li span style="color:rgb(61, 0, 0);"> Day: '.$row['day'].' Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
                         </ul>
                         </div>';
                     }

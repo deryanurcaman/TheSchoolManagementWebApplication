@@ -1,3 +1,16 @@
+<?php
+include '../config.php';
+$conn = OpenCon();
+$username='';
+session_start();
+
+    $username=$_SESSION['username'];
+    $sql='SELECT * FROM secretaries WHERE username = "'.$username.'"';
+    $query = mysqli_query($conn, $sql);
+    $result = mysqli_fetch_array($query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +47,7 @@
         </div>
         <br>
 
-        <strong style="text-align:center;">Secretary <br><b>Roger Turpin</b></strong>
+        <strong style="text-align:center;">Secretary <br><b><?php echo $result['first_name'].' '. $result['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
@@ -82,11 +95,11 @@
             </tr>
             <tr>
                 <td>Name Surname:</td>
-                <td>Roger Turpin</td>
+                <td><?php echo $result['first_name'].' '. $result['last_name'];?></td>
             </tr>
             <tr>
                 <td>Username:</td>
-                <td>@rogerturpin</td>
+                <td><?php echo '@'.$username;?></td>
             </tr>
         </table>
     </div>

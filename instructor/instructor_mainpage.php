@@ -1,3 +1,17 @@
+<?php
+include '../config.php';
+$conn = OpenCon();
+$username='';
+session_start();
+
+    $username=$_SESSION['username'];
+    $sql='SELECT * FROM instructors WHERE username = "'.$username.'"';
+    $query = mysqli_query($conn, $sql);
+    $result = mysqli_fetch_array($query);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +46,7 @@
         <div><img src="../assets/hogwarts_logo.png" height="180px" style="opacity: 0.8;"></img>
         </div>
         <br>
-        <strong style="text-align:center;">Instructor <br><b>Remus Lupin</b></strong>
+        <strong style="text-align:center;">Instructor <br><b><?php echo $result['first_name'].' '. $result['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
@@ -84,15 +98,15 @@
             </tr>
             <tr>
                 <td>Name Surname:</td>
-                <td>Remus Lupin</td>
+                <td><?php echo $result['first_name'].' '. $result['last_name']; ?></td>
             </tr>
             <tr>
                 <td>Username:</td>
-                <td>@moony</td>
+                <td><?php echo '@'.$username;?></td>
             </tr>
             <tr>
                 <td>Major:</td>
-                <td>Defence Against the Dark Arts</td>
+                <td><?php echo $result['area']; ?></td>
             </tr>
         </table>
     </div>

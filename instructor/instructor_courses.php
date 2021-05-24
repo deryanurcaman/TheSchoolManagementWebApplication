@@ -1,3 +1,24 @@
+<?php
+include '../config.php';
+$conn = OpenCon();
+$username='';
+session_start();
+
+    $username=$_SESSION['username'];
+    $sql='SELECT * FROM instructors WHERE username = "'.$username.'"';
+    $query = mysqli_query($conn, $sql);
+    $result = mysqli_fetch_array($query);
+
+    $sqlString = "SELECT * FROM courses WHERE courses.instructor_id=".$result['id']."";
+    $query2 = mysqli_query($conn, $sqlString);
+    $rows = array();
+        while($result2 = mysqli_fetch_array($query2))
+    {
+    $rows[] = $result2;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +65,7 @@
         <div><img src="../assets/hogwarts_logo.png" height="180px" style="opacity: 0.8;"></img>
         </div>
         <br>
-        <strong style="text-align:center;">Instructor <br><b>Remus Lupin</b></strong>
+        <strong style="text-align:center;">Instructor <br><b><?php echo $result['first_name'].' '. $result['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
@@ -84,6 +105,9 @@
     <div class="main">
         <div class="allCourses">
             <h1>Courses</h1>
+            <?php
+                    foreach($rows as $row){
+                        echo'
             <div class="courselist">
                 <form action="">
                     <table>
@@ -102,62 +126,16 @@
                     </table>
                 </form>
                 <ul>
-                    <li class="classtype">Mandatory</li>
-                    <li class="classcode">DDA95832</li>
-                    <li class="classname">Defence Against the Dark Arts</li>
-                    <li class="classsize">Number of Students: 48</li>
+                    <li class="classtype">'.$row['type'].'</li>
+                    <li class="classcode">'.$row['code'].'</li>
+                    <li class="classname">'.$row['name'].'</li>
+                    <li class="classname">number of students</li>
+                    <li span style="color:rgb(61, 0, 0);"> Day: '.$row['day'].' Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
                 </ul>
-            </div>
-
-            <div class="courselist">
-                <form action="">
-                    <table>
-                        <tr>
-                            <td><img id="download" onclick="download_file()" src="../assets/download.png" alt=""></td>
-                            <td><input type="file" id="up" name="filename" hidden/>
-                                <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
-                                <input type="submit" onclick="submit_file()" name="" id="sub" hidden/>
-                                <label for="sub"><img src="../assets/submit.png" alt="" id="submit" title="Submit File"></label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Download list of students</td>
-                            <td>Upload class material</td>
-                        </tr>
-                    </table>
-                </form>
-                <ul>
-                    <li class="classtype">Elective</li>
-                    <li class="classcode">GST34782</li>
-                    <li class="classname">Ghoul Studies</li>
-                    <li class="classsize">Number of Students: 28</li>
-                </ul>
-            </div>
-
-            <div class="courselist">
-                <form action="">
-                    <table>
-                        <tr>
-                            <td><img id="download" onclick="download_file()" src="../assets/download.png" alt=""></td>
-                            <td><input type="file" id="up" name="filename" hidden/>
-                                <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
-                                <input type="submit" onclick="submit_file()" name="" id="sub" hidden/>
-                                <label for="sub"><img src="../assets/submit.png" alt="" id="submit" title="Submit File"></label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Download list of students</td>
-                            <td>Upload class material</td>
-                        </tr>
-                    </table>
-                </form>
-                <ul>
-                    <li class="classtype">Mandatory</li>
-                    <li class="classcode">HIS89407</li>
-                    <li class="classname">History of Magic</li>
-                    <li class="classsize">Number of Students: 45</li>
-                </ul>
-            </div>
+            </div>';
+                    }
+                ?>  
+            
         </div>
 
     </div>

@@ -1,3 +1,16 @@
+<?php
+include '../config.php';
+$conn = OpenCon();
+$username='';
+session_start();
+
+    $username=$_SESSION['username'];
+    $sql='SELECT * FROM students WHERE username = "'.$username.'"';
+    $query = mysqli_query($conn, $sql);
+    $result = mysqli_fetch_array($query);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +47,7 @@
         <div><img src="../assets/hogwarts_logo.png" height="180px" style="opacity: 0.8;"></img>
         </div>
         <br>
-        <strong style="text-align:center;">Student <br><b>Luna Lovegood</b></strong>
+        <strong style="text-align:center;">Student <br><b><?php echo $result['first_name'].' '. $result['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
@@ -94,23 +107,23 @@
             </tr>
             <tr>
                 <td>Name Surname:</td>
-                <td>Luna Lovegood </td>
+                <td><?php echo $result['first_name'].' '. $result['last_name']; ?></td>
             </tr>
             <tr>
                 <td>Class:</td>
-                <td>6th Grade</td>
+                <td><?php echo $result['class']; ?></td>
             </tr>
             <tr>
                 <td>Student ID:</td>
-                <td>3499871</td>
+                <td><?php echo $result['student_id']; ?></td>
             </tr>
             <tr>
                 <td>Username:</td>
-                <td>@loonylovegood</td>
+                <td><?php echo '@'.$username;?></td>
             </tr>
             <tr>
                 <td>GPA:</td>
-                <td>3.04</td>
+                <td><?php echo $result['gpa']; ?></td>
             </tr>
         </table>
     </div>
