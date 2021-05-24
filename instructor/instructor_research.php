@@ -58,7 +58,7 @@ FROM research_groups
     LEFT JOIN students ON research_groups.student_id = students.id 
     LEFT JOIN my_courses ON my_courses.student_id = students.id 
     LEFT JOIN courses ON courses.instructor_id = instructors.id
-    WHERE ".$result['id']."=instructors.id"
+    WHERE ".$result['id']."=courses.instructor_id"
     ;
 $query3 = mysqli_query($conn, $sqlString2);
 $rows2 = array();
@@ -165,10 +165,10 @@ $rows2[] = $result3;
                     <td> Year:'.$row['class'].'</td>
                     <td id="fixed">
                         <ul id="courses">';
-                        foreach($rows2 as $row){
+                        foreach($rows2 as $row2){
                             echo
                                 '
-                            <li>'.$row['cn'].'</li>';
+                            <li>'.$row2['cn'].'</li>';
                         }
                         '
                         </ul>
