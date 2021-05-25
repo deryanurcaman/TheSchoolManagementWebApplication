@@ -100,16 +100,11 @@ if (isset($_POST['submit'])) {
     } else {
         echo "Error: " . $sqlNew . "<br>" . mysqli_error($conn);
     }
-
-
-    if (array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
-        echo 'errors in the form';
-    } else {
         echo 'no errors in the form';
         header('Location: http://localhost/WebProgrammingProject/secretary/secretary_courses.php');
         exit;
     }
-}}}
+}}
 
 ?>
 
