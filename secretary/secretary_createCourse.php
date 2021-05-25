@@ -72,15 +72,12 @@ if (isset($_POST['submit'])) {
 
             if (($startTime >= $startTemp || $_POST['start'] === $startTemp) && $startTime <= $endTemp) {
                 $errors['end'] = 'You can not create a course between these hours (start time overlaps with another course)';
-                echo 'BİRİNCİ';
                 break;
             } else {
                 if (($endTime >= $startTemp || $_POST['end'] === $startTemp) && $endTime <= $endTemp) {
                     $errors['end'] = 'You can not a create course between these hours (end time overlaps with another course)';
-                    echo 'İKİNCİ';
                     break;
                 }
-                echo 'OKAYY';
             }
         }
     }
@@ -89,6 +86,7 @@ if (isset($_POST['submit'])) {
     $token2 = strtok(" ");
 
 
+    if (!empty($_POST['code']) && !empty($_POST['name']) && !empty($_POST['type']) && !empty($_POST['start']) && !empty($_POST['end']) ) {
     $sqlNew = "INSERT INTO courses ( code, name, type, day, start_time, end_time, instructor_id) 
     VALUES ( '$codeN', '$nameN', '$typeN', '$dayN', '$startN', '$endN', (SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'));";
 
@@ -107,7 +105,8 @@ if (isset($_POST['submit'])) {
         header('Location: http://localhost/WebProgrammingProject/secretary/secretary_courses.php');
         exit;
     }
-}
+}}
+
 ?>
 
 <?php
@@ -126,7 +125,7 @@ while ($result = mysqli_fetch_array($query)) {
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"<?php echo time(); ?>>
     <link rel="stylesheet" href="secretary_Createcourse.css?v=<?php echo time(); ?>">
     <title>Secretary Creating a Course</title>
 </head>
@@ -235,8 +234,8 @@ while ($result = mysqli_fetch_array($query)) {
                 <hr><br>
 
                 <p><label id="text_input">Course Instructor:</label>
-                    <select name="instructor" class="select" required>
-                        <option selected disabled>Select an Option</option>
+                    <select name="instructor" class="select">
+                        <option>Select an Option</option>
                         <?php
                         foreach ($rows as $row) {
                             echo '
@@ -260,8 +259,8 @@ while ($result = mysqli_fetch_array($query)) {
                 <br><br>
                 <div id="time">
                     <p id="text_input">Day of the course:
-                        <select name="day" class="select" required>
-                            <option selected disabled>Select an Option</option>
+                        <select name="day" class="select">
+                            <option >Select an Option</option>
                             <option>Monday</option>
                             <option>Tuesday</option>
                             <option>Wednesday</option>
