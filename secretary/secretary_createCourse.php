@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
     $token2 = strtok(" ");
 
 
-    if (!empty($_POST['code']) && !empty($_POST['name']) && !empty($_POST['type']) && !empty($_POST['start']) && !empty($_POST['end']) ) {
+    if (!empty($_POST['code']) && !empty($_POST['name']) && !empty($_POST['type']) && !empty($_POST['day']) && !empty($_POST['start']) && !empty($_POST['end']) ) {
     $sqlNew = "INSERT INTO courses ( code, name, type, day, start_time, end_time, instructor_id) 
     VALUES ( '$codeN', '$nameN', '$typeN', '$dayN', '$startN', '$endN', (SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'));";
 
