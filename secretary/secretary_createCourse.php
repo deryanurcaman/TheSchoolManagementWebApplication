@@ -85,6 +85,10 @@ if (isset($_POST['submit'])) {
     $token = strtok($instructorN, " ");
     $token2 = strtok(" ");
 
+    if(array_filter($errors)) {
+        // echo 'errors in the form';
+    } else {
+        // echo 'no errors in the form';
 
     if (!empty($_POST['code']) && !empty($_POST['name']) && !empty($_POST['type']) && !empty($_POST['day']) && !empty($_POST['start']) && !empty($_POST['end']) ) {
     $sqlNew = "INSERT INTO courses ( code, name, type, day, start_time, end_time, instructor_id) 
@@ -105,7 +109,7 @@ if (isset($_POST['submit'])) {
         header('Location: http://localhost/WebProgrammingProject/secretary/secretary_courses.php');
         exit;
     }
-}}
+}}}
 
 ?>
 
