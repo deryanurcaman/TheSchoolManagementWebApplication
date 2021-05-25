@@ -11,11 +11,7 @@ $sql = "INSERT INTO secretaries (first_name, last_name, username, password)
 VALUES ('Argus', 'Filch', 'mrsnorris', '12345'),
 ('Poppy', 'Pomfrey', 'pompom', '12345'),
 ('Remy', 'Portchester',  'remyport', '12345'),
-('Gladys', 'Jones',  'gjones', '12345'),
-('Duncan', 'Flockton',  NULL, NULL),
-('Avery', 'Burke',  NULL, NULL),
-('Angelica', 'Karume',  NULL, NULL),
-('Fiona', 'James',  NULL, NULL);";
+('Gladys', 'Jones',  'gjones', '12345');";
 
 
 if (mysqli_query($conn, $sql)) {
