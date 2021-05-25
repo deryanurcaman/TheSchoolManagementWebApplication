@@ -54,10 +54,6 @@ if (isset($_POST['submit'])) {
     $endTime = strtotime($_POST['end']);
     $startTime = strtotime($_POST['start']);
 
-    // if($startTime > $endTime ){
-    //     echo 'TERS';
-    //     sleep(5);
-    // }
     foreach ($rows as $row) {
         if ($_POST['day'] == $row['day']) {
             $startTemp = $row['start_time'];
@@ -97,22 +93,15 @@ if (isset($_POST['submit'])) {
     $token2 = strtok(" ");
 
 
-
-    //(SELECT id FROM instructors WHERE first_name = \'Minerva\' AND last_name = \'McGonagall\')
-
-
     $sqlNew = "INSERT INTO courses ( code, name, type, day, start_time, end_time, instructor_id) 
     VALUES ( '$codeN', '$nameN', '$typeN', '$dayN', '$startN', '$endN', (SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'));";
 
-    // $sqlNew = "INSERT INTO courses (id, code, name, type, day, start_time, end_time, instructor_id) 
-    // VALUES (2, '64tre', '4hdjsde', 'dfsdsfds', 'Monday', '09:00 ', '13:00', 34 );";
 
     if (mysqli_query($conn, $sqlNew)) {
         echo "created course successfully";
     } else {
         echo "Error: " . $sqlNew . "<br>" . mysqli_error($conn);
     }
-
 
 
     if (array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
