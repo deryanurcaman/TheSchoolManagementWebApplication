@@ -71,12 +71,12 @@ if (isset($_POST['submit'])) {
 
 
             if (($startTime >= $startTemp || $_POST['start'] === $startTemp) && $startTime <= $endTemp) {
-                $errors['start'] = 'bu saatler arasına oluşturamazsınız (başlangıçlar çakışıyosa)';
+                $errors['end'] = 'You can not create a course between these hours (start time overlaps with another course)';
                 echo 'BİRİNCİ';
                 break;
             } else {
                 if (($endTime >= $startTemp || $_POST['end'] === $startTemp) && $endTime <= $endTemp) {
-                    $errors['end'] = 'bu saatler arasına oluşturamazsınız (bitişler çakışıyosa)';
+                    $errors['end'] = 'You can not a create course between these hours (end time overlaps with another course)';
                     echo 'İKİNCİ';
                     break;
                 }
