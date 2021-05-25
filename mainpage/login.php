@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // username and password sent from form 
 
     if (empty($_POST['username'])) { // check if email is empty
-        $errors['username'] = 'An username is required';
+        $errors['username'] = 'A username is required';
     } else {
         $username = mysqli_real_escape_string($conn, $_POST['username']);
     }
@@ -73,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="login.css?v=<?php echo time(); ?>">
     <title>Welcome to Hogwarts School of Witchcraft and Wizardry</title>
 </head>
 
