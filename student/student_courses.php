@@ -17,13 +17,15 @@ session_start();
     $query = mysqli_query($conn, $sql);
     $resultNew = mysqli_fetch_array($query);
 
-// $sqlString2 = "SELECT * FROM students, courses, instructors WHERE courses.instructor_id=instructors.id AND students.course_id=courses.id;";
-// $query2 = mysqli_query($conn, $sqlString2);
-// $rows2 = array();
-// while($result2 = mysqli_fetch_array($query2))
-// {
-//     $rows2[] = $result2;
-// }
+    $sqlString2 = "SELECT * FROM courses
+    INNER JOIN my_courses ON my_courses.student_id= ".$resultNew['id']." AND my_courses.course_id=courses.id
+    INNER JOIN instructors ON instructors.id=courses.instructor_id;";
+    $query2 = mysqli_query($conn, $sqlString2);
+    $rows2 = array();
+    while($result2 = mysqli_fetch_array($query2))
+    {
+        $rows2[] = $result2;
+    }
 
 
 ?>
@@ -160,7 +162,7 @@ session_start();
                             <li class="classcode">'.$row['code'].'</li>
                             <li class="classname">'.$row['name'].'</li>
                             <li span style="font-weight:bolder;">Instructor: '.$row['first_name'].' '. $row['last_name'].'</li>
-                            <li span style="color:rgb(61, 0, 0);">Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
+                            <li span style="color:rgb(61, 0, 0);"> Day: '.$row['day'].' Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
             </ul>
         </div>';
     }
@@ -176,7 +178,7 @@ session_start();
                 <button style="margin-top: unset;;" onclick="download_courses()">Download The List of Courses</button>
             </div>
         </div>
-        <!-- <?php foreach($rows2 as $row){ echo'
+        <?php foreach($rows2 as $row){ echo'
         <div class="courselist">
             <form action="">
                 <table>
@@ -193,11 +195,11 @@ session_start();
                             <li class="classcode">'.$row['code'].'</li>
                             <li class="classname">'.$row['name'].'</li>
                             <li span style="font-weight:bolder;">Instructor: '.$row['first_name'].' '. $row['last_name'].'</li>
-                            <li span style="color:rgb(61, 0, 0);">Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
+                            <li span style="color:rgb(61, 0, 0);"> Day: '.$row['day'].' Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
             </ul>
         </div>';
         }
-        ?> -->
+        ?> 
     </div>
 
 
