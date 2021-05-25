@@ -28,10 +28,9 @@
 </script>
 
 <?php 
-$conn = mysqli_connect('localhost','webuser','123456','webprogrammingproject2021');
-if(!$conn){
-    die ("Fail". mysqli_connect_error());
-}
+include '../config.php';
+$conn = OpenCon();
+
 $sqlString = "SELECT * FROM courses INNER JOIN instructors ON courses.instructor_id=instructors.id;";
 $query = mysqli_query($conn, $sqlString);
 $rows = array();
@@ -40,13 +39,13 @@ while($result = mysqli_fetch_array($query))
     $rows[] = $result;
 }
 
-$sqlString2 = "SELECT * FROM students, courses, instructors WHERE courses.instructor_id=instructors.id AND students.course_id=courses.id;";
-$query2 = mysqli_query($conn, $sqlString2);
-$rows2 = array();
-while($result2 = mysqli_fetch_array($query2))
-{
-    $rows2[] = $result2;
-}
+// $sqlString2 = "SELECT * FROM students, courses, instructors WHERE courses.instructor_id=instructors.id AND students.course_id=courses.id;";
+// $query2 = mysqli_query($conn, $sqlString2);
+// $rows2 = array();
+// while($result2 = mysqli_fetch_array($query2))
+// {
+//     $rows2[] = $result2;
+// }
 
 
 ?>
@@ -168,7 +167,7 @@ while($result2 = mysqli_fetch_array($query2))
                 <button style="margin-top: unset;;" onclick="download_courses()">Download The List of Courses</button>
             </div>
         </div>
-        <?php foreach($rows2 as $row){ echo'
+        <!-- <?php foreach($rows2 as $row){ echo'
         <div class="courselist">
             <form action="">
                 <table>
@@ -189,7 +188,7 @@ while($result2 = mysqli_fetch_array($query2))
             </ul>
         </div>';
         }
-        ?>
+        ?> -->
     </div>
 
 

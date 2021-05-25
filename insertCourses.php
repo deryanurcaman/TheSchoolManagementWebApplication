@@ -1,9 +1,6 @@
 <?php
-
-$conn = mysqli_connect('localhost','webuser','123456','webprogrammingproject2021');
-if(!$conn){
-    die ("Fail connection". mysqli_connect_error());
-}
+include 'config.php';
+$conn = OpenCon();
 
 // yedek
 // $sql = "INSERT INTO courses (code, name, type, start_time, end_time) 

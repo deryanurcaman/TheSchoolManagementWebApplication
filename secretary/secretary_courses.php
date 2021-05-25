@@ -21,10 +21,10 @@
 </script>
 
 <?php 
-$conn = mysqli_connect('localhost','webuser','123456','webprogrammingproject2021');
-if(!$conn){
-    die ("Fail". mysqli_connect_error());
-}
+
+include '../config.php';
+$conn = OpenCon();
+
 $sqlString = "SELECT * FROM courses INNER JOIN instructors ON courses.instructor_id=instructors.id;";
 $query = mysqli_query($conn, $sqlString);
 $rows = array();
