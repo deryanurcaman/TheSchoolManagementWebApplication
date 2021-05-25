@@ -3,6 +3,14 @@
 include '../config.php';
 $conn = OpenCon();
 
+$username = '';
+session_start();
+$username = $_SESSION['username'];
+$sql = 'SELECT * FROM secretaries WHERE username = "' . $username . '"';
+$query = mysqli_query($conn, $sql);
+$resultNew = mysqli_fetch_array($query);
+
+
 $code = $name = $type = $instructor = $day = $start = $end = '';        // initialize with empty string
 $errors = array('code' => '', 'name' => '', 'type' => '', 'instructor' => '', 'day' => '', 'start' => '', 'end' => ''); // keys and their ampty values
 if (isset($_POST['submit'])) {
@@ -77,18 +85,6 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    
-    
-    
-    
-   
-    
-
-
-
-
-    
-
     $token = strtok($instructorN, " ");
     $token2 = strtok(" ");
 
@@ -161,7 +157,7 @@ while ($result = mysqli_fetch_array($query)) {
         <div><img src="../assets/hogwarts_logo.png" height="180px" style="opacity: 0.8;"></img>
         </div>
         <br>
-        <strong style="text-align:center;">Secretary <br><b>Roger Turpin</b></strong>
+        <strong style="text-align:center;">Secretary <br><b><?php echo $resultNew['first_name'] . ' ' . $resultNew['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
@@ -273,26 +269,26 @@ while ($result = mysqli_fetch_array($query)) {
                             <option>Friday</option>
                         </select>
 
-                        <div style="color: red;">
-                    <?php echo $errors['day']; ?>
-                    <!-- display error message here !-->
-                </div>
+                    <div style="color: red;">
+                        <?php echo $errors['day']; ?>
+                        <!-- display error message here !-->
+                    </div>
 
                     </p>
 
                     <p id="text_input">Course starts at:
                         <input type="time" name="start" id="">
-                        <div style="color: red;">
-                    <?php echo $errors['start']; ?>
-                    <!-- display error message here !-->
-                </div>
+                    <div style="color: red;">
+                        <?php echo $errors['start']; ?>
+                        <!-- display error message here !-->
+                    </div>
                     </p>
                     <p id="text_input">Course ends at:
                         <input type="time" name="end" id="">
-                        <div style="color: red;">
-                    <?php echo $errors['end']; ?>
-                    <!-- display error message here !-->
-                </div>
+                    <div style="color: red;">
+                        <?php echo $errors['end']; ?>
+                        <!-- display error message here !-->
+                    </div>
                     </p>
                 </div>
             </div>
