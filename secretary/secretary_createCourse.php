@@ -1,52 +1,138 @@
 <?php
-    $code = $name = $type = $instructor = $day = $start = $end= '';        // initialize with empty string
-    $errors = array('code'=>'', 'name'=>'', 'type'=>'', 'instructor'=>'' ,'day'=>'' ,'start'=>'','end'=>''); // keys and their ampty values
-    if (isset($_POST['submit'])) {
-        if(empty($_POST['code'])) { // check if email is empty
-            $errors['code'] = 'A course code is required';
-        } else {
-            $code = $_POST['code'];  // $email is now the input of the $_POST['email']
+
+include '../config.php';
+$conn = OpenCon();
+
+$code = $name = $type = $instructor = $day = $start = $end = '';        // initialize with empty string
+$errors = array('code' => '', 'name' => '', 'type' => '', 'instructor' => '', 'day' => '', 'start' => '', 'end' => ''); // keys and their ampty values
+if (isset($_POST['submit'])) {
+    if (empty($_POST['code'])) {
+        $errors['code'] = 'A course code is required';
+    } else {
+        $code = $_POST['code'];
+    }
+    if (empty($_POST['name'])) {
+        $errors['name'] = 'A course name is required';
+    } else {
+        $name = $_POST['name'];
+    }
+    if (empty($_POST['type'])) {
+        $errors['type'] = 'Course type is required';
+    } else {
+        $type = $_POST['type'];
+    }
+    if (empty($_POST['instructor'])) {
+        $errors['instructor'] = 'Instructor name is required';
+    } else {
+        $end = $_POST['instructor'];
+    }
+    if (empty($_POST['day'])) {
+        $errors['day'] = 'Day of the course is required';
+    } else {
+        $day = $_POST['day'];
+    }
+    if (empty($_POST['start'])) {
+        $errors['start'] = 'Start time of the course is required';
+    } else {
+        $start = $_POST['start'];
+    }
+
+    if (empty($_POST['end'])) {
+        $errors['end'] = 'End time of the course is required';
+    } else {
+        $end = $_POST['end'];
+    }
+
+
+    $sql = "SELECT * FROM courses";
+    $query = mysqli_query($conn, $sql);
+    $rows = array();
+    while ($result = mysqli_fetch_array($query)) {
+        $rows[] = $result;
+    }
+
+    $endTime = strtotime($_POST['end']);
+    $startTime = strtotime($_POST['start']);
+
+    // if($startTime > $endTime ){
+    //     echo 'TERS';
+    //     sleep(5);
+    // }
+    foreach ($rows as $row) {
+        if ($_POST['day'] == $row['day']) {
+            $startTemp = $row['start_time'];
+            $startTemp = strtotime($startTemp);
+            $endTemp = $row['end_time'];
+            $endTemp = strtotime($endTemp);
+
+
+            if (($startTime >= $startTemp || $_POST['start'] === $startTemp) && $startTime <= $endTemp) {
+                $errors['start'] = 'bu saatler arasına oluşturamazsınız (başlangıçlar çakışıyosa)';
+                echo 'BİRİNCİ';
+                break;
+            } else {
+                if (($endTime >= $startTemp || $_POST['end'] === $startTemp) && $endTime <= $endTemp) {
+                    $errors['end'] = 'bu saatler arasına oluşturamazsınız (bitişler çakışıyosa)';
+                    echo 'İKİNCİ';
+                    break;
+                }
+                echo 'OKAYY';
             }
-
-        if(empty($_POST['name'])) {
-            $errors['name'] = 'A course name is required';
-        } else {
-            $name = $_POST['name'];
-            }
-
-        if(empty($_POST['type'])) {
-            $errors['type'] = 'Course type is required';
-        }else {
-            $type = $_POST['type'];
-            }
-
-        if(empty($_POST['day'])) {
-            $errors['day'] = 'Day of the course is required';
-        }else {
-            $day = $_POST['day'];
-            }
-
-        if(empty($_POST['start'])) {
-            $errors['start'] = 'Start time of the course is required';
-        }else {
-            $start = $_POST['start'];
-            }
-
-        if(empty($_POST['end'])) {
-            $errors['end'] = 'End time of the course is required';
-        }else {
-            $end = $_POST['end'];
-            }
-
-
-        if(array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
-            // echo 'errors in the form';
-        } else {
-            // echo 'no errors in the form';
-            header('Location: http://localhost/WebProgrammingProject/secretary/secretary_courses.php');
-            exit;
         }
     }
+
+    $codeN = $_POST['code'];
+    $nameN = $_POST['name'];
+    $typeN = $_POST['type'];
+    $dayN = $_POST['day'];
+    $startN = $_POST['start'];
+    $endN = $_POST['end'];
+
+
+
+
+    $instructorN = $_POST['instructor'];
+
+    $token = strtok($instructorN, " ");
+    $token2 = strtok(" ");
+
+
+
+    //(SELECT id FROM instructors WHERE first_name = \'Minerva\' AND last_name = \'McGonagall\')
+
+
+    $sqlNew = "INSERT INTO courses ( code, name, type, day, start_time, end_time, instructor_id) 
+    VALUES ( '$codeN', '$nameN', '$typeN', '$dayN', '$startN', '$endN', (SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'));";
+
+    // $sqlNew = "INSERT INTO courses (id, code, name, type, day, start_time, end_time, instructor_id) 
+    // VALUES (2, '64tre', '4hdjsde', 'dfsdsfds', 'Monday', '09:00 ', '13:00', 34 );";
+
+    if (mysqli_query($conn, $sqlNew)) {
+        echo "created course successfully";
+    } else {
+        echo "Error: " . $sqlNew . "<br>" . mysqli_error($conn);
+    }
+
+
+
+    if (array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
+        echo 'errors in the form';
+    } else {
+        echo 'no errors in the form';
+        header('Location: http://localhost/WebProgrammingProject/secretary/secretary_courses.php');
+        exit;
+    }
+}
+?>
+
+<?php
+
+$sql = "SELECT * FROM instructors;";
+$query = mysqli_query($conn, $sql);
+$rows = array();
+while ($result = mysqli_fetch_array($query)) {
+    $rows[] = $result;
+}
 ?>
 
 <!DOCTYPE html>
@@ -63,15 +149,16 @@
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
+
     body {
         font-family: 'Domine', serif;
     }
-    
+
     strong {
         font-family: 'Domine', serif;
         font-size: 25px;
     }
-    
+
     body b {
         font-family: 'Stalemate', cursive;
         font-size: 50px;
@@ -118,7 +205,7 @@
 
     </div>
     <div class="main">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <h1 id="title">Create a New Course</h1>
             <hr>
             <br>
@@ -127,57 +214,61 @@
                 <p id="text_input2">
                     <label for="">Course Code:</label>
                     <input type="text" name="code" placeholder="Enter Course Code" class="select" value="<?php echo htmlspecialchars($code); ?>">
-                
-                    <div style="color: red;">
-                <?php echo $errors['code']; ?>      <!-- display error message here !-->
-            </div>
-                
+
+                <div style="color: red;">
+                    <?php echo $errors['code']; ?>
+                    <!-- display error message here !-->
+                </div>
+
                 </p>
                 <br>
                 <hr><br>
                 <p id="text_input">
                     <label for="">Course Name:</label>
                     <input type="text" name="name" placeholder="Enter Course Name" class="select" value="<?php echo htmlspecialchars($name); ?>">
-            <div style="color: red;">
-                <?php echo $errors['name']; ?>      <!-- display error message here !-->
-            </div>
-                
+                <div style="color: red;">
+                    <?php echo $errors['name']; ?>
+                    <!-- display error message here !-->
+                </div>
+
                 </p>
 
                 <br>
                 <hr><br>
                 <p id="text_input"><label>Course Type:</label> <br>
                     <br>
-                    <input type="radio" name="type" <?php if (isset($type) && $type=="Mandatory") echo "checked";?> value="Mandatory" >Mandatory<br>
-                    <input type="radio" name="type" <?php if (isset($type) && $type=="Elective") echo "checked";?> value="Elective" >Elective<br></p>
-                    
-                    <div style="color: red;">
-                <?php echo $errors['type']; ?>      <!-- display error message here !-->
-            </div>
+                    <input type="radio" name="type" <?php if (isset($type) && $type == "Mandatory") echo "checked"; ?> value="Mandatory">Mandatory<br>
+                    <input type="radio" name="type" <?php if (isset($type) && $type == "Elective") echo "checked"; ?> value="Elective">Elective<br>
+                </p>
+
+                <div style="color: red;">
+                    <?php echo $errors['type']; ?>
+                    <!-- display error message here !-->
+                </div>
 
                 <br>
                 <hr><br>
 
                 <p><label id="text_input">Course Instructor:</label>
                     <select name="instructor" class="select" required>
-                        <option selected disabled>Select an Option</option>   
-                        <option>Minerva McGonagall</option>   
-                        <option>Filius Flitwick</option>   
-                        <option>Severus Snape</option>   
-                        <option>Pomona Sprout</option>   
-                        <option>Madame Hooch</option>   
-                        <option>Horace Slughorn</option>   
-                        <option>Sybill Trelawney</option>   
-                        <option>Remus Lupin</option>  
+                        <option selected disabled>Select an Option</option>
+                        <?php
+                        foreach ($rows as $row) {
+                            echo '
+                        <option> ' . $row['first_name'] . ' ' . $row['last_name'] . ' </option>
+                        ';
+                        }
+                        ?>
                     </select>
 
                     <br>
                     <br>
                     <hr><br>
 
-                    <div style="color: red;">
-                <?php echo $errors['instructor']; ?>      <!-- display error message here !-->
-            </div>
+                <div style="color: red;">
+                    <?php echo $errors['instructor']; ?>
+                    <!-- display error message here !-->
+                </div>
 
                 </p>
                 <label id="text_input">Course Time During The Week:</label>
@@ -185,7 +276,7 @@
                 <div id="time">
                     <p id="text_input">Day of the course:
                         <select name="day" class="select" required>
-                            <option selected disabled>Select an Option</option>   
+                            <option selected disabled>Select an Option</option>
                             <option>Monday</option>
                             <option>Tuesday</option>
                             <option>Wednesday</option>
@@ -196,9 +287,10 @@
                     </p>
 
                     <p id="text_input">Course starts at:
-                        <input type="time" name="start" id="" ></p>
+                        <input type="time" name="start" id="">
+                    </p>
                     <p id="text_input">Course ends at:
-                        <input type="time" name="end" id="" >
+                        <input type="time" name="end" id="">
                     </p>
                 </div>
             </div>
