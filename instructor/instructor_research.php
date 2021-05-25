@@ -28,6 +28,48 @@
         }
     </style>
 
+<?php
+include '../config.php';
+$conn = OpenCon();
+$username='';
+session_start();
+
+    $username=$_SESSION['username'];
+    $sql='SELECT * FROM instructors WHERE username = "'.$username.'"';
+    $query = mysqli_query($conn, $sql);
+    $result = mysqli_fetch_array($query);
+
+    $sqlString = "SELECT DISTINCT students.student_id AS st, students.first_name,students.last_name,students.gpa,students.class,research_groups.instructor_id, instructors.id, research_groups.student_id, students.id
+    FROM research_groups 
+        LEFT JOIN instructors ON research_groups.instructor_id = instructors.id 
+        LEFT JOIN students ON research_groups.student_id = students.id
+        WHERE ".$result['id']."=instructors.id"
+        ;
+    $query2 = mysqli_query($conn, $sqlString);
+    $rows = array();
+        while($result2 = mysqli_fetch_array($query2))
+    {
+    $rows[] = $result2;
+}
+
+$sqlString2 = "SELECT DISTINCT courses.name AS cn, research_groups.instructor_id, instructors.id, research_groups.student_id, students.id, students.id, my_courses.student_id, my_courses.course_id, courses.id
+FROM research_groups 
+    LEFT JOIN instructors ON research_groups.instructor_id = instructors.id 
+    LEFT JOIN students ON research_groups.student_id = students.id 
+    LEFT JOIN my_courses ON my_courses.student_id = students.id 
+    LEFT JOIN courses ON courses.instructor_id = instructors.id
+    WHERE ".$result['id']."=courses.instructor_id"
+    ;
+$query3 = mysqli_query($conn, $sqlString2);
+$rows2 = array();
+    while($result3 = mysqli_fetch_array($query3))
+{
+$rows2[] = $result3;
+}
+
+?>
+
+
 
 </head>
 
@@ -109,91 +151,33 @@
                     <th>Class</th>
                     <th>Courses taken in the active semester</th>
                 </tr>
-                <tr>
-                    <td id="hashtag">1</td>
-                    <td>1499858</td>
-                    <td>Ernie Macmillan</td>
-                    <td>3.05</td>
-                    <td>4th year</td>
-                    <td id="fixed">
-                        <ul id="courses">
-                            <li>Transfiguration</li>
-                            <li>Arithmancy</li>
-                            <li>Divination</li>
-                            <li>Study of Ancient Runes</li>
-                            <li>Xylomancy</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="hashtag">2</td>
-                    <td>3007459</td>
-                    <td>Katie Bell</td>
-                    <td>2.76</td>
-                    <td>3rd year</td>
-                    <td id="fixed">
-                        <ul id="courses">
-                            <li>History of Magic</li>
-                            <li>Defence Against the Dark Arts</li>
-                            <li>Transfiguration</li>
-                            <li>Care of Magical Creatures</li>
-                            <li>Herbology</li>
-                            <li>Magical Theory</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="hashtag">3</td>
-                    <td>3679267</td>
-                    <td>Hannah Abbott</td>
-                    <td>3.21</td>
-                    <td>4th year</td>
-                    <td id="fixed">
-                        <ul id="courses">
-                            <li>Astronomy</li>
-                            <li>Charms</li>
-                            <li>Study of Ancient Runes</li>
-                            <li>Arithmancy</li>
-                            <li>Ghoul Studies</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="hashtag">4</td>
-                    <td>3125670</td>
-                    <td>Jack Sloper</td>
-                    <td>2.94</td>
-                    <td>5th year</td>
-                    <td id="fixed">
-                        <ul id="courses">
-                            <li>Xylomancy</li>
-                            <li>Magical Theory</li>
-                            <li>Defence Against the Dark Arts</li>
-                            <li>Arithmancy</li>
-                            <li>Care of Magical Creatures</li>
-                        </ul>
-                    </td>
-                </tr>
-                <tr>
-                    <td id="hashtag">5</td>
-                    <td>8101086</td>
-                    <td>Colin Creevey</td>
-                    <td>3.41</td>
-                    <td>2nd year</td>
-                    <td id="fixed">
-                        <ul id="courses">
-                            <li>Flying</li>
-                            <li>Divination</li>
-                            <li>Herbology</li>
-                            <li>Potions</li>
-                            <li>History of Magic</li>
-                            <li>Charms</li>
-                        </ul>
-                    </td>
-                </tr>
 
-            </table>
-
+                <?php
+                $i=1;
+                    foreach($rows as $row){
+                        echo
+                            '
+                <tr>
+                    <td id="hashtag">'.$i.'</td>
+                    <td>'.$row['st'].'</td>
+                    <td>'.$row['first_name'].'  '.$row['last_name'].'</td>
+                    <td>'.$row['gpa'].'</td>
+                    <td> Year:'.$row['class'].'</td>
+                    <td id="fixed">
+                        <ul id="courses">';
+                        foreach($rows2 as $row2){
+                            echo
+                                '
+                            <li>'.$row2['cn'].'</li>';
+                        }
+                        '
+                        </ul>
+                    </td>
+                </tr>
+            '; $i=$i+1;
+                    }
+            ?> 
+            </table> 
         </div>
 
 
