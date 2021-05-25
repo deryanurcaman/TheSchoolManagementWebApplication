@@ -2,6 +2,7 @@
 include '../config.php';
 $conn = OpenCon();
 $username='';
+
 session_start();
 
     $username=$_SESSION['username'];

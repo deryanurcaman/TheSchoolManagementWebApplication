@@ -1,3 +1,35 @@
+<?php 
+include '../config.php';
+$conn = OpenCon();
+
+$sqlString = "SELECT * FROM courses INNER JOIN instructors ON courses.instructor_id=instructors.id;";
+$query = mysqli_query($conn, $sqlString);
+$rows = array();
+while($result = mysqli_fetch_array($query))
+{
+    $rows[] = $result;
+}
+
+session_start();
+
+    $username=$_SESSION['username'];
+    $sql='SELECT * FROM students WHERE username = "'.$username.'"';
+    $query = mysqli_query($conn, $sql);
+    $resultNew = mysqli_fetch_array($query);
+
+// $sqlString2 = "SELECT * FROM students, courses, instructors WHERE courses.instructor_id=instructors.id AND students.course_id=courses.id;";
+// $query2 = mysqli_query($conn, $sqlString2);
+// $rows2 = array();
+// while($result2 = mysqli_fetch_array($query2))
+// {
+//     $rows2[] = $result2;
+// }
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,29 +59,6 @@
     }
 </script>
 
-<?php 
-include '../config.php';
-$conn = OpenCon();
-
-$sqlString = "SELECT * FROM courses INNER JOIN instructors ON courses.instructor_id=instructors.id;";
-$query = mysqli_query($conn, $sqlString);
-$rows = array();
-while($result = mysqli_fetch_array($query))
-{
-    $rows[] = $result;
-}
-
-// $sqlString2 = "SELECT * FROM students, courses, instructors WHERE courses.instructor_id=instructors.id AND students.course_id=courses.id;";
-// $query2 = mysqli_query($conn, $sqlString2);
-// $rows2 = array();
-// while($result2 = mysqli_fetch_array($query2))
-// {
-//     $rows2[] = $result2;
-// }
-
-
-?>
-
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
@@ -75,7 +84,7 @@ while($result = mysqli_fetch_array($query))
         </div>
 
         <br>
-        <strong style="text-align:center;">Student <br><b>Luna Lovegood</b></strong>
+        <strong style="text-align:center;">Student <br><b><?php echo $resultNew['first_name'].' '. $resultNew['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">

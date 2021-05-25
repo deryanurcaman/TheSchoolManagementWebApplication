@@ -26,6 +26,13 @@ while($result = mysqli_fetch_array($query))
 {
     $rows[] = $result;
 }
+
+session_start();
+
+    $username=$_SESSION['username'];
+    $sql='SELECT * FROM students WHERE username = "'.$username.'"';
+    $query = mysqli_query($conn, $sql);
+    $resultNew = mysqli_fetch_array($query);
 ?>
 
 <style>
@@ -53,7 +60,7 @@ while($result = mysqli_fetch_array($query))
         </div>
 
         <br>
-        <strong style="text-align:center;">Student <br><b>Luna Lovegood</b></strong>
+        <strong style="text-align:center;">Student <br><b><?php echo $resultNew['first_name'].' '. $resultNew['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">

@@ -1,33 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../instructor/instructor_research.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Stalemate&display=swap" rel="stylesheet">
-    <title> Instructor Research Groups </title>
-
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
-        body {
-            font-family: 'Domine', serif;
-        }
-        
-        strong {
-            font-family: 'Domine', serif;
-            font-size: 25px;
-        }
-        
-        body b {
-            font-family: 'Stalemate', cursive;
-            font-size: 50px;
-        }
-    </style>
-
 <?php
 include '../config.php';
 $conn = OpenCon();
@@ -71,6 +41,36 @@ $rows2[] = $result3;
 
 
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../instructor/instructor_research.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Stalemate&display=swap" rel="stylesheet">
+    <title> Instructor Research Groups </title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
+        body {
+            font-family: 'Domine', serif;
+        }
+        
+        strong {
+            font-family: 'Domine', serif;
+            font-size: 25px;
+        }
+        
+        body b {
+            font-family: 'Stalemate', cursive;
+            font-size: 50px;
+        }
+    </style>
+
 </head>
 
 <script>
@@ -94,7 +94,7 @@ $rows2[] = $result3;
         </div>
         <br>
 
-        <strong style="text-align:center;">Instructor <br><b>Remus Lupin</b></strong>
+        <strong style="text-align:center;">Instructor <br><b><?php echo $result['first_name'].' '. $result['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
