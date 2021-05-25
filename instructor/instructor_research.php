@@ -1,42 +1,37 @@
 <?php
 include '../config.php';
 $conn = OpenCon();
-$username='';
+$username = '';
 session_start();
 
-    $username=$_SESSION['username'];
-    $sql='SELECT * FROM instructors WHERE username = "'.$username.'"';
-    $query = mysqli_query($conn, $sql);
-    $result = mysqli_fetch_array($query);
+$username = $_SESSION['username'];
+$sql = 'SELECT * FROM instructors WHERE username = "' . $username . '"';
+$query = mysqli_query($conn, $sql);
+$result = mysqli_fetch_array($query);
 
-    $sqlString = "SELECT DISTINCT students.student_id AS st, students.first_name,students.last_name,students.gpa,students.class,research_groups.instructor_id, instructors.id, research_groups.student_id, students.id
+$sqlString = "SELECT DISTINCT students.student_id AS st, students.first_name,students.last_name,students.gpa,students.class,research_groups.instructor_id, instructors.id, research_groups.student_id, students.id
     FROM research_groups 
         LEFT JOIN instructors ON research_groups.instructor_id = instructors.id 
         LEFT JOIN students ON research_groups.student_id = students.id
-        WHERE ".$result['id']."=instructors.id"
-        ;
-    $query2 = mysqli_query($conn, $sqlString);
-    $rows = array();
-        while($result2 = mysqli_fetch_array($query2))
-    {
+        WHERE " . $result['id'] . "=instructors.id";
+
+$query2 = mysqli_query($conn, $sqlString);
+$rows = array();
+while ($result2 = mysqli_fetch_array($query2)) {
+
     $rows[] = $result2;
 }
 
-$sqlString2 = "SELECT DISTINCT courses.name AS cn, research_groups.instructor_id, instructors.id, research_groups.student_id, students.id, students.id, my_courses.student_id, my_courses.course_id, courses.id
-FROM research_groups 
-    LEFT JOIN instructors ON research_groups.instructor_id = instructors.id 
-    LEFT JOIN students ON research_groups.student_id = students.id 
-    LEFT JOIN my_courses ON my_courses.student_id = students.id 
-    LEFT JOIN courses ON courses.instructor_id = instructors.id
-    WHERE ".$result['id']."=courses.instructor_id"
-    ;
-$query3 = mysqli_query($conn, $sqlString2);
-$rows2 = array();
-    while($result3 = mysqli_fetch_array($query3))
-{
-$rows2[] = $result3;
-}
+foreach($rows as $row){
+    $sqlString2 = "SELECT * FROM courses
+    INNER JOIN my_courses ON my_courses.student_id= " . $row['id'] . " AND my_courses.course_id=courses.id;";
+    $query3 = mysqli_query($conn, $sqlString2);
+    $rows2 = array();
 
+    while ($result3 = mysqli_fetch_array($query3)) {
+    $rows2[] = $result3;
+    }
+}
 ?>
 
 
@@ -56,15 +51,16 @@ $rows2[] = $result3;
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
+
         body {
             font-family: 'Domine', serif;
         }
-        
+
         strong {
             font-family: 'Domine', serif;
             font-size: 25px;
         }
-        
+
         body b {
             font-family: 'Stalemate', cursive;
             font-size: 50px;
@@ -94,7 +90,7 @@ $rows2[] = $result3;
         </div>
         <br>
 
-        <strong style="text-align:center;">Instructor <br><b><?php echo $result['first_name'].' '. $result['last_name']; ?></b></strong>
+        <strong style="text-align:center;">Instructor <br><b><?php echo $result['first_name'] . ' ' . $result['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
@@ -153,31 +149,32 @@ $rows2[] = $result3;
                 </tr>
 
                 <?php
-                $i=1;
-                    foreach($rows as $row){
-                        echo
-                            '
+                $i = 1;
+                foreach ($rows as $row) {
+                    echo
+                    '
                 <tr>
-                    <td id="hashtag">'.$i.'</td>
-                    <td>'.$row['st'].'</td>
-                    <td>'.$row['first_name'].'  '.$row['last_name'].'</td>
-                    <td>'.$row['gpa'].'</td>
-                    <td> Year:'.$row['class'].'</td>
+                    <td id="hashtag">' . $i . '</td>
+                    <td>' . $row['st'] . '</td>
+                    <td>' . $row['first_name'] . '  ' . $row['last_name'] . '</td>
+                    <td>' . $row['gpa'] . '</td>
+                    <td>' . $row['class'] . '</td>
                     <td id="fixed">
                         <ul id="courses">';
-                        foreach($rows2 as $row2){
-                            echo
-                                '
-                            <li>'.$row2['cn'].'</li>';
-                        }
+                    foreach ($rows2 as $row2) {
+                        echo
                         '
+                            <li>' . $row2['name'] . '</li>';
+                    }
+                    '
                         </ul>
                     </td>
                 </tr>
-            '; $i=$i+1;
-                    }
-            ?> 
-            </table> 
+            ';
+                    $i = $i + 1;
+                }
+                ?>
+            </table>
         </div>
 
 
