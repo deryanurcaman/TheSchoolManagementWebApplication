@@ -58,6 +58,7 @@ $table5 = "CREATE TABLE courses(
     start_time TIME(6),
     end_time TIME(6),
     instructor_id INT(11),
+    course_materials VARCHAR(100),
     PRIMARY KEY (id),
     FOREIGN KEY (instructor_id) REFERENCES instructors(id));";
 
@@ -70,8 +71,18 @@ $table6 = "CREATE TABLE my_courses(
         FOREIGN KEY (student_id) REFERENCES students(id),
         FOREIGN KEY (course_id) REFERENCES courses(id));";
 
+$table7 = "CREATE TABLE new_requests(
+        id INT(11) NOT NULL AUTO_INCREMENT,
+        student_id INT(11),
+        instructor_id INT(11),
+        attachment VARCHAR(100),
+        note VARCHAR(100),
+        PRIMARY KEY (id),
+        FOREIGN KEY (student_id) REFERENCES students(id),
+        FOREIGN KEY (instructor_id) REFERENCES instructors(id)
+)";
 
-$tables = [$table1, $table2, $table3, $table4, $table5, $table6];
+$tables = [$table1, $table2, $table3, $table4, $table5, $table6, $table7];
 
 
 foreach ($tables as $k => $sql) {
