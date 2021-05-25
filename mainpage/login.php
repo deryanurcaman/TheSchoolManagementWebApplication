@@ -13,7 +13,7 @@ session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // username and password sent from form 
 
-    if (empty($_POST['username'])) { // check if email is empty
+    if (empty($_POST['username'])) { 
         $errors['username'] = 'A username is required';
     } else {
         $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $password = mysqli_real_escape_string($conn, $_POST['password']);
     }
-    if (empty($_POST['mything'])) { // check if email is empty
+    if (empty($_POST['mything'])) { 
         $errors['mything'] = 'An account type is required';
     } else {
         $mything = $_POST['mything'];
@@ -59,8 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors['check'] = "Your Login Name or Password is invalid";
         }
     }
-    
-
     
 }
 ?>
