@@ -1,3 +1,17 @@
+<?php
+include '../config.php';
+$conn = OpenCon();
+$username='';
+session_start();
+
+    $username=$_SESSION['username'];
+    $sql='SELECT * FROM secretaries WHERE username = "'.$username.'"';
+    $query = mysqli_query($conn, $sql);
+    $result = mysqli_fetch_array($query);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,7 +74,7 @@ while($result = mysqli_fetch_array($query))
         </div>
 
         <br>
-        <strong style="text-align:center;">Secretary <br><b>Roger Turpin</b></strong>
+        <strong style="text-align:center;">Secretary <br><b><?php echo $result['first_name'].' '. $result['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
