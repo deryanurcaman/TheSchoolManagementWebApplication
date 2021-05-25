@@ -9,38 +9,38 @@ if (isset($_POST['submit'])) {
     if (empty($_POST['code'])) {
         $errors['code'] = 'A course code is required';
     } else {
-        $code = $_POST['code'];
+        $codeN = $_POST['code'];
     }
     if (empty($_POST['name'])) {
         $errors['name'] = 'A course name is required';
     } else {
-        $name = $_POST['name'];
+        $nameN = $_POST['name'];
     }
     if (empty($_POST['type'])) {
         $errors['type'] = 'Course type is required';
     } else {
-        $type = $_POST['type'];
+        $typeN = $_POST['type'];
     }
     if (empty($_POST['instructor'])) {
         $errors['instructor'] = 'Instructor name is required';
     } else {
-        $end = $_POST['instructor'];
+        $instructorN = $_POST['instructor'];
     }
     if (empty($_POST['day'])) {
         $errors['day'] = 'Day of the course is required';
     } else {
-        $day = $_POST['day'];
+        $dayN = $_POST['day'];
     }
     if (empty($_POST['start'])) {
         $errors['start'] = 'Start time of the course is required';
     } else {
-        $start = $_POST['start'];
+        $startN = $_POST['start'];
     }
 
     if (empty($_POST['end'])) {
         $errors['end'] = 'End time of the course is required';
     } else {
-        $end = $_POST['end'];
+        $endN = $_POST['end'];
     }
 
 
@@ -81,17 +81,17 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    $codeN = $_POST['code'];
-    $nameN = $_POST['name'];
-    $typeN = $_POST['type'];
-    $dayN = $_POST['day'];
-    $startN = $_POST['start'];
-    $endN = $_POST['end'];
+    
+    
+    
+    
+   
+    
 
 
 
 
-    $instructorN = $_POST['instructor'];
+    
 
     $token = strtok($instructorN, " ");
     $token2 = strtok(" ");
@@ -284,13 +284,26 @@ while ($result = mysqli_fetch_array($query)) {
                             <option>Friday</option>
                         </select>
 
+                        <div style="color: red;">
+                    <?php echo $errors['day']; ?>
+                    <!-- display error message here !-->
+                </div>
+
                     </p>
 
                     <p id="text_input">Course starts at:
                         <input type="time" name="start" id="">
+                        <div style="color: red;">
+                    <?php echo $errors['start']; ?>
+                    <!-- display error message here !-->
+                </div>
                     </p>
                     <p id="text_input">Course ends at:
                         <input type="time" name="end" id="">
+                        <div style="color: red;">
+                    <?php echo $errors['end']; ?>
+                    <!-- display error message here !-->
+                </div>
                     </p>
                 </div>
             </div>
