@@ -9,44 +9,92 @@
     <title>Student Join a Research Group</title>
 </head>
 
-<script>
+<!-- <script>
     function save() {
         alert("The Request Is Successfully Sent");
     }
-</script>
+</script> -->
 
-<?php 
+<?php
 include '../config.php';
 $conn = OpenCon();
 
 $sqlString = "SELECT * FROM instructors;";
 $query = mysqli_query($conn, $sqlString);
 $rows = array();
-while($result = mysqli_fetch_array($query))
-{
+while ($result = mysqli_fetch_array($query)) {
     $rows[] = $result;
 }
 
 session_start();
 
-    $username=$_SESSION['username'];
-    $sql='SELECT * FROM students WHERE username = "'.$username.'"';
-    $query = mysqli_query($conn, $sql);
-    $resultNew = mysqli_fetch_array($query);
+$username = $_SESSION['username'];
+$sql = 'SELECT * FROM students WHERE username = "' . $username . '"';
+$query = mysqli_query($conn, $sql);
+$resultNew = mysqli_fetch_array($query);
+
+
+
+$instructor = $attachment = $note = '';        // initialize with empty string
+$errors = array('instructor' => '', 'attachment' => '', 'note' => ''); // keys and their ampty values
+if (isset($_POST['submit'])) {
+    if (empty($_POST['instructor'])) {
+        $errors['instructor'] = 'Instructor name is required';
+    } else {
+        $instructor = $_POST['instructor'];
+    }
+    if (empty($_POST['attachment'])) {
+        $errors['attachment'] = 'Attachment is required';
+    } else {
+        $attachment = $_POST['attachment'];
+    }
+    if (empty($_POST['note'])) {
+        $errors['note'] = 'Note is required';
+    } else {
+        $note = $_POST['note'];
+    }
+
+
+    $stid = $resultNew['id'];
+    $token = strtok($instructor, " ");
+    $token2 = strtok(" ");
+
+    if (array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
+        echo 'errors in the form';
+    } else {
+        if (!empty($_POST['note'])) {
+
+            $sqlNew = "INSERT INTO new_request ( student_id, instructor_id, attachment, note) 
+    VALUES ( '$stid', (SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'), '$attachment', '$note');";
+
+
+            if (mysqli_query($conn, $sqlNew)) {
+                echo "created new request successfully";
+            } else {
+                echo "Error: " . $sqlNew . "<br>" . mysqli_error($conn);
+            }
+            echo 'no errors in the form';
+            exit;
+        }
+    }
+}
+
+
 ?>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
+
     body {
         font-family: 'Domine', serif;
     }
-    
+
     strong {
         font-family: 'Domine', serif;
         font-size: 25px;
     }
-    
+
     body b {
         font-family: 'Stalemate', cursive;
         font-size: 50px;
@@ -60,7 +108,7 @@ session_start();
         </div>
 
         <br>
-        <strong style="text-align:center;">Student <br><b><?php echo $resultNew['first_name'].' '. $resultNew['last_name']; ?></b></strong>
+        <strong style="text-align:center;">Student <br><b><?php echo $resultNew['first_name'] . ' ' . $resultNew['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
@@ -123,16 +171,16 @@ session_start();
                     <th>Area</th>
                 </tr>
                 <?php
-                    foreach($rows as $row){
-                        echo
-                            '<tr>
-                                <td> '.$row['id'].'</td>
-                                <td> '.$row['first_name'].'</td>
-                                <td> '.$row['last_name'].'</td>
-                                <td> '.$row['area'].' </td>
+                foreach ($rows as $row) {
+                    echo
+                    '<tr>
+                                <td> ' . $row['id'] . '</td>
+                                <td> ' . $row['first_name'] . '</td>
+                                <td> ' . $row['last_name'] . '</td>
+                                <td> ' . $row['area'] . ' </td>
                             </tr>';
-                    }
-                ?>  
+                }
+                ?>
             </table>
 
         </div>
@@ -142,35 +190,45 @@ session_start();
             <h1 style="text-align: center;">Join a Research Group</h1>
             <hr><br>
 
-            <form action="">
-
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <p><label id="text_input">Course Instructor:</label>
-                    <select name="CourseInstructor" class="select" required>
-                    <option selected disabled>Select an Option</option>   
-                    <option>Minerva McGonagall</option>   
-                    <option>Filius Flitwick</option>   
-                    <option>Severus Snape</option>   
-                    <option>Pomona Sprout</option>   
-                    <option>Madame Hooch</option>   
-                    <option>Horace Slughorn</option>   
-                    <option>Sybill Trelawney</option>   
-                    <option>Remus Lupin</option>   
-                </select>
-                    <br><br>
-                    <hr><br>
-                    <p><label id="text_input" for="">Note:</label><br>
-                        <textarea name="" id="textarea" cols="44" rows="10" placeholder="Please enter your note"></textarea>
-                    </p>
+                    <select name="instructor" class="select">
+                        <option>Select an Option</option>
+                        <?php
+                        foreach ($rows as $row) {
+                            echo '
+                        <option> ' . $row['first_name'] . ' ' . $row['last_name'] . ' </option>
+                        ';
+                        }
+                        ?>
+                    </select>
+                <div style="color: red;">
+                    <?php echo $errors['instructor']; ?>
+                    <!-- display error message here !-->
+                </div>
+                <br><br>
+                <hr><br>
+                <p><label id="text_input" for="">Note:</label><br>
+                    <textarea name="note" id="textarea" cols="44" rows="10" placeholder="Please enter your note"></textarea>
+                </p>
+                <div style="color: red;">
+                    <?php echo $errors['note']; ?>
+                    <!-- display error message here !-->
+                </div>
 
-                    <br>
-                    <hr>
+                <br>
+                <hr>
 
-                    <p><label id="text_input" for="">Attach Your File:</label>
-                        <input type="file" id="up" name="filename" required hidden/>
-                        <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
-                    </p>
-                    <br><br>
-                    <button onclick="save()" id="submit" type="submit">Send</button>
+                <p><label id="text_input" for="">Attach Your File:</label>
+                    <input type="file" id="up" name="attachment" required hidden />
+                    <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
+                </p>
+                <div style="color: red;">
+                    <?php echo $errors['attachment']; ?>
+                    <!-- display error message here !-->
+                </div>
+                <br><br>
+                <button onclick="save()" id="submit" type="submit" name="submit">Send</button>
 
             </form>
         </div>
