@@ -162,7 +162,7 @@ if (isset($_POST['submit'])) {
     <div class="main">
 
         <div class="Instructors_requests">
-            <h1>Instructors</h1><br>
+            <h1>Instructors and Their Areas</h1><br>
             <table>
                 <tr id="heads">
                     <th id="hashtag">#</th>
