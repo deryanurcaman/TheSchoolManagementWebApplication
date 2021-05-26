@@ -3,8 +3,10 @@
 include '../config.php';
 $conn = OpenCon();
 
-$username = $password = $mything = $first_name = $last_name = '';        // initialize with empty string
-$errors = array('username' => '', 'password' => '', 'mything' => '', 'first_name' => '', 'last_name' => ''); // keys and their ampty values
+$check = $username = $password = $mything = $first_name = $last_name = '';        // initialize with empty string
+$errors = array('check' => '', 'username' => '', 'password' => '', 'mything' => '', 'first_name' => '', 'last_name' => ''); // keys and their ampty values
+
+session_start();
 if (isset($_POST['submit'])) {
     if (empty($_POST['username'])) { // check if email is empty
         $errors['username'] = 'An username is required';
@@ -44,18 +46,30 @@ if (isset($_POST['submit'])) {
         $mything = $_POST['mything'];
         if ($mything == "1") {
             $table_name = "secretaries";
+            $page_uri = "WebProgrammingProject/secretary/secretary_mainpage.php";
         } else if ($mything == "2") {
             $table_name = "instructors";
+            $page_uri = "WebProgrammingProject/instructor/instructor_mainpage.php";
         } else if ($mything == "3") {
             $table_name = "students";
+            $page_uri = "WebProgrammingProject/student/student_mainpage.php";
         }
     }
 
 
     if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['mything'])) {
 
-        $sqlNew = "INSERT INTO $table_name ( first_name, last_name, username, password) 
-        VALUES ( '$first_name', '$last_name', '$username', '$password');";
+        $sql = 'SELECT id FROM '.$table_name.' WHERE username = "'.$username.'"';
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $count = mysqli_num_rows($result);
+
+        // If result matched $username, table row must be 1 row
+        if ($count == 1) {
+            $errors['check'] = "This username is taken.";
+        } else {
+            $sqlNew = "INSERT INTO $table_name ( first_name, last_name, username, password) 
+            VALUES ( '$first_name', '$last_name', '$username', '$password');";
     
 
         if (mysqli_query($conn, $sqlNew)) {
@@ -68,10 +82,13 @@ if (isset($_POST['submit'])) {
         if (array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
             echo 'errors in the form';
         } else {
-            echo 'no errors in the form';
-            header('Location: http://localhost/WebProgrammingProject/mainpage/login.php');
+            $_SESSION['username'] = $username;
+            header("Location: http://localhost/" . $page_uri);
             exit;
         }
+        }
+
+        
     }
 }
 ?>
@@ -175,6 +192,10 @@ if (isset($_POST['submit'])) {
 
         <div style="color: red;">
             <?php echo $errors['password']; ?>
+            <!-- display error message here !-->
+        </div>
+        <div style="color: red;">
+            <?php echo $errors['check']; ?>
             <!-- display error message here !-->
         </div>
 

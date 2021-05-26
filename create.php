@@ -75,7 +75,7 @@ $table7 = "CREATE TABLE new_requests(
         id INT(11) NOT NULL AUTO_INCREMENT,
         student_id INT(11),
         instructor_id INT(11),
-        attachment VARCHAR(100),
+        attachment VARCHAR(10000),
         note VARCHAR(100),
         PRIMARY KEY (id),
         FOREIGN KEY (student_id) REFERENCES students(id),
