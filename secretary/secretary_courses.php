@@ -111,7 +111,7 @@ session_start();
             <div class="inner">
                 <a href="http://localhost/WebProgrammingProject/secretary/secretary_createCourse.php" id="create_link"><button  style="color: white;" id="new_course">Create a New Course</button></a>
             </div>
-            <div class="inner"><button onclick="download_file()" id="new_course" style="color: white; float: unset;">Download The List of Courses <img src="" alt=""></button></div>
+            <div class="inner"><a href="export.php"><button id="new_course" style="color: white; float: unset;">Download The List of Courses <img src="" alt=""></button></a></div>
         </div>
 
         <?php

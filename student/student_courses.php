@@ -1,6 +1,5 @@
 <?php
 include '../config.php';
-
 $conn = OpenCon();
 
 $sqlString = "SELECT * FROM courses INNER JOIN instructors ON courses.instructor_id=instructors.id;";
@@ -170,7 +169,7 @@ session_start();
         <br>
         <div id="outer">
             <div class="inner">
-                <button style="margin-top: unset;" onclick="download_courses()">Download The List of Courses</button>
+            <a href="export.php"><button type="submit" style="margin-top: unset;" name="export" value="Export to excel" >Download The List of Courses</button></a>
             </div>
         </div>
 
@@ -183,7 +182,7 @@ session_start();
                         <td>
                         <a href="delete-process2.php?code=<?php echo $row["code"]; ?>"><button>Drop</button></a>
 
-                            <button onclick="download_file()">Download Class Materials<img src="" alt=""></button> </td>
+                        <a href="export_material.php"><button>Download Class Materials<img src="" alt=""></button> </td></a>
                     </tr>
                 </table>
             <ul>
