@@ -63,11 +63,6 @@ if (isset($_POST['submit'])) {
         echo 'errors in the form';
     } else {
         if (!empty($_POST['note'])) {
-
-            $sqlNew = "INSERT INTO new_request ( student_id, instructor_id, note) 
-    VALUES ( '$stid', (SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'), '$note');";
-
-
             if (mysqli_query($conn, $sqlNew)) {
                 echo "created new request successfully";
             } else {
