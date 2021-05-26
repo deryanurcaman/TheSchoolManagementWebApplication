@@ -7,7 +7,7 @@ $sql1='SELECT * FROM courses WHERE code = "'.$_GET["code"].'"';
 
 $sql = "DELETE FROM my_courses WHERE course_id='" . $resultNew["id"] . "'";
 if (mysqli_query($conn, $sql)) {
-    header('Location: http://localhost/WebProgrammingProject/student/student_courses.php');
+    echo '<script> alert("Course successfully dropped."); document.location="student_courses.php" </script>';
 } else {
     echo "Error deleting record: " . mysqli_error($conn);
 }
