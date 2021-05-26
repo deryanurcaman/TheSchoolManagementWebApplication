@@ -35,18 +35,18 @@ $resultNew = mysqli_fetch_array($query);
 
 
 
-$instructor = $attachment = $note = '';        // initialize with empty string
-$errors = array('instructor' => '', 'attachment' => '', 'note' => ''); // keys and their ampty values
+$instructor = $file = $note = '';        // initialize with empty string
+$errors = array('instructor' => '', 'file' => '', 'note' => ''); // keys and their ampty values
 if (isset($_POST['submit'])) {
     if (empty($_POST['instructor'])) {
         $errors['instructor'] = 'Instructor name is required';
     } else {
         $instructor = $_POST['instructor'];
     }
-    if (empty($_POST['attachment'])) {
-        $errors['attachment'] = 'Attachment is required';
+    if (empty($_POST['file'])) {
+        $errors['file'] = 'file is required';
     } else {
-        $attachment = $_POST['attachment'];
+        $file = $_POST['file'];
     }
     if (empty($_POST['note'])) {
         $errors['note'] = 'Note is required';
@@ -64,8 +64,8 @@ if (isset($_POST['submit'])) {
     } else {
         if (!empty($_POST['note'])) {
 
-            $sqlNew = "INSERT INTO new_request ( student_id, instructor_id, attachment, note) 
-    VALUES ( '$stid', (SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'), '$attachment', '$note');";
+            $sqlNew = "INSERT INTO new_request ( student_id, instructor_id, note) 
+    VALUES ( '$stid', (SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'), '$note');";
 
 
             if (mysqli_query($conn, $sqlNew)) {
@@ -190,7 +190,7 @@ if (isset($_POST['submit'])) {
             <h1 style="text-align: center;">Join a Research Group</h1>
             <hr><br>
 
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <form action="upload.php" method="post" enctype="multipart/form-data">
                 <p><label id="text_input">Course Instructor:</label>
                     <select name="instructor" class="select">
                         <option>Select an Option</option>
@@ -220,11 +220,11 @@ if (isset($_POST['submit'])) {
                 <hr>
 
                 <p><label id="text_input" for="">Attach Your File:</label>
-                    <input type="file" id="up" name="attachment" required hidden />
+                    <input type="file" id="up" name="file" required hidden />
                     <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
                 </p>
                 <div style="color: red;">
-                    <?php echo $errors['attachment']; ?>
+                    <?php echo $errors['file']; ?>
                     <!-- display error message here !-->
                 </div>
                 <br><br>
