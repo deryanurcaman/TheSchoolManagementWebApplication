@@ -116,28 +116,28 @@ session_start();
 
         <?php
                     foreach($rows as $row){
-                        echo
-                            '
+                        ?>
                             <div class="courselist">
-                            <form action="">
+                            
                             <table>
                                 <tr>
-                                    <td><button id="delete_button" onclick="delete_course()"><img src="../assets/reject.png" alt=""></button>
+                                    <td><a href="delete-process.php?code=<?php echo $row['code']; ?>"><button id="delete_button"><img src="../assets/reject.png" alt=""></button> </a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>Delete The Course</td>
                                 </tr>
                             </table>
-                        </form>
+                       
                         <ul>
-                            <li class="classtype">'.$row['type'].'</li>
-                            <li class="classcode">'.$row['code'].'</li>
-                            <li class="classname">'.$row['name'].'</li>
-                            <li span style="font-weight:bolder;">Instructor: '.$row['first_name'].' '. $row['last_name'].'</li>
-                            <li span style="color:rgb(61, 0, 0);"> Day: '.$row['day'].' Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
+                            <li class="classtype"><?php echo $row["type"]; ?></li>
+                            <li class="classcode"><?php echo $row["code"]; ?></li>
+                            <li class="classname"><?php echo $row["name"]; ?></li>
+                            <li span style="font-weight:bolder;"><?php echo 'Instructor: '.$row['first_name'].' '. $row['last_name'].''; ?></li>
+                            <li span style="color:rgb(61, 0, 0);"> <?php echo 'Day: '.$row['day'].' Time: '.$row['start_time'].' - '. $row['end_time'].''; ?></li>
                         </ul>
-                        </div>';
+                        </div>
+                        <?php
                     }
                 ?>         
 </body>

@@ -17,7 +17,7 @@ session_start();
     $query = mysqli_query($conn, $sql);
     $resultNew = mysqli_fetch_array($query);
 
-    $sqlString2 = "SELECT * FROM courses
+    $sqlString2 = "SELECT courses.id AS Cid, instructors.first_name,instructors.last_name, courses.code, courses.name, courses.type, courses.start_time, courses.end_time, courses.instructor_id, courses.day FROM courses
     INNER JOIN my_courses ON my_courses.student_id= ".$resultNew['id']." AND my_courses.course_id=courses.id
     INNER JOIN instructors ON instructors.id=courses.instructor_id;";
     $query2 = mysqli_query($conn, $sqlString2);
@@ -178,26 +178,28 @@ session_start();
                 <button style="margin-top: unset;;" onclick="download_courses()">Download The List of Courses</button>
             </div>
         </div>
-        <?php foreach($rows2 as $row){ echo'
+        <?php foreach($rows2 as $row){ 
+        ?>
         <div class="courselist">
             <form action="">
                 <table>
                     <tr>
                         <td>
-                            <button onclick="drop_course()">Drop</button>
+                        <a href="delete-process2.php?Cid=<?php echo $row["Cid"]; ?>"><button>Drop</button></a>
 
                             <button onclick="download_file()">Download Class Materials<img src="" alt=""></button> </td>
                     </tr>
                 </table>
             </form>
             <ul>
-                            <li class="classtype">'.$row['type'].'</li>
-                            <li class="classcode">'.$row['code'].'</li>
-                            <li class="classname">'.$row['name'].'</li>
-                            <li span style="font-weight:bolder;">Instructor: '.$row['first_name'].' '. $row['last_name'].'</li>
-                            <li span style="color:rgb(61, 0, 0);"> Day: '.$row['day'].' Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
+                            <li class="classtype"><?php echo $row['type']; ?></li>
+                            <li class="classcode"><?php echo $row['code']; ?></li>
+                            <li class="classname"><?php echo $row['name']; ?></li>
+                            <li span style="font-weight:bolder;"><?php echo 'Instructor: '.$row['first_name'].' '. $row['last_name'].''; ?></li>
+                            <li span style="color:rgb(61, 0, 0);"> <?php echo 'Day: '.$row['day'].' Time: '.$row['start_time'].' - '. $row['end_time'].''; ?></li>
             </ul>
-        </div>';
+        </div>
+        <?php
         }
         ?> 
     </div>
