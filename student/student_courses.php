@@ -86,7 +86,7 @@ session_start();
         </div>
 
         <br>
-        <strong style="text-align:center;">Student <br><b><?php echo $resultNew['first_name'].' '. $resultNew['last_name']; ?></b></strong>
+        <strong style="text-align:center;">Student<br><b><?php echo $resultNew['first_name'].' '. $resultNew['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
@@ -175,22 +175,22 @@ session_start();
         <br>
         <div id="outer">
             <div class="inner">
-                <button style="margin-top: unset;;" onclick="download_courses()">Download The List of Courses</button>
+                <button style="margin-top: unset;" onclick="download_courses()">Download The List of Courses</button>
             </div>
         </div>
+
         <?php foreach($rows2 as $row){ 
         ?>
         <div class="courselist">
-            <form action="">
+            
                 <table>
                     <tr>
                         <td>
-                        <a href="delete-process2.php?Cid=<?php echo $row["Cid"]; ?>"><button>Drop</button></a>
+                        <a href="delete-process2.php?code=<?php echo $row["code"]; ?>"><button>Drop</button></a>
 
                             <button onclick="download_file()">Download Class Materials<img src="" alt=""></button> </td>
                     </tr>
                 </table>
-            </form>
             <ul>
                             <li class="classtype"><?php echo $row['type']; ?></li>
                             <li class="classcode"><?php echo $row['code']; ?></li>
