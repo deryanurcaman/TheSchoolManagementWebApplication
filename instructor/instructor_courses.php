@@ -1,19 +1,18 @@
 <?php
 include '../config.php';
 $conn = OpenCon();
-$username='';
+$username = '';
 session_start();
 
-    $username=$_SESSION['username'];
-    $sql='SELECT * FROM instructors WHERE username = "'.$username.'"';
-    $query = mysqli_query($conn, $sql);
-    $result = mysqli_fetch_array($query);
+$username = $_SESSION['username'];
+$sql = 'SELECT * FROM instructors WHERE username = "' . $username . '"';
+$query = mysqli_query($conn, $sql);
+$result = mysqli_fetch_array($query);
 
-    $sqlString = "SELECT * FROM courses WHERE courses.instructor_id=".$result['id']."";
-    $query2 = mysqli_query($conn, $sqlString);
-    $rows = array();
-        while($result2 = mysqli_fetch_array($query2))
-    {
+$sqlString = "SELECT * FROM courses WHERE courses.instructor_id=" . $result['id'] . "";
+$query2 = mysqli_query($conn, $sqlString);
+$rows = array();
+while ($result2 = mysqli_fetch_array($query2)) {
     $rows[] = $result2;
 }
 
@@ -34,15 +33,16 @@ session_start();
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
+
     body {
         font-family: 'Domine', serif;
     }
-    
+
     strong {
         font-family: 'Domine', serif;
         font-size: 25px;
     }
-    
+
     body b {
         font-family: 'Stalemate', cursive;
         font-size: 50px;
@@ -65,7 +65,7 @@ session_start();
         <div><img src="../assets/hogwarts_logo.png" height="180px" style="opacity: 0.8;"></img>
         </div>
         <br>
-        <strong style="text-align:center;">Instructor <br><b><?php echo $result['first_name'].' '. $result['last_name']; ?></b></strong>
+        <strong style="text-align:center;">Instructor <br><b><?php echo $result['first_name'] . ' ' . $result['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
@@ -106,8 +106,12 @@ session_start();
         <div class="allCourses">
             <h1>Courses</h1>
             <?php
-                    foreach($rows as $row){
-                        echo'
+            foreach ($rows as $row) {
+                $token = strtok($row['start_time'], ":");
+                $token2 = strtok(":");
+                $token3 = strtok($row['end_time'], ":");
+                $token4 = strtok(":");
+                ?>
             <div class="courselist">
                 <form action="">
                     <table>
@@ -126,16 +130,18 @@ session_start();
                     </table>
                 </form>
                 <ul>
-                    <li class="classtype">'.$row['type'].'</li>
-                    <li class="classcode">'.$row['code'].'</li>
-                    <li class="classname">'.$row['name'].'</li>
+                    <li class="classtype"><?php echo $row["type"]; ?></li>
+                    <li class="classcode"><?php echo $row["code"]; ?></li>
+                    <li class="classname"><?php echo $row["name"]; ?></li>
                     <li class="classname">number of students</li>
-                    <li span style="color:rgb(61, 0, 0);"> Day: '.$row['day'].' Time: '.$row['start_time'].' - '. $row['end_time'].'</li>
+                    <li span style="color:rgb(61, 0, 0);"> <?php echo 'Day: ' . $row['day']; ?></li>
+                    <li span style="color:rgb(61, 0, 0);"> <?php echo ' Time: ' . $token.':'.$token2 . ' - ' . $token3.':'.$token4  . ''; ?></li>              
                 </ul>
-            </div>';
-                    }
-                ?>  
-            
+            </div>
+            <?php
+        }
+        ?>
+
         </div>
 
     </div>

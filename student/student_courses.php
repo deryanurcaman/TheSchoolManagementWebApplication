@@ -5,27 +5,25 @@ $conn = OpenCon();
 $sqlString = "SELECT * FROM courses INNER JOIN instructors ON courses.instructor_id=instructors.id;";
 $query = mysqli_query($conn, $sqlString);
 $rows = array();
-while($result = mysqli_fetch_array($query))
-{
+while ($result = mysqli_fetch_array($query)) {
     $rows[] = $result;
 }
 
 session_start();
 
-    $username=$_SESSION['username'];
-    $sql='SELECT * FROM students WHERE username = "'.$username.'"';
-    $query = mysqli_query($conn, $sql);
-    $resultNew = mysqli_fetch_array($query);
+$username = $_SESSION['username'];
+$sql = 'SELECT * FROM students WHERE username = "' . $username . '"';
+$query = mysqli_query($conn, $sql);
+$resultNew = mysqli_fetch_array($query);
 
-    $sqlString2 = "SELECT courses.id AS Cid, instructors.first_name,instructors.last_name, courses.code, courses.name, courses.type, courses.start_time, courses.end_time, courses.instructor_id, courses.day FROM courses
-    INNER JOIN my_courses ON my_courses.student_id= ".$resultNew['id']." AND my_courses.course_id=courses.id
+$sqlString2 = "SELECT courses.id AS Cid, instructors.first_name,instructors.last_name, courses.code, courses.name, courses.type, courses.start_time, courses.end_time, courses.instructor_id, courses.day FROM courses
+    INNER JOIN my_courses ON my_courses.student_id= " . $resultNew['id'] . " AND my_courses.course_id=courses.id
     INNER JOIN instructors ON instructors.id=courses.instructor_id;";
-    $query2 = mysqli_query($conn, $sqlString2);
-    $rows2 = array();
-    while($result2 = mysqli_fetch_array($query2))
-    {
-        $rows2[] = $result2;
-    }
+$query2 = mysqli_query($conn, $sqlString2);
+$rows2 = array();
+while ($result2 = mysqli_fetch_array($query2)) {
+    $rows2[] = $result2;
+}
 
 
 ?>
@@ -43,7 +41,7 @@ session_start();
     <title>Student Courses</title>
 </head>
 
- <script>
+<script>
     function download_file() {
         alert("The Class Materials Is Successfully Downloaded");
     }
@@ -55,20 +53,21 @@ session_start();
     function download_courses() {
         alert("The List Of All Courses Is Successfully Downloaded");
     }
-</script> 
+</script>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Domine&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Stalemate&display=swap');
+
     body {
         font-family: 'Domine', serif;
     }
-    
+
     strong {
         font-family: 'Domine', serif;
         font-size: 25px;
     }
-    
+
     body b {
         font-family: 'Stalemate', cursive;
         font-size: 50px;
@@ -82,7 +81,7 @@ session_start();
         </div>
 
         <br>
-        <strong style="text-align:center;">Student<br><b><?php echo $resultNew['first_name'].' '. $resultNew['last_name']; ?></b></strong>
+        <strong style="text-align:center;">Student<br><b><?php echo $resultNew['first_name'] . ' ' . $resultNew['last_name']; ?></b></strong>
 
 
         <hr style="border-color: white;">
@@ -133,31 +132,39 @@ session_start();
     </div>
     <br>
 
-    
+
     <!-- Page content -->
     <div class="main">
         <h1>All Available Courses</h1>
 
-    <?php 
-    foreach($rows as $row){?>
-        <div class="courselist">
+        <?php
+        foreach ($rows as $row) {
+
+            $token = strtok($row['start_time'], ":");
+            $token2 = strtok(":");
+            $token3 = strtok($row['end_time'], ":");
+            $token4 = strtok(":"); ?>
+
+            <div class="courselist">
                 <table>
                     <tr>
                         <td>
-                        <a href="add-process.php?code=<?php echo $row["code"]; ?>"><button onclick="add_course()">Add</button></a>
+                            <a href="add-process.php?code=<?php echo $row["code"]; ?>"><button onclick="add_course()">Add</button></a>
 
 
-                            <button onclick="download_file()">Download Class Materials<img src="" alt=""></button> </td>
+                            <button onclick="download_file()">Download Class Materials<img src="" alt=""></button>
+                        </td>
                     </tr>
                 </table>
-            <ul>
-            <li class="classtype"><?php echo $row['type']; ?></li>
-                            <li class="classcode"><?php echo $row['code']; ?></li>
-                            <li class="classname"><?php echo $row['name']; ?></li>
-                            <li span style="font-weight:bolder;"><?php echo 'Instructor: '.$row['first_name'].' '. $row['last_name'].''; ?></li>
-                            <li span style="color:rgb(61, 0, 0);"> <?php echo 'Day: '.$row['day'].' Time: '.$row['start_time'].' - '. $row['end_time'].''; ?></li>
-            </ul>
-        </div>
+                <ul>
+                    <li class="classtype"><?php echo $row['type']; ?></li>
+                    <li class="classcode"><?php echo $row['code']; ?></li>
+                    <li class="classname"><?php echo $row['name']; ?></li>
+                    <li span style="font-weight:bolder;"><?php echo 'Instructor: ' . $row['first_name'] . ' ' . $row['last_name'] . ''; ?></li>
+                    <li span style="color:rgb(61, 0, 0);"> <?php echo 'Day: ' . $row['day']; ?></li>
+                    <li span style="color:rgb(61, 0, 0);"> <?php echo ' Time: ' . $token . ':' . $token2 . ' - ' . $token3 . ':' . $token4  . ''; ?></li>
+                </ul>
+            </div>
         <?php
         }
         ?>
@@ -169,33 +176,38 @@ session_start();
         <br>
         <div id="outer">
             <div class="inner">
-            <a href="export.php"><button type="submit" style="margin-top: unset;" name="export" value="Export to excel" >Download The List of Courses</button></a>
+                <a href="export.php"><button type="submit" style="margin-top: unset;" name="export" value="Export to excel">Download The List of Courses</button></a>
             </div>
         </div>
 
-        <?php foreach($rows2 as $row){ 
+        <?php foreach ($rows2 as $row) {
+            $token = strtok($row['start_time'], ":");
+            $token2 = strtok(":");
+            $token3 = strtok($row['end_time'], ":");
+            $token4 = strtok(":");
         ?>
-        <div class="courselist">
-            
+            <div class="courselist">
+
                 <table>
                     <tr>
                         <td>
-                        <a href="delete-process2.php?code=<?php echo $row["code"]; ?>"><button>Drop</button></a>
+                            <a href="delete-process2.php?code=<?php echo $row["code"]; ?>"><button>Drop</button></a>
 
-                        <a href="export_material.php"><button>Download Class Materials<img src="" alt=""></button> </td></a>
+                            <a href="export_material.php"><button>Download Class Materials<img src="" alt=""></button>
+                        </td></a>
                     </tr>
                 </table>
-            <ul>
-                            <li class="classtype"><?php echo $row['type']; ?></li>
-                            <li class="classcode"><?php echo $row['code']; ?></li>
-                            <li class="classname"><?php echo $row['name']; ?></li>
-                            <li span style="font-weight:bolder;"><?php echo 'Instructor: '.$row['first_name'].' '. $row['last_name'].''; ?></li>
-                            <li span style="color:rgb(61, 0, 0);"> <?php echo 'Day: '.$row['day'].' Time: '.$row['start_time'].' - '. $row['end_time'].''; ?></li>
-            </ul>
-        </div>
+                <ul>
+                    <li class="classtype"><?php echo $row['type']; ?></li>
+                    <li class="classcode"><?php echo $row['code']; ?></li>
+                    <li class="classname"><?php echo $row['name']; ?></li>
+                    <li span style="font-weight:bolder;"><?php echo 'Instructor: ' . $row['first_name'] . ' ' . $row['last_name'] . ''; ?></li>
+                    <li span style="color:rgb(61, 0, 0);"> <?php echo 'Day: ' . $row['day']; ?></li>
+                    <li span style="color:rgb(61, 0, 0);"> <?php echo ' Time: ' . $token . ':' . $token2 . ' - ' . $token3 . ':' . $token4  . ''; ?></li>                </ul>
+            </div>
         <?php
         }
-        ?> 
+        ?>
     </div>
 
 
