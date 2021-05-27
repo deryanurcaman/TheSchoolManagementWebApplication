@@ -21,17 +21,6 @@ while ($result2 = mysqli_fetch_array($query2)) {
 
     $rows[] = $result2;
 }
-
-foreach($rows as $row){
-    $sqlString2 = "SELECT * FROM courses
-    INNER JOIN my_courses ON my_courses.student_id= " . $row['id'] . " AND my_courses.course_id=courses.id;";
-    $query3 = mysqli_query($conn, $sqlString2);
-    $rows2 = array();
-
-    while ($result3 = mysqli_fetch_array($query3)) {
-    $rows2[] = $result3;
-    }
-}
 ?>
 
 
@@ -151,6 +140,20 @@ foreach($rows as $row){
                 <?php
                 $i = 1;
                 foreach ($rows as $row) {
+
+                    $qq ='SELECT `courses`.`id`, `my_courses`.`course_id`, `my_courses`.`student_id`, `students`.`id`, `courses`.`name` 
+                    FROM `courses` 
+                        LEFT JOIN `my_courses` ON `my_courses`.`course_id` = `courses`.`id` 
+                        LEFT JOIN `students` ON `my_courses`.`student_id` = `students`.`id`
+                        WHERE `students`.`student_id` = ' . $row['st'] . '
+                        ';
+                    $query3 = mysqli_query($conn, $qq);
+                    $rows2 = array();
+                
+                    while ($result3 = mysqli_fetch_array($query3)) {
+                    $rows2[] = $result3;
+                    }
+
                     echo
                     '
                 <tr>

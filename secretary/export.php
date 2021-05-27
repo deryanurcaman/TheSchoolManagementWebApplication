@@ -2,10 +2,11 @@
 include '../config.php';
 $conn = OpenCon();
 mysqli_select_db($conn, 'webprogram');  
-$sql = "SELECT `type`,`code`,`name`,`day`,`start_time`,`end_time` FROM `courses`";  
+$sql = "SELECT `type`,`code`,`name`,`first_name`, `last_name`, `day`,`start_time`,`end_time` FROM `courses` 
+LEFT JOIN `instructors` ON `courses`.`instructor_id` = `instructors`.`id`;";  
 $setRec = mysqli_query($conn, $sql);  
 $columnHeader = '';  
-$columnHeader = "type" . "\t" . "Code" . "\t" . "Name" . "\t". "Day" . "\t". "Start Time" . "\t". "End Time" . "\t";  
+$columnHeader = "Type" . "\t" . "Code" . "\t" . "Name" . "\t". "Instructor Name" . "\t" .  "Instructor Surname" . "\t" . "Day" . "\t". "Start Time" . "\t". "End Time" . "\t";  
 $setData = '';  
   while ($rec = mysqli_fetch_row($setRec)) {  
     $rowData = '';  

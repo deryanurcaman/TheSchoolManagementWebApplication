@@ -9,7 +9,7 @@ $sql = 'SELECT * FROM instructors WHERE username = "' . $username . '"';
 $query = mysqli_query($conn, $sql);
 $result = mysqli_fetch_array($query);
 
-$sqlString = "SELECT * FROM courses WHERE courses.instructor_id=" . $result['id'] . "";
+$sqlString = "SELECT *, courses.id AS cid FROM courses WHERE courses.instructor_id=" . $result['id'] . "";
 $query2 = mysqli_query($conn, $sqlString);
 $rows = array();
 while ($result2 = mysqli_fetch_array($query2)) {
@@ -107,6 +107,13 @@ while ($result2 = mysqli_fetch_array($query2)) {
             <h1>Courses</h1>
             <?php
             foreach ($rows as $row) {
+
+                $sql22 = "SELECT course_id, COUNT(student_id) FROM my_courses WHERE course_id = ".$row['cid']." GROUP BY course_id";
+                $no_Of_Students = mysqli_query($conn, $sql22);
+                $no_Of_Students = mysqli_fetch_assoc($no_Of_Students);
+
+
+
                 $token = strtok($row['start_time'], ":");
                 $token2 = strtok(":");
                 $token3 = strtok($row['end_time'], ":");
@@ -133,7 +140,7 @@ while ($result2 = mysqli_fetch_array($query2)) {
                     <li class="classtype"><?php echo $row["type"]; ?></li>
                     <li class="classcode"><?php echo $row["code"]; ?></li>
                     <li class="classname"><?php echo $row["name"]; ?></li>
-                    <li class="classname">number of students</li>
+                    <li class="classname">number of students: <?php echo $no_Of_Students['COUNT(student_id)']; ?></li>
                     <li span style="color:rgb(61, 0, 0);"> <?php echo 'Day: ' . $row['day']; ?></li>
                     <li span style="color:rgb(61, 0, 0);"> <?php echo ' Time: ' . $token.':'.$token2 . ' - ' . $token3.':'.$token4  . ''; ?></li>              
                 </ul>
