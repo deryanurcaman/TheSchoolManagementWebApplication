@@ -120,27 +120,35 @@ while ($result2 = mysqli_fetch_array($query2)) {
                 $token4 = strtok(":");
                 ?>
             <div class="courselist">
-                <form action="">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>
-                            <td><img id="download" onclick="download_file()" src="../assets/download.png" alt=""></td>
+                            <td><a href="export.php?code=<?php echo $row["code"]; ?>"><img id="download" src="../assets/download.png" alt=""></td>
                             <td><input type="file" id="up" name="filename" hidden/>
-                                <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
-                                <input type="submit" onclick="submit_file()" name="" id="sub" hidden/>
-                                <label for="sub"><img src="../assets/submit.png" alt="" id="submit" title="Submit File"></label>
+                                <label for="up"><img id="upload" src="../assets/upload.png" alt=""></a></label>
+                                <input type="submit" name="submit" id="sub" hidden/>
+                                <label for="sub"><a href="upload_material.php?code=<?php echo $row["code"]; ?>"><img src="../assets/submit.png" alt="" id="submit" name="submit" title="Submit File"></a></label>
                             </td>
                         </tr>
                         <tr>
-                            <td>Download list of students</td>
+                            <td> Download list of students</td>
                             <td>Upload class material</td>
                         </tr>
                     </table>
                 </form>
+
                 <ul>
                     <li class="classtype"><?php echo $row["type"]; ?></li>
                     <li class="classcode"><?php echo $row["code"]; ?></li>
                     <li class="classname"><?php echo $row["name"]; ?></li>
-                    <li class="classname">number of students: <?php echo $no_Of_Students['COUNT(student_id)']; ?></li>
+                    <li class="classname">Number of Students: <?php
+                    
+                    if($no_Of_Students['COUNT(student_id)']==NULL){
+                        $no_Of_Students['COUNT(student_id)']=0;
+                    }
+                    
+                    
+                    echo $no_Of_Students['COUNT(student_id)']; ?></li>
                     <li span style="color:rgb(61, 0, 0);"> <?php echo 'Day: ' . $row['day']; ?></li>
                     <li span style="color:rgb(61, 0, 0);"> <?php echo ' Time: ' . $token.':'.$token2 . ' - ' . $token3.':'.$token4  . ''; ?></li>              
                 </ul>

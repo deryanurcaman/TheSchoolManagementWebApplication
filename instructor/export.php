@@ -9,16 +9,15 @@ $query = mysqli_query($conn, $sql1);
 $resultNew = mysqli_fetch_array($query);
 
 mysqli_select_db($conn, 'webprogram');  
-$sql = 'SELECT `type`,`code`,`name`,`instructors`.`first_name`, `instructors`.`last_name`, `day`,`start_time`,`end_time`
-FROM `courses` 
-JOIN `my_courses` ON `my_courses`.`course_id` = `courses`.`id` 
-JOIN `instructors` ON `courses`.`instructor_id` = `instructors`.`id`
-JOIN `students` ON `my_courses`.`student_id` = `students`.`id`
-WHERE `students`.`id` = "' . $resultNew['id'] . '"';
+$sql = 'SELECT `students`.`student_id`, `students`.`first_name`, `students`.`last_name`
+FROM `students` 
+JOIN `my_courses` ON `my_courses`.`student_id` = `students`.`id` 
+JOIN `courses` ON `courses`.`id` = `my_courses`.`course_id`
+WHERE `courses`.`code` = "' .$_GET["code"] . '"';
 
 $setRec = mysqli_query($conn, $sql);  
 $columnHeader = '';  
-$columnHeader = "Type" . "\t" . "Code" . "\t" . "Name" . "\t". "Instructor Name" . "\t" .  "Instructor Surname" . "\t" . "Day" . "\t". "Start Time" . "\t". "End Time" . "\t";
+$columnHeader = "Student ID" . "\t" . "First Name" . "\t" . "Last Name" . "\t";
 $setData = '';  
   while ($rec = mysqli_fetch_row($setRec)) {  
     $rowData = '';  
@@ -30,7 +29,7 @@ $setData = '';
 }  
   
 header("Content-type: application/octet-stream");  
-header("Content-Disposition: attachment; filename=List_Of_Taken_Courses.xls");  
+header("Content-Disposition: attachment; filename=List_Of_Students.xls");  
 header("Pragma: no-cache");  
 header("Expires: 0");  
 
