@@ -80,10 +80,10 @@ session_start();
             </tr>
             <tr id="hv">
                 <td>
-                    <a href="http://localhost/WebProgrammingProject/mainpage/login.php"><img src="../assets/logout.png" height="50px" alt=""></a>
+                    <a href="http://localhost/WebProgrammingProject/mainpage/logout.php"><img src="../assets/logout.png" height="50px" alt=""></a>
                 </td>
 
-                <td><a id="icon4" href="http://localhost/WebProgrammingProject/mainpage/login.php">Log Out</a></td>
+                <td><a id="icon4" href="http://localhost/WebProgrammingProject/mainpage/logout.php">Log Out</a></td>
             </tr>
         </table>
 
