@@ -234,7 +234,6 @@ while ($result = mysqli_fetch_array($query)) {
 
                 <p><label id="text_input">Course Instructor:</label>
                     <select name="instructor" class="select">
-                        <option>Select an Option</option>
                         <?php
                         foreach ($rows as $row) {
                             echo '
@@ -259,7 +258,6 @@ while ($result = mysqli_fetch_array($query)) {
                 <div id="time">
                     <p id="text_input">Day of the course:
                         <select name="day" class="select">
-                            <option >Select an Option</option>
                             <option>Monday</option>
                             <option>Tuesday</option>
                             <option>Wednesday</option>

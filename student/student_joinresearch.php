@@ -36,44 +36,49 @@ $resultNew = mysqli_fetch_array($query);
 
 
 $instructor = $file = $note = '';        // initialize with empty string
-$errors = array('instructor' => '', 'file' => '', 'note' => ''); // keys and their ampty values
-if (isset($_POST['submit'])) {
-    if (empty($_POST['instructor'])) {
-        $errors['instructor'] = 'Instructor name is required';
-    } else {
-        $instructor = $_POST['instructor'];
-    }
-    if (empty($_POST['file'])) {
-        $errors['file'] = 'file is required';
-    } else {
-        $file = $_POST['file'];
-    }
-    if (empty($_POST['note'])) {
-        $errors['note'] = 'Note is required';
-    } else {
-        $note = $_POST['note'];
-    }
+if (isset($_POST["submit"])) {
 
+     // Allow certain file formats
+     $allowTypes = array('jpg', 'png', 'jpeg', 'docx', 'pdf');
 
-    $stid = $resultNew['id'];
-    $token = strtok($instructor, " ");
+    $instructor = $_POST['instructor'];
+
+    $student_id = $resultNew['id'];
+
+    $token = strtok($_POST['instructor'], " ");
     $token2 = strtok(" ");
+    
+    $note = $_POST['note'];
 
-    if (array_filter($errors)) {  // checks all the values of the array. If all the values of the array are ampty or false this method returns false.
-        echo 'errors in the form';
-    } else {
-        if (!empty($_POST['note'])) {
-            if (mysqli_query($conn, $sqlNew)) {
-                echo "created new request successfully";
+    $file = $_POST['file'];
+
+    if (!empty($_FILES["file"]["name"])) {
+        $targetDir = "../uploads/";
+        $fileName = basename($_FILES["file"]["name"]);
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+        if (in_array($fileType, $allowTypes)) {
+            // Upload file to server
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
+                // Insert image file name into database
+                $insert = $conn->query("INSERT INTO new_requests (student_id, instructor_id, note, attachment) VALUES ('$student_id',(SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'),'$note','$fileName')");
+                if ($insert) {
+                    $statusMsg = "The file " . $fileName . " has been uploaded successfully.";
+                    echo '<script> alert("Join request sent successfully."); document.location="student_joinresearch.php" </script>';
+                } else {
+                    echo '<script> alert("File upload failed, please try again."); document.location="student_joinresearch.php" </script>';
+                }
             } else {
-                echo "Error: " . $sqlNew . "<br>" . mysqli_error($conn);
+                echo '<script> alert("Sorry, there was an error uploading your file."); document.location="student_joinresearch.php" </script>';
             }
-            echo 'no errors in the form';
-            exit;
+        } else {
+            echo '<script> alert("Sorry, only JPG, JPEG, PNG, DOCX, & PDF files are allowed to upload."); document.location="student_joinresearch.php" </script>';
         }
     }
+if(empty($_FILES["file"]["name"])){
+    $insert = $conn->query("INSERT INTO new_requests (student_id, instructor_id, note) VALUES ('$student_id',(SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'),'$note')");
 }
-
+}
 
 ?>
 
@@ -185,10 +190,9 @@ if (isset($_POST['submit'])) {
             <h1 style="text-align: center;">Join a Research Group</h1>
             <hr><br>
 
-            <form action="upload.php" method="post" enctype="multipart/form-data">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                 <p><label id="text_input">Course Instructor:</label>
                     <select name="instructor" class="select">
-                        <option>Select an Option</option>
                         <?php
                         foreach ($rows as $row) {
                             echo '
@@ -198,18 +202,13 @@ if (isset($_POST['submit'])) {
                         ?>
                     </select>
                 <div style="color: red;">
-                    <?php echo $errors['instructor']; ?>
-                    <!-- display error message here !-->
-                </div>
+
                 <br><br>
                 <hr><br>
                 <p><label id="text_input" for="">Note:</label><br>
                     <textarea name="note" id="textarea" cols="44" rows="10" placeholder="Please enter your note"></textarea>
                 </p>
-                <div style="color: red;">
-                    <?php echo $errors['note']; ?>
-                    <!-- display error message here !-->
-                </div>
+
 
                 <br>
                 <hr>
@@ -218,10 +217,7 @@ if (isset($_POST['submit'])) {
                     <input type="file" id="up" name="file" required hidden />
                     <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
                 </p>
-                <div style="color: red;">
-                    <?php echo $errors['file']; ?>
-                    <!-- display error message here !-->
-                </div>
+
                 <br><br>
                 <button onclick="save()" id="submit" type="submit" name="submit">Send</button>
 
