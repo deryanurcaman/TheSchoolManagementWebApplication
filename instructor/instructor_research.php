@@ -21,6 +21,17 @@ while ($result2 = mysqli_fetch_array($query2)) {
 
     $rows[] = $result2;
 }
+
+$requests = "SELECT DISTINCT new_requests.student_id AS stid, new_requests.note
+FROM  new_requests
+    LEFT JOIN instructors ON new_requests.instructor_id =". $result['id'] . ";";
+$query4 = mysqli_query($conn, $requests);
+$rows4 = array();
+while ($result4 = mysqli_fetch_array($query4)) {
+
+    $rows4[] = $result4;
+}
+
 ?>
 
 
@@ -191,70 +202,39 @@ while ($result2 = mysqli_fetch_array($query2)) {
                     <th id="research_note">Note</th>
                     <th>Attachment</th>
                 </tr>
+
+                <?php $j=1;
+            foreach ($rows4 as $row) {
+                $aaaa ="SELECT students.student_id, students.first_name , students.last_name, students.class
+                    FROM students 
+                        LEFT JOIN new_requests ON new_requests.student_id =students.id 
+                        WHERE students.id = " . $row['stid'] . "
+                        ";
+                    $query5 = mysqli_query($conn, $aaaa);
+                    $rows5 = array();
+                    while ($result5 = mysqli_fetch_array($query5)) {
+                    $rows5[] = $result5;
+                    } foreach ($rows5 as $roww) {
+                ?>
                 <tr>
                     <td>
                         <button onclick="approve()" id="decision"><img src="../assets/approved.png" alt=""></button>
                         <button onclick="reject()" id="decision"><img src="../assets/reject.png" alt=""></button>
                     </td>
-                    <td>1</td>
+                    <td><?php echo $j; ?></td>
                     <td id="research_student">
                         <ul>
-                            <li>4268765</li>
-                            <li>Milly Bulstro</li>
-                            <li>4th Grade</li>
+                            <li>ID: <?php echo $roww["student_id"]; ?></li>
+                            <li><?php echo $roww["first_name"].' '. $roww["last_name"]; ?></li>
+                            <li>Class: <?php echo $roww["class"]; ?></li>
                         </ul>
                     </td>
-                    <td id="research_note">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat molestias voluptate ipsa dignissimos numquam voluptatem quas voluptatibus facere id, corrupti eius enim illum qui non error facilis ab earum accusamus.</td>
+                    <td id="research_note"><?php echo $row["note"]; ?></td>
                     <td><img onclick="download_file()" title="Download" id="download" src="../assets/download.png" height="50px" alt=""></td>
                 </tr>
-                <tr>
-                    <td>
-                        <button onclick="approve()" id="decision"><img src="../assets/approved.png" alt=""></button>
-                        <button onclick="reject()" id="decision"><img src="../assets/reject.png" alt=""></button>
-                    </td>
-                    <td>2</td>
-                    <td id="research_student">
-                        <ul>
-                            <li>1809230</li>
-                            <li>Geoffrey Hooper</li>
-                            <li>3rd Grade</li>
-                        </ul>
-                    </td>
-                    <td id="research_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam non sunt distinctio explicabo quae, sapiente quasi fugiat deleniti perferendis enim asperiores doloremque? Est amet fugit eveniet iusto id a ullam?</td>
-                    <td><img onclick="download_file()" title="Download" id="download" src="../assets/download.png" height="50px" alt=""></td>
-                </tr>
-                <tr>
-                    <td>
-                        <button onclick="approve()" id="decision"><img src="../assets/approved.png" alt=""></button>
-                        <button onclick="reject()" id="decision"><img src="../assets/reject.png" alt=""></button>
-                    </td>
-                    <td>3</td>
-                    <td id="research_student">
-                        <ul>
-                            <li>4651012</li>
-                            <li>Eloise Midgen</li>
-                            <li>5th Grade</li>
-                        </ul>
-                    </td>
-                    <td id="research_note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque ipsa deserunt nemo, totam distinctio voluptatem, tempora pariatur dolores omnis explicabo qui animi eveniet natus suscipit. Facilis at incidunt tempora possimus!</td>
-                    <td><img onclick="download_file()" title="Download" id="download" src="../assets/download.png" height="50px" alt=""></td>
-                </tr>
-                <tr>
-                    <td>
-                        <button onclick="approve()" id="decision"><img src="../assets/approved.png" alt=""></button>
-                        <button onclick="reject()" id="decision"><img src="../assets/reject.png" alt=""></button>
-                    </td>
-                    <td>4</td>
-                    <td id="research_student">
-                        <ul>
-                            <li>3142269</li>
-                            <li>Blaise Zabini</li>
-                            <li>4th Grade</li>
-                        </ul>
-                    </td>
-                    <td id="research_note">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita architecto eligendi harum minima itaque tenetur sit pariatur deleniti. Corporis tenetur sapiente quod cumque repudiandae impedit ea saepe error nostrum commodi!</td>
-                    <td><img onclick="download_file()" title="Download" id="download" src="../assets/download.png" height="50px" alt=""></td>
-                </tr>
+
+                <?php $j=$j+1;}} ?>
+                
             </table>
         </div>
     </div>
