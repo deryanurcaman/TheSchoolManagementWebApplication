@@ -38,8 +38,8 @@ $resultNew = mysqli_fetch_array($query);
 $instructor = $file = $note = '';        // initialize with empty string
 if (isset($_POST["submit"])) {
 
-     // Allow certain file formats
-     $allowTypes = array('jpg', 'png', 'jpeg', 'docx', 'pdf');
+    // Allow certain file formats
+    $allowTypes = array('jpg', 'png', 'jpeg', 'docx', 'pdf');
 
     $instructor = $_POST['instructor'];
 
@@ -47,7 +47,7 @@ if (isset($_POST["submit"])) {
 
     $token = strtok($_POST['instructor'], " ");
     $token2 = strtok(" ");
-    
+
     $note = $_POST['note'];
 
     $file = $_POST['file'];
@@ -62,6 +62,26 @@ if (isset($_POST["submit"])) {
             if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
                 // Insert image file name into database
                 $insert = $conn->query("INSERT INTO new_requests (student_id, instructor_id, note, attachment) VALUES ('$student_id',(SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'),'$note','$fileName')");
+
+                // $sql = 'SELECT id FROM ' . $table_name . ' WHERE username = "' . $username . '" and password = "' . $password . '"';
+
+                // $result = mysqli_query($conn, $sql);
+
+
+                // $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+                // $count = mysqli_num_rows($result);
+
+                // // If result matched $myusername and $mypassword, table row must be 1 row
+                // if ($count == 1) {
+                //     $_SESSION['username'] = $username;
+                //     header("location: http://localhost/" . $page_uri);
+                // } else {
+                //     $errors['check'] = "Your Login Name or Password is invalid";
+                // }
+
+
+
                 if ($insert) {
                     $statusMsg = "The file " . $fileName . " has been uploaded successfully.";
                     echo '<script> alert("Join request sent successfully."); document.location="student_joinresearch.php" </script>';
@@ -75,9 +95,9 @@ if (isset($_POST["submit"])) {
             echo '<script> alert("Sorry, only JPG, JPEG, PNG, DOCX, & PDF files are allowed to upload."); document.location="student_joinresearch.php" </script>';
         }
     }
-if(empty($_FILES["file"]["name"])){
-    $insert = $conn->query("INSERT INTO new_requests (student_id, instructor_id, note) VALUES ('$student_id',(SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'),'$note')");
-}
+    if (empty($_FILES["file"]["name"])) {
+        $insert = $conn->query("INSERT INTO new_requests (student_id, instructor_id, note) VALUES ('$student_id',(SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'),'$note')");
+    }
 }
 
 ?>
@@ -203,23 +223,23 @@ if(empty($_FILES["file"]["name"])){
                     </select>
                 <div style="color: red;">
 
-                <br><br>
-                <hr><br>
-                <p><label id="text_input" for="">Note:</label><br>
-                    <textarea name="note" id="textarea" cols="44" rows="10" placeholder="Please enter your note"></textarea>
-                </p>
+                    <br><br>
+                    <hr><br>
+                    <p><label id="text_input" for="">Note:</label><br>
+                        <textarea name="note" id="textarea" cols="44" rows="10" placeholder="Please enter your note"></textarea>
+                    </p>
 
 
-                <br>
-                <hr>
+                    <br>
+                    <hr>
 
-                <p><label id="text_input" for="">Attach Your File:</label>
-                    <input type="file" id="up" name="file" required hidden />
-                    <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
-                </p>
+                    <p><label id="text_input" for="">Attach Your File:</label>
+                        <input type="file" id="up" name="file" required hidden />
+                        <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
+                    </p>
 
-                <br><br>
-                <button onclick="save()" id="submit" type="submit" name="submit">Send</button>
+                    <br><br>
+                    <button onclick="save()" id="submit" type="submit" name="submit">Send</button>
 
             </form>
         </div>
