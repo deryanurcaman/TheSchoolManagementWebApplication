@@ -230,7 +230,7 @@ while ($result4 = mysqli_fetch_array($query4)) {
                         </ul>
                     </td>
                     <td id="research_note"><?php echo $row["note"]; ?></td>
-                    <td><img onclick="download_file()" title="Download" id="download" src="../assets/download.png" height="50px" alt=""></td>
+                    <td><a href="download_attachment.php?student_id=<?php echo $roww["student_id"]; ?>"><img title="Download" id="download" src="../assets/download.png" height="50px" alt=""></a></td>
                 </tr>
 
                 <?php $j=$j+1;}} ?>

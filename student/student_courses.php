@@ -149,10 +149,8 @@ while ($result2 = mysqli_fetch_array($query2)) {
                 <table>
                     <tr>
                         <td>
-                            <a href="add-process.php?code=<?php echo $row["code"]; ?>"><button onclick="add_course()">Add</button></a>
+                            <a href="add-process.php?code=<?php echo $row["code"]; ?>"><button id="add" onclick="add_course()">Add</button></a>
 
-
-                            <button onclick="download_file()">Download Class Materials<img src="" alt=""></button>
                         </td>
                     </tr>
                 </table>
@@ -193,7 +191,7 @@ while ($result2 = mysqli_fetch_array($query2)) {
                         <td>
                             <a href="delete-process2.php?code=<?php echo $row["code"]; ?>"><button>Drop</button></a>
 
-                            <a href="export_material.php"><button>Download Class Materials<img src="" alt=""></button>
+                            <a href="download_material.php?code=<?php echo $row["code"]; ?>"><button>Download Class Materials<img src="" alt=""></button>
                         </td></a>
                     </tr>
                 </table>

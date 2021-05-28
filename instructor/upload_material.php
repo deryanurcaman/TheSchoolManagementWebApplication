@@ -2,7 +2,7 @@
 // Include the database configuration file
 include '../config.php';
 $db = OpenCon();
-
+session_start();
 $statusMsg = '';
 
 // File upload path
@@ -19,10 +19,10 @@ $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
         // Upload file to server
         if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
             // Insert image file name into database
-            $insert = $db->query("UPDATE courses SET course_materials='$fileName' WHERE code = " .$_GET["code"] . "");
+            $insert = $db->query("UPDATE courses SET course_materials='$fileName' WHERE code = '" .$_SESSION["code"] . "'");
             if($insert){
                 $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                echo '<script> alert("Join request sent successfully."); document.location="instructor_courses.php" </script>';
+                echo '<script> alert("Course material uploaded successfully."); document.location="instructor_courses.php" </script>';
             }else{
                 echo '<script> alert("File upload failed, please try again."); document.location="instructor_courses.php" </script>';
                 } 

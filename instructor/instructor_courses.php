@@ -120,14 +120,14 @@ while ($result2 = mysqli_fetch_array($query2)) {
                 $token4 = strtok(":");
                 ?>
             <div class="courselist">
-                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                <form action="upload_material.php" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>
                             <td><a href="export.php?code=<?php echo $row["code"]; ?>"><img id="download" src="../assets/download.png" alt=""></td>
-                            <td><input type="file" id="up" name="filename" hidden/>
+                            <td><input type="file" id="up" name="file" hidden/>
                                 <label for="up"><img id="upload" src="../assets/upload.png" alt=""></a></label>
                                 <input type="submit" name="submit" id="sub" hidden/>
-                                <label for="sub"><a href="upload_material.php?code=<?php echo $row["code"]; ?>"><img src="../assets/submit.png" alt="" id="submit" name="submit" title="Submit File"></a></label>
+                                <label for="sub"><?php $_SESSION['code'] = $row["code"];?><img src="../assets/submit.png" alt="" id="submit" name="submit" title="Submit File"></label>
                             </td>
                         </tr>
                         <tr>
@@ -154,6 +154,7 @@ while ($result2 = mysqli_fetch_array($query2)) {
             </div>
             <?php
         }
+            
         ?>
 
         </div>

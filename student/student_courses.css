@@ -272,3 +272,7 @@ h1 {
 .inner {
     display: inline-block;
 }
+
+#add {
+    width: 70px;
+}
