@@ -143,10 +143,9 @@ while ($result2 = mysqli_fetch_array($query2)) {
                     <li class="classname"><?php echo $row["name"]; ?></li>
                     <li class="classname">Number of Students: <?php
                     
-                    if($no_Of_Students['COUNT(student_id)']==NULL){
+                    if(empty($no_Of_Students['COUNT(student_id)'])){
                         $no_Of_Students['COUNT(student_id)']=0;
                     }
-                    
                     
                     echo $no_Of_Students['COUNT(student_id)']; ?></li>
                     <li span style="color:rgb(61, 0, 0);"> <?php echo 'Day: ' . $row['day']; ?></li>

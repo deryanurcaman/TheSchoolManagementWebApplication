@@ -208,7 +208,7 @@ while ($result4 = mysqli_fetch_array($query4)) {
                 $aaaa ="SELECT students.student_id, students.first_name , students.last_name, students.class
                     FROM students 
                         LEFT JOIN new_requests ON new_requests.student_id =students.id 
-                        WHERE students.id = " . $row['stid'] . "
+                        WHERE students.id = " . $row['stid'] . " AND new_requests.instructor_id= ".$result['id']."
                         ";
                     $query5 = mysqli_query($conn, $aaaa);
                     $rows5 = array();
@@ -218,8 +218,8 @@ while ($result4 = mysqli_fetch_array($query4)) {
                 ?>
                 <tr>
                     <td>
-                        <button onclick="approve()" id="decision"><img src="../assets/approved.png" alt=""></button>
-                        <button onclick="reject()" id="decision"><img src="../assets/reject.png" alt=""></button>
+                        <a href="approve-student.php?student_id=<?php echo $roww["student_id"]; ?>"><button id="decision"><img src="../assets/approved.png" alt=""></button></a>
+                        <a href="reject-student.php?student_id=<?php echo $roww["student_id"]; ?>"><button  id="decision"><img src="../assets/reject.png" alt=""></button></a>
                     </td>
                     <td><?php echo $j; ?></td>
                     <td id="research_student">
