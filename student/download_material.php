@@ -11,7 +11,7 @@ if(isset($_GET['code']))
 
   $file = '../uploads/'.$row["course_materials"];
 
-if (file_exists($file))
+if (file_exists($file) && !empty($row["course_materials"]))
     {
       $fsize = filesize($file);
       $path_parts = pathinfo($file);
@@ -44,6 +44,12 @@ if (file_exists($file))
     readfile($file);
     exit;
     }
+
+else{
+  echo '<script> alert("There is no file uploaded."); document.location="student_courses.php" </script>';
+}
+
+
 }
 
 ?>
