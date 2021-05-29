@@ -174,7 +174,7 @@ while ($result2 = mysqli_fetch_array($query2)) {
         <br>
         <div id="outer">
             <div class="inner">
-                <a href="export.php"><button type="submit" style="margin-top: unset;" name="export" value="Export to excel">Download The List of Courses</button></a>
+                <a href="export.php"><button type="submit" style="margin-top: unset;" name="export" value="Export to excel">Download The List of Taken Courses</button></a>
             </div>
         </div>
 
