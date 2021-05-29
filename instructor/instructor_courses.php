@@ -118,6 +118,8 @@ while ($result2 = mysqli_fetch_array($query2)) {
                 $token2 = strtok(":");
                 $token3 = strtok($row['end_time'], ":");
                 $token4 = strtok(":");
+                $a= $row["code"];
+                
                 ?>
             <div class="courselist">
                 <form action="upload_material.php" method="post" enctype="multipart/form-data">
@@ -126,7 +128,8 @@ while ($result2 = mysqli_fetch_array($query2)) {
                             <td><a href="export.php?code=<?php echo $row["code"]; ?>"><img id="download" src="../assets/download.png" alt=""></td>
                             <td><input type="file" id="up" name="file" hidden/>
                                 <label for="up"><img id="upload" src="../assets/upload.png" alt=""></a></label>
-                                <input type="submit" name="submit" id="sub" hidden/>
+                                <input type="submit" name="material" id="sub" hidden/>
+                                <input type="hidden" name="material" value="<?php echo $a; ?>"/>
                                 <label for="sub"><?php $_SESSION['code'] = $row["code"];?><img src="../assets/submit.png" alt="" id="submit" name="submit" title="Submit File"></label>
                             </td>
                         </tr>
