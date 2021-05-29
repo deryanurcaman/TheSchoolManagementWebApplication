@@ -91,6 +91,18 @@ if (isset($_POST['submit'])) {
         // echo 'no errors in the form';
 
     if (!empty($_POST['code']) && !empty($_POST['name']) && !empty($_POST['type']) && !empty($_POST['day']) && !empty($_POST['start']) && !empty($_POST['end']) ) {
+    
+    
+        $sql = 'SELECT id FROM courses WHERE code = "'.$_POST['code'].'"';
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $count = mysqli_num_rows($result);
+
+        // If result matched $username, table row must be 1 row
+        if ($count == 1) {
+            $errors['code'] = "This course code is taken.";
+        } else {
+    
     $sqlNew = "INSERT INTO courses ( code, name, type, day, start_time, end_time, instructor_id) 
     VALUES ( '$codeN', '$nameN', '$typeN', '$dayN', '$startN', '$endN', (SELECT id FROM instructors WHERE first_name = '$token' AND last_name = '$token2'));";
 
@@ -104,7 +116,7 @@ if (isset($_POST['submit'])) {
         header('Location: http://localhost/WebProgrammingProject/secretary/secretary_courses.php');
         exit;
     }
-}}
+}}}
 
 ?>
 
