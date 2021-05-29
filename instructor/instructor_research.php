@@ -24,7 +24,7 @@ while ($result2 = mysqli_fetch_array($query2)) {
 
 $requests = "SELECT DISTINCT new_requests.student_id AS stid, new_requests.note
 FROM  new_requests
-    LEFT JOIN instructors ON new_requests.instructor_id =". $result['id'] . ";";
+    WHERE new_requests.instructor_id =". $result['id'] . ";";
 $query4 = mysqli_query($conn, $requests);
 $rows4 = array();
 while ($result4 = mysqli_fetch_array($query4)) {
