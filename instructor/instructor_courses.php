@@ -106,6 +106,7 @@ while ($result2 = mysqli_fetch_array($query2)) {
         <div class="allCourses">
             <h1>Courses</h1>
             <?php
+            $i= 0;
             foreach ($rows as $row) {
 
                 $sql22 = "SELECT course_id, COUNT(student_id) FROM my_courses WHERE course_id = ".$row['cid']." GROUP BY course_id";
@@ -122,15 +123,17 @@ while ($result2 = mysqli_fetch_array($query2)) {
                 
                 ?>
             <div class="courselist">
-                <form action="upload_material.php" method="post" enctype="multipart/form-data">
+                <form action="upload_material.php"  method="post" enctype="multipart/form-data">
                     <table>
                         <tr>
                             <td><a href="export.php?code=<?php echo $row["code"]; ?>"><img id="download" src="../assets/download.png" alt=""></td>
-                            <td><input type="file" id="up" name="file" hidden/>
-                                <label for="up"><img id="upload" src="../assets/upload.png" alt=""></a></label>
-                                <input type="submit" name="material" id="sub" hidden/>
+                            <td><input type="file" id="up<?php echo $i?>" name="file" hidden/>
+                                <label for="up<?php echo $i?>"><img id="upload<?php echo $i?>" src="../assets/upload.png" alt=""></a></label>
+                                <input type="submit" name="material" id="sub<?php echo $i?>" hidden/>
+                                <input type="hidden" name="count" value="<?php echo $i?>" />
                                 <input type="hidden" name="material" value="<?php echo $a; ?>"/>
-                                <label for="sub"><img src="../assets/submit.png" alt="" id="submit" name="submit" title="Submit File"></label>
+                                <label for="sub<?php echo $i?>"><img src="../assets/submit.png" alt="" id="submit<?php echo $i?>" name="submit<?php echo $i?>" title="Submit File"></label>
+                                <?php  $i=$i+1; ?>
                             </td>
                         </tr>
                         <tr>
@@ -156,7 +159,9 @@ while ($result2 = mysqli_fetch_array($query2)) {
                 </ul>
             </div>
             <?php
+       
         }
+        
             
         ?>
 
