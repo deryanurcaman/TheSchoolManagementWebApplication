@@ -196,31 +196,22 @@ if (isset($_POST['submit'])) {
                         }
                         ?>
                     </select>
-                <div style="color: red;">
-                    <?php echo $errors['instructor']; ?>
-                    <!-- display error message here !-->
-                </div>
+               
                 <br><br>
                 <hr><br>
                 <p><label id="text_input" for="">Note:</label><br>
                     <textarea name="note" id="textarea" cols="44" rows="10" placeholder="Please enter your note"></textarea>
                 </p>
-                <div style="color: red;">
-                    <?php echo $errors['note']; ?>
-                    <!-- display error message here !-->
-                </div>
+                
 
                 <br>
                 <hr>
 
                 <p><label id="text_input" for="">Attach Your File:</label>
-                    <input type="file" id="up" name="file" required hidden />
+                    <input type="file" id="up" name="file"  hidden />
                     <label for="up"><img id="upload" src="../assets/upload.png" alt=""></label>
                 </p>
-                <div style="color: red;">
-                    <?php echo $errors['file']; ?>
-                    <!-- display error message here !-->
-                </div>
+                
                 <br><br>
                 <button onclick="save()" id="submit" type="submit" name="submit">Send</button>
 
