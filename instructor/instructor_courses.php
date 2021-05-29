@@ -130,7 +130,7 @@ while ($result2 = mysqli_fetch_array($query2)) {
                                 <label for="up"><img id="upload" src="../assets/upload.png" alt=""></a></label>
                                 <input type="submit" name="material" id="sub" hidden/>
                                 <input type="hidden" name="material" value="<?php echo $a; ?>"/>
-                                <label for="sub"><?php $_SESSION['code'] = $row["code"];?><img src="../assets/submit.png" alt="" id="submit" name="submit" title="Submit File"></label>
+                                <label for="sub"><img src="../assets/submit.png" alt="" id="submit" name="submit" title="Submit File"></label>
                             </td>
                         </tr>
                         <tr>

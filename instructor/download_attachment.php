@@ -15,7 +15,7 @@ if(isset($_GET['student_id']))
 
   $file = '../uploads/'.$row["attachment"];
 
-if (file_exists($file))
+if (file_exists($file)&& !empty($row["attachment"]))
     {
       $fsize = filesize($file);
       $path_parts = pathinfo($file);
@@ -47,6 +47,9 @@ if (file_exists($file))
     flush();
     readfile($file);
     exit;
+    }
+    else{
+      echo '<script> alert("There is no file uploaded."); document.location="instructor_research.php" </script>';
     }
 }
 
