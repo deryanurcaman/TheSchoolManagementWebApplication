@@ -98,9 +98,17 @@ if (isset($_POST['submit'])) {
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         $count = mysqli_num_rows($result);
 
+        $sql2 = 'SELECT id FROM courses WHERE name = "'.$_POST['name'].'"';
+        $result2 = mysqli_query($conn, $sql2);
+        $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
+        $count2 = mysqli_num_rows($result2);
+
         // If result matched $username, table row must be 1 row
         if ($count == 1) {
             $errors['code'] = "This course code is taken.";
+        }
+        else if($count2 == 1){
+            $errors['name'] = "This course already exists.";
         } else {
     
     $sqlNew = "INSERT INTO courses ( code, name, type, day, start_time, end_time, instructor_id) 
