@@ -128,11 +128,11 @@ while ($result2 = mysqli_fetch_array($query2)) {
                         <tr>
                             <td><a href="export.php?code=<?php echo $row["code"]; ?>"><img id="download" src="../assets/download.png" alt=""></td>
                             <td><input type="file" id="up<?php echo $i?>" name="file" hidden/>
-                                <label for="up<?php echo $i?>"><img id="upload<?php echo $i?>" src="../assets/upload.png" alt=""></a></label>
+                                <label for="up<?php echo $i?>"><img height="50px" id="upload<?php echo $i?>" src="../assets/upload.png" alt=""></a></label>
                                 <input type="submit" name="material" id="sub<?php echo $i?>" hidden/>
                                 <input type="hidden" name="count" value="<?php echo $i?>" />
                                 <input type="hidden" name="material" value="<?php echo $a; ?>"/>
-                                <label for="sub<?php echo $i?>"><img src="../assets/submit.png" alt="" id="submit<?php echo $i?>" name="submit<?php echo $i?>" title="Submit File"></label>
+                                <label for="sub<?php echo $i?>"><img height="50px" src="../assets/submit.png" alt="" id="submit<?php echo $i?>" name="submit<?php echo $i?>" title="Submit File"></label>
                                 <?php  $i=$i+1; ?>
                             </td>
                         </tr>
