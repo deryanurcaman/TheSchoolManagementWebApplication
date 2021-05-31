@@ -3,7 +3,7 @@
 include 'config.php';
 $conn = OpenCon();
 
-
+// example secretaries
 
 $sql = "INSERT INTO secretaries (first_name, last_name, username, password) 
 VALUES ('Argus', 'Filch', 'mrsnorris', '12345'),

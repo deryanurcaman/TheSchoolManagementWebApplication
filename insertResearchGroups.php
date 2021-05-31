@@ -3,6 +3,8 @@
 include 'config.php';
 $conn = OpenCon();
 
+// example research groups
+
 $sql = "INSERT INTO research_groups (instructor_id, student_id) 
 VALUES 
 ((SELECT id FROM instructors WHERE instructor_code = '340007'), (SELECT id FROM students WHERE student_id = '8101086')), 

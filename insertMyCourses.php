@@ -3,6 +3,8 @@
 include 'config.php';
 $conn = OpenCon();
 
+// example for courses taken by students
+
 $sql = "INSERT INTO my_courses (student_id, course_id) 
 VALUES 
 ((SELECT id FROM students WHERE student_id = '8101086'), (SELECT id FROM courses WHERE code = 'POT78055')), 

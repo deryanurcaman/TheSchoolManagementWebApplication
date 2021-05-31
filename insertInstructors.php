@@ -3,11 +3,7 @@
 include 'config.php';
 $conn = OpenCon();
 
-
-//yedek
-// $sql = "INSERT INTO instructors (instructor_code, first_name, last_name, area, course_id, username, password) 
-// VALUES ('340001', 'Minerva', 'McGonagall', 'Transfiguration', (SELECT id FROM courses WHERE code = 'POT78055'), 'catwoman', 'minerva340001'); ";
-
+// example instructors
 
 $sql = "INSERT INTO instructors (instructor_code, first_name, last_name, area, username, password) 
 VALUES ('340001', 'Minerva', 'McGonagall', 'Transfiguration', 'catwoman', '12345'),
