@@ -57,5 +57,33 @@ To run the project,
 3. After, you should run insert php files to fill the tables with the prepared information in localhost
 
 
+## Gallery
+
+![](readmeassets/1.png)
+
+![](readmeassets/2.png)
+
+![](readmeassets/3.png)
+
+![](readmeassets/4.png)
+
+![](readmeassets/5.png)
+
+![](readmeassets/6.png)
+
+![](readmeassets/7.png)
+
+![](readmeassets/8.png)
+
+![](readmeassets/9.png)
+
+![](readmeassets/10.png)
+
+![](readmeassets/11.png)
+
+![](readmeassets/12.png)
+
+![](readmeassets/13.png)
+
 
 
