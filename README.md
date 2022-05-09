@@ -1,4 +1,4 @@
-# TheSchoolManagementApplication
+# The School Management Web Application
 
 This project is a website which establishes an effective communication platform among instructors, students and department secretaries.
 
