@@ -1,8 +1,8 @@
-# The School Management Web Application
+# The School Management Web Application with PHP and HTML/CSS
 
 This project is a website which establishes an effective communication platform among instructors, students and department secretaries.
 
-This project has a fictional school themed which is based on Harry Potter.
+This project has a fictional school themed which is based on Harry Potter Universe.
 
 ## Main Page
 
